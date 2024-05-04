@@ -1,0 +1,142 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Orcamento.SiteMaster" %>
+
+<%@ Import Namespace="Orcamento" %>
+<%@ Import Namespace="Microsoft.AspNet.Identity" %>
+
+<!DOCTYPE html>
+
+<html lang="pt">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+    <link rel="stylesheet" href="Content/fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="Content/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/css/style.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Precificação para Arquitetos</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+
+<body>
+<div id="FundoInicial"  runat="server" class="hero" 
+     style="background-image: url('Content/images/ivan.jpg');">
+
+    <form runat="server">
+
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header" >
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+      <header class="site-navbar site-navbar-target py-4" role="banner">
+        <div class="container">
+          <div class="row align-items-center position-relative">
+            <div class="col-2 ml-auto text-right order-2">
+              <div class="site-logo">
+                <a href="Default.aspx" class="font-weight-bold text-white">Juliana & Ivan</a>
+              </div>
+            </div>
+
+            <!--
+            <div class="col-2 ml-auto text-right order-2">
+              <div class="site-logo">
+
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                                <a runat="server" class="nav-link" href="~/Account/Register">Cadastrar-se</a>
+                                <a runat="server" class="nav-link" href="~/Account/Login">Entrar</a>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <a runat="server" class="nav-link" href="~/Account/Manage" title="Manage your account">Olá, <%: Context.User.Identity.GetUserName()  %> !</a>
+                            <asp:LoginStatus runat="server" CssClass="nav-link" LogoutAction="Redirect" LogoutText="Sair" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                       </LoggedInTemplate>
+                    </asp:LoginView>
+
+              </div>
+            </div>
+              -->
+
+            <div class="col-9 order-1 text-left mr-auto">
+              <span class="d-inline-block d-lg-block"><a href="/" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+              <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
+                  <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                      <li><a href="index.html" class="nav-link"><i class="icon-home"></i> Home</a></li>
+                      <li class="has-children">
+                          <a href="#" class="nav-link"><i class="icon-clipboard"></i> Cadastro</a>
+                          <ul class="dropdown arrow-top">
+                              <li><a href="#" class="nav-link"><i class="icon-person"></i> Cliente</a></li>
+                              <li><a href="/Cadastros/Profissional/Lista" class="nav-link"><i class="icon-people"></i> Profissional</a></li>
+                              <li><a href="/Cadastros/Despesa/Lista" class="nav-link"><i class="icon-circle"></i> Despesas Administrativas</a></li>
+                              <li><a href="/Cadastros/Custos/Lista" class="nav-link"><i class="icon-card_travel"></i> Custos</a></li>
+                              <li><a href="/Cadastros/Etapas/Lista" class="nav-link"><i class="icon-card_membership"></i> Etapas de Projetos</a></li>
+                              <li><a href="/Cadastros/Preco/Lista" class="nav-link"><i class="icon-money"></i> Preços</a></li>
+                              <li><a href="/Cadastros/Tipologia/Lista" class="nav-link"><i class="icon-circle"></i> Tipologia</a></li>
+                          </ul>
+                      </li>
+                      <li><a href="/Projeto/Criacao/Lista" class="nav-link"><i class="icon-product-hunt"></i> Projetos</a></li>
+                      <li><a href="#" class="nav-link"><i class="icon-dashboard"></i> Dashboard</a></li>
+                      <li><a href="#" class="nav-link"><i class="icon-info2"></i> Manual</a></li>
+                      <li><a href="#" class="nav-link"><i class="icon-contacts"></i> Contato</a></li>
+                  </ul>
+              </nav>
+            </div>
+          </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer class="footer-content">
+                <p>&copy; <%: DateTime.Now.Year %> - Precificação para Arquitetos</p>
+            </footer>
+        </div>
+        </div>
+      </header>
+
+    <!-- <div class="hero" style="background-image: url('Content/images/ivan.jpg');"></div> -->
+
+    <script src="Content/js/jquery-3.3.1.min.js"></script>
+    <script src="Content/js/popper.min.js"></script>
+    <script src="Content/js/bootstrap.min.js"></script>
+    <script src="Content/js/jquery.sticky.js"></script>
+    <script src="Content/js/main.js"></script>
+
+    </form>
+</div>
+</body>
+</html>

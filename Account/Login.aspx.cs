@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using Orcamento.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Orcamento.Account
 {
@@ -58,6 +59,9 @@ namespace Orcamento.Account
                         ErrorMessage.Visible = true;
                         break;
                 }
+            } else
+            {
+                Session["logado"] = null;
             }
         }
     }

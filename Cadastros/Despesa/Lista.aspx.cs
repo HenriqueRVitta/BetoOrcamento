@@ -74,9 +74,9 @@ namespace Orcamento.Cadastros.Despesa
 
         protected void GrdDespesas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandArgument.ToString()!="First" && e.CommandArgument.ToString()!="Next" && e.CommandArgument.ToString()!="Prev" && e.CommandArgument.ToString()!="Last" && e.CommandArgument.ToString()!="de_codigo" && e.CommandArgument.ToString()!="de_descricao")
+            if (e.CommandArgument.ToString() != "First" && e.CommandArgument.ToString() != "Next" && e.CommandArgument.ToString() != "Prev" && e.CommandArgument.ToString() != "Last" && e.CommandArgument.ToString() != "de_codigo" && e.CommandArgument.ToString() != "de_descricao")
             {
-                if (Convert.ToInt16(e.CommandArgument.ToString())>=0)
+                if (Convert.ToInt16(e.CommandArgument.ToString()) >= 0)
                 {
                     string id = Convert.ToString(GrdDespesas.DataKeys[Convert.ToInt32(e.CommandArgument)].Value);
 

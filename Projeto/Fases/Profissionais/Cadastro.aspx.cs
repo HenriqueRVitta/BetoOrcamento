@@ -18,11 +18,26 @@ namespace Orcamento.Projeto.Fases.Profissionais
                 if (Request.QueryString["Projeto"] != null)
                 {
                     lblProjeto.Text=Request.QueryString["Projeto"].ToString();
+
+                    con.Open();
+
+                    string SelN = "select pr_nome from tb_projetos where pr_id=@projeto";
+                    MySqlCommand qrySelectN = new MySqlCommand(SelN, con);
+                    qrySelectN.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
+                    MySqlDataReader readerN = qrySelectN.ExecuteReader();
+
+                    while (readerN.Read())
+                    {
+                        LblNome.Text=readerN["pr_nome"].ToString();
+                    }
+
+                    qrySelectN.Dispose();
+                    con.Close();
                 }
 
                 con.Open();
 
-                string Sel = "Select pr_id as codigo,pr_descricao as descricao from tb_profissional order by pr_descricao";
+                string Sel = "select da_id as codigo,da_descricao as descricao from tb_despesas where LENGTH(da_codigo)=4 and SUBSTRING(da_codigo,1,2)='01' order by da_descricao";
                 MySqlCommand qrySelect = new MySqlCommand(Sel, con);
                 MySqlDataReader reader = qrySelect.ExecuteReader();
 
@@ -131,6 +146,11 @@ namespace Orcamento.Projeto.Fases.Profissionais
         protected void BtnAvanca_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Projeto/Fases/Resultado.aspx?ID=" + lblProjeto.Text);
+        }
+
+        protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Projeto/Fases/Profissionais/Lista.aspx?Projeto=" + lblProjeto.Text);
         }
     }
 }

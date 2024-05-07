@@ -214,7 +214,6 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="beto.aspx" />
     <Content Include="Cadastros\Custos\Cadastro.aspx" />
     <Content Include="Cadastros\Custos\Excluir.aspx" />
     <Content Include="Cadastros\Custos\Lista.aspx" />
@@ -291,7 +290,6 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Index.aspx" />
     <Content Include="Projeto\Criacao\Cadastro.aspx" />
     <Content Include="Projeto\Criacao\Excluir.aspx" />
     <Content Include="Projeto\Criacao\Lista.aspx" />
@@ -299,6 +297,9 @@
     <Content Include="Projeto\Fases\Despesas.aspx" />
     <Content Include="Projeto\Fases\Etapas.aspx" />
     <Content Include="Projeto\Fases\Profissionais.aspx" />
+    <Content Include="Projeto\Fases\Profissionais\Cadastro.aspx" />
+    <Content Include="Projeto\Fases\Profissionais\Excluir.aspx" />
+    <Content Include="Projeto\Fases\Profissionais\Lista.aspx" />
     <Content Include="Projeto\Fases\Resultado.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -574,13 +575,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="beto.aspx.cs">
-      <DependentUpon>beto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="beto.aspx.designer.cs">
-      <DependentUpon>beto.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Cadastros\Custos\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -731,13 +725,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Projeto\Criacao\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
@@ -787,6 +774,27 @@
     </Compile>
     <Compile Include="Projeto\Fases\Profissionais.aspx.designer.cs">
       <DependentUpon>Profissionais.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Projeto\Fases\Profissionais\Cadastro.aspx.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Projeto\Fases\Profissionais\Cadastro.aspx.designer.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Projeto\Fases\Profissionais\Excluir.aspx.cs">
+      <DependentUpon>Excluir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Projeto\Fases\Profissionais\Excluir.aspx.designer.cs">
+      <DependentUpon>Excluir.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Projeto\Fases\Profissionais\Lista.aspx.cs">
+      <DependentUpon>Lista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Projeto\Fases\Profissionais\Lista.aspx.designer.cs">
+      <DependentUpon>Lista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Projeto\Fases\Resultado.aspx.cs">
       <DependentUpon>Resultado.aspx</DependentUpon>

@@ -15,6 +15,26 @@ namespace Orcamento.Projeto.Fases.Profissionais
         {
             if (!Page.IsPostBack)
             {
+                if (Request.QueryString["Projeto"] != null)
+                {
+                    lblProjeto.Text=Request.QueryString["Projeto"].ToString();
+
+                    con.Open();
+
+                    string SelN = "select pr_nome from tb_projetos where pr_id=@projeto";
+                    MySqlCommand qrySelectN = new MySqlCommand(SelN, con);
+                    qrySelectN.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
+                    MySqlDataReader readerN = qrySelectN.ExecuteReader();
+
+                    while (readerN.Read())
+                    {
+                        LblNome.Text=readerN["pr_nome"].ToString();
+                    }
+
+                    qrySelectN.Dispose();
+                    con.Close();
+                }
+
                 con.Open();
 
                 string Sel = "Select pr_id as codigo,pr_descricao as descricao from tb_profissional order by pr_descricao";
@@ -88,13 +108,10 @@ namespace Orcamento.Projeto.Fases.Profissionais
 
             Response.Redirect("~/Projeto/Fases/Profissionais/Lista.aspx");
         }
-        protected void BtnVolta_Click(object sender, EventArgs e)
+
+        protected void btnVoltar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Projeto/Fases/Etapas.aspx?ID=" + lblProjeto.Text);
-        }
-        protected void BtnAvanca_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Projeto/Fases/Resultado.aspx?ID=" + lblProjeto.Text);
+            Response.Redirect("~/Projeto/Fases/Profissionais/Lista.aspx?Projeto=" + lblProjeto.Text);
         }
     }
 }

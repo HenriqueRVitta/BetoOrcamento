@@ -70,39 +70,31 @@
           <div class="row align-items-center position-relative">
             <div class="col-2 ml-auto text-right order-2">
               <div class="site-logo">
-                <a href="Default.aspx" class="font-weight-bold text-white">Juliana & Ivan</a>
-              </div>
-            </div>
-
-            <!--
-            <div class="col-2 ml-auto text-right order-2">
-              <div class="site-logo">
-
+                <a href="Default.aspx" class="font-weight-bold text-white" style="font-size: 22px; font-family:Tahoma;">Pralucrar</a>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
-                                <a runat="server" class="nav-link" href="~/Account/Register">Cadastrar-se</a>
-                                <a runat="server" class="nav-link" href="~/Account/Login">Entrar</a>
+                                <a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Register">Cadastrar-se</a>
+                                <a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Login">Entrar</a>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <a runat="server" class="nav-link" href="~/Account/Manage" title="Manage your account">Olá, <%: Context.User.Identity.GetUserName()  %> !</a>
-                            <asp:LoginStatus runat="server" CssClass="nav-link" LogoutAction="Redirect" LogoutText="Sair" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            <!-- <a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Manage" title="Manage your account">Olá, <%: Context.User.Identity.GetUserName()  %> </a> -->
+                            <asp:LoginStatus runat="server" CssClass="nav-link font-weight-bold text-white" LogoutAction="Redirect" LogoutText="Sair" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                        </LoggedInTemplate>
                     </asp:LoginView>
-
               </div>
             </div>
-              -->
 
             <div class="col-9 order-1 text-left mr-auto">
               <span class="d-inline-block d-lg-block"><a href="/" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
               <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
                   <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                      <a runat="server" class="icon-account_circle" style="font-size: 62px; text-align:center;"><a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Manage" title="Usuário logado..."><%: Context.User.Identity.GetUserName()  %> </a></a>
                       <li><a href="index.html" class="nav-link"><i class="icon-home"></i> Home</a></li>
                       <li class="has-children">
                           <a href="#" class="nav-link"><i class="icon-clipboard"></i> Cadastro</a>
                           <ul class="dropdown arrow-top">
                               <li><a href="#" class="nav-link"><i class="icon-person"></i> Cliente</a></li>
-                              <li><a href="/Cadastros/Profissional/Lista" class="nav-link"><i class="icon-people"></i> Profissional</a></li>
+                              <!-- <li><a href="/Cadastros/Profissional/Lista" class="nav-link"><i class="icon-people"></i> Profissional</a></li> -->
                               <li><a href="/Cadastros/Despesa/Lista" class="nav-link"><i class="icon-circle"></i> Despesas Administrativas</a></li>
                               <li><a href="/Cadastros/Custos/Lista" class="nav-link"><i class="icon-card_travel"></i> Custos</a></li>
                               <li><a href="/Cadastros/Etapas/Lista" class="nav-link"><i class="icon-card_membership"></i> Etapas de Projetos</a></li>

@@ -12,6 +12,7 @@ namespace Orcamento
 {
     public class EmailService : IIdentityMessageService
     {
+
         public Task SendAsync(IdentityMessage message)
         {
             // Conecte o seu serviço de email aqui para enviar um email.
@@ -31,6 +32,7 @@ namespace Orcamento
     // Configure o gerenciador de usuários do aplicativo usado nesse aplicativo. O UserManager está definido no ASP.NET Identity e é usado pelo aplicativo.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
+        public string NomeDoUsuario { get; set; }
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {

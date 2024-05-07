@@ -4,13 +4,14 @@
     <asp:Label ID="lblProjeto" runat="server" Text="" Visible="false"></asp:Label>
     <div class="panel-container show">
         <div class="panel-content">
-            <div class="row">
+            <div class="row" style="width:100%">
                 <div class="container">
                     <div class="row" style="background-color:#000438">
                     <div class="col-sm" style="color:white">
                         Projeto
                     </div>
-                    <div class="col-sm">
+                    <div style="color:white;width:500px;">
+                        <asp:Label ID="LblNome" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="col-sm">
                     </div>
@@ -32,17 +33,14 @@
                 <div class="row" style="background-color:#000438">
                     <div class="col-sm">
                     </div>
-                    <div class="col-sm" style="color:red">
-                        Despesas Administrativas
-                    </div>
-                    <div class="col-sm" style="color:red">
-                        Custos
-                    </div>
-                    <div class="col-sm" style="color:red">
-                        Etapas
-                    </div>
                     <div class="col-sm" style="color:white">
                         Profissionais
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
                     </div>
                     <div class="col-sm">
                     </div>
@@ -60,16 +58,15 @@
                      <div>
                         <div class="col-12 text-left" style="margin-top:5px">
                             <asp:Button ID="BtnNovo" runat="server" Text="Novo Profissional" class="btn btn-primary" style="background-color:#000438; color:white" OnClick="BtnNovo_Click" />
-<%--                            <asp:HyperLink NavigateUrl='"<%#$"/Projeto/Fases/Profissionais/Cadastro.aspx?Projeto{Eval(lblProjeto.Text)}"%>' runat="server" asp-route-id="@pr_id" title="Editar Custos" class="btn btn-primary">Novo Profissional</asp:HyperLink>--%>
                         </div>
                         <div class="card-body">
-                            <div class="col-sm-offset-1 col-sm-10" style="width:100%">
+                            <div>
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
                                         <asp:GridView ID="GrdProfissional" runat="server" AutoGenerateColumns="false" class="table table-bordered table-hover table-striped w-100" AlternatingRowStyle-HorizontalAlign="Left" DataKeyNames="pp_id,pp_profissional" OnRowCommand="GrdProfissional_RowCommand" AllowPaging="True" onpageindexchanging="GrdProfissional_PageIndexChanging" PageSize="11">
                                             <Columns>
                                                 <asp:BoundField DataField="pp_projeto" HeaderText="Projeto"/>
-                                                <asp:BoundField DataField="pr_descricao" HeaderText="Profissional"/>  
+                                                <asp:BoundField DataField="da_descricao" HeaderText="Profissional"/>  
                                                 <asp:BoundField DataField="pp_valor" HeaderText="Valor"/>
                                                 <asp:BoundField DataField="pp_quantidade" HeaderText="Quantidade"/>  
                                                 <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapisP.png"></asp:ButtonField>

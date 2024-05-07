@@ -20,6 +20,7 @@
                                     <Columns>
                                         <asp:BoundField DataField="da_codigo" HeaderText="Código" SortExpression="da_codigo"/>
                                         <asp:BoundField DataField="da_descricao" HeaderText="Descrição" SortExpression="da_descricao"/>  
+                                        <asp:BoundField DataField="da_formula" HeaderText="Formula" SortExpression="da_formula"/>  
                                         <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapisP.png"></asp:ButtonField>
                                         <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeiraP.png"></asp:ButtonField>
                                     </Columns>

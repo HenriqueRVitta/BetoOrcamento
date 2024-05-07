@@ -15,8 +15,12 @@ namespace Orcamento.Account
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
-            var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
-            IdentityResult result = manager.Create(user, Password.Text);
+            var nomeUsuario = TextBox4.Text;
+            var email = TextBox1.Text;
+            var senha = TextBox2.Text;
+
+            var user = new ApplicationUser() { UserName = email, Email = email, NomeDoUsuario = nomeUsuario };
+            IdentityResult result = manager.Create(user, senha);
             if (result.Succeeded)
             {
                 // Para obter mais informações sobre como habilitar a confirmação da conta e redefinição de senha, visite https://go.microsoft.com/fwlink/?LinkID=320771

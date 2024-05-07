@@ -13,7 +13,7 @@
                         <asp:HyperLink NavigateUrl="/Cadastros/Preco/Cadastro" runat="server" asp-route-id="@pe_id" title="Editar Preços" class="btn btn-primary">Novo Preço</asp:HyperLink>
                     </div>
                 <div class="card-body">
-                    <div class="col-sm-offset-1 col-sm-10" style="width:100%">
+                    <div>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:GridView ID="GrdPreco" runat="server" AutoGenerateColumns="false" class="table table-bordered table-hover table-striped w-100" AlternatingRowStyle-HorizontalAlign="Left" DataKeyNames="pe_id" AllowSorting="True" OnSorting="GrdPreco_Sorting" OnRowCommand="GrdPreco_RowCommand" AllowPaging="True" onpageindexchanging="GrdPreco_PageIndexChanging" PageSize="11">

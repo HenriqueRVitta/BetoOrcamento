@@ -52,6 +52,7 @@ namespace Orcamento
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 // Configurar o token Anti-XSRF
@@ -71,14 +72,23 @@ namespace Orcamento
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
+            
+            Response.AppendHeader("Refresh",
+                        //Session TimeOut é em minutos e o Refresh e segundos, por isso o Session.Timeout * 60
+                        String.Concat((Session.Timeout * 60),
+                        //Página para onde o usuário será redirecionado
+                        ";URL=/Account/Login.aspx"));
+            
+
+            
+
             if (HttpContext.Current.Session["LoggedIn"] != null)
             {
-                CadastroLinkListItem.Visible = true;
-                MovimentacaoLinkListItem.Visible = true;
-                DashboardLinkListItem.Visible = true;
+                //CadastroLinkListItem.Visible = true;
+                //MovimentacaoLinkListItem.Visible = true;
+                //DashboardLinkListItem.Visible = true;
             }
-            */
+            
 
             if (Session["logado"] != null)
             {

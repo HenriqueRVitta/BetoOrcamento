@@ -15,6 +15,7 @@ namespace Orcamento.Models
     // É possível adicionar Dados de usuário para o usuário ao incluir mais propriedades na sua Classe de usuário, visite https://go.microsoft.com/fwlink/?LinkID=317594 para obter mais informações.
     public class ApplicationUser : IdentityUser
     {
+        public string NomeDoUsuario { get; set; }
 
         [DbConfigurationType(typeof(MySqlEFConfiguration))]
         public partial class DefaultConnection : DbContext

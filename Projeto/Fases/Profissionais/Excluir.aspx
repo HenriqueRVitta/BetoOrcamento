@@ -10,7 +10,8 @@
                     <div class="col-sm" style="color:white">
                         Projeto
                     </div>
-                    <div class="col-sm">
+                    <div style="color:white;width:500px;">
+                        <asp:Label ID="LblNome" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="col-sm">
                     </div>
@@ -76,36 +77,11 @@
                                 </div>
                                 <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3" style="margin-top: 10px;">
                                     <asp:Button ID="btExcluir" runat="server" Text="Excluir" class="btn btn-primary btnPrimary" OnClick="btExcluir_Click" />
-                                    <asp:HyperLink NavigateUrl="/Projeto/Fases/Profissionais/Lista" runat="server" asp-route-id="@pr_id" title="Voltar para o pesquisa" class="btn btn-secondary btnSecundary">Voltar</asp:HyperLink>
-                                </div>
+                                    <asp:Button ID="btnVoltar" runat="server" Text="Voltar" class="btn btn-secondary btnSecundary" OnClick="btnVoltar_Click" />                                </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
-            </div>
-            <div class="container">
-                <div class="row" style="background-color:#000438">
-                <div class="col-sm">
-                    <asp:Button ID="BtnVolta" runat="server" Text="Fase Anterior" style="background-color:#000438; color:white" OnClick="BtnVolta_Click"/>
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                    <asp:Button ID="BtnAvanca" runat="server" Text="Avançar/Gravar" style="background-color:#000438; color:white" OnClick="BtnAvanca_Click"/>
-                </div>
                 </div>
             </div>
         </div>

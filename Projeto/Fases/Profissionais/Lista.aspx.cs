@@ -17,7 +17,25 @@ namespace Orcamento.Projeto.Fases.Profissionais
             {
                 if (!Page.IsPostBack)
                 {
+
                     lblProjeto.Text=Request.QueryString["Projeto"].ToString();
+
+                    con.Open();
+
+                    string Sel = "select pr_nome from tb_projetos where pr_id=@projeto";
+                    MySqlCommand qrySelect = new MySqlCommand(Sel, con);
+                    qrySelect.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
+                    MySqlDataReader reader = qrySelect.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        LblNome.Text=reader["pr_nome"].ToString();
+                    }
+
+                    qrySelect.Dispose();
+                    con.Close();
+
+
                     Carrega();
                 }
             }
@@ -26,7 +44,7 @@ namespace Orcamento.Projeto.Fases.Profissionais
         {
             con.Open();
 
-            string Sel = "select pp_id,pp_projeto,pp_profissional,pp_valor,pp_quantidade,pr_id,pr_descricao from tb_projeto_profissional inner join tb_profissional on pp_profissional=pr_ID where pp_projeto=@projeto";
+            string Sel = "select pp_id,pp_projeto,pp_profissional,pp_valor,pp_quantidade,da_descricao from tb_projeto_profissional inner join tb_despesas on pp_profissional=da_id where pp_projeto=@projeto";
             MySqlCommand qrySelect = new MySqlCommand(Sel, con);
             qrySelect.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
             DataTable dataTable = new DataTable();
@@ -68,12 +86,12 @@ namespace Orcamento.Projeto.Fases.Profissionais
         }
         protected void BtnVolta_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Projeto/Fases/Etapas.aspx?Projeto=" + lblProjeto.Text);
+            Response.Redirect("~/Projeto/Criacao/Lista.aspx");
         }
 
         protected void BtnAvanca_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Projeto/Fases/Resultado.aspx?Projeto=" + lblProjeto.Text);
+            Response.Redirect("~/Projeto/Fases/Despesas.aspx?Projeto="+lblProjeto.Text);
         }
 
         protected void BtnNovo_Click(object sender, EventArgs e)

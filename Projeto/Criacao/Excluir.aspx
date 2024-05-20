@@ -4,7 +4,7 @@
     <div class="panel-container show">
         <div class="panel-content">
             <div class="row">
-                    <div class="card text-left">
+                 <div class="card text-left" style="background-color:#000438">
                         <div class="card-header text-center">
                         <h3>Projeto - Criação - Excluir</h3>
                         </div>
@@ -17,6 +17,10 @@
                                 <div class="panel-content">
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                     <input ID="da_id" runat="server" type="hidden" />
+                                    <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3">
+                                        <asp:Label ID="lblpr_nome" runat="server" Text="Nome" />
+                                        <asp:TextBox ID="pr_nome" runat="server" CssClass="form-control" required="true"/>
+                                    </div>
                                     <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3">
                                         <asp:Label ID="lblpr_tipologia" runat="server" Text="Tipologia" />
                                         <asp:DropDownList ID="pr_tipologia" runat="server" CssClass="form-control" required="true"></asp:DropDownList> 

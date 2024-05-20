@@ -138,10 +138,6 @@ namespace Orcamento.Projeto.Fases.Profissionais
 
             Response.Redirect("~/Projeto/Fases/Profissionais/Lista.aspx?Projeto="+lblProjeto.Text);
         }
-        protected void BtnVolta_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Projeto/Fases/Etapas.aspx?ID=" + lblProjeto.Text);
-        }
 
         protected void BtnAvanca_Click(object sender, EventArgs e)
         {

@@ -4,7 +4,7 @@
     <div class="panel-container show">
         <div class="panel-content">
             <div class="row" style="width:100%">
-                 <div class="card text-left">
+                 <div class="card text-left" style="background-color:#000438">
                     <div class="card-header text-center">
                     <h3>Cadastro - Lista Tipologia</h3>
                     </div>
@@ -19,8 +19,8 @@
                                 <asp:GridView ID="GrdTipologia" runat="server" AutoGenerateColumns="false" class="table table-bordered table-hover table-striped w-100" AlternatingRowStyle-HorizontalAlign="Left" DataKeyNames="ti_id" AllowSorting="True" OnSorting="GrdTipologia_Sorting" OnRowCommand="GrdTipologia_RowCommand" AllowPaging="True" onpageindexchanging="GrdTipologia_PageIndexChanging" PageSize="11">
                                     <Columns>
                                         <asp:BoundField DataField="ti_descricao" HeaderText="Tipologia" SortExpression="ti_descricao"/>  
-                                        <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapisP.png"></asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeiraP.png"></asp:ButtonField>
+                                        <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapis.png"></asp:ButtonField>
+                                        <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeira.png"></asp:ButtonField>
                                     </Columns>
                                     <PagerSettings Position="Bottom" Mode="NextPreviousFirstLast"
                                     PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior'/>"

@@ -4,7 +4,7 @@
     <div class="panel-container show">
         <div class="panel-content">
             <div class="row">
-                    <div class="card text-left">
+                 <div class="card text-left" style="background-color:#000438">
                         <div class="card-header text-center">
                         <h3>Cadastro - Custos</h3>
                         </div>

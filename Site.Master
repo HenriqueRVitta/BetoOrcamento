@@ -58,12 +58,12 @@
 
 
     <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header" >
+        <div class="site-mobile-menu-header" style="background-color:#000438" >
           <div class="site-mobile-menu-close mt-3">
             <span class="icon-close2 js-menu-toggle"></span>
           </div>
         </div>
-        <div class="site-mobile-menu-body"></div>
+        <div class="site-mobile-menu-body" style="background-color:#000438"></div>
       </div>
       <header class="site-navbar site-navbar-target py-4" role="banner">
         <div class="container">
@@ -103,14 +103,14 @@
                           </ul>
                       </li>
                       <li><a href="/Projeto/Criacao/Lista" class="nav-link"><i class="icon-product-hunt"></i> Projetos</a></li>
-                      <li><a href="#" class="nav-link"><i class="icon-dashboard"></i> Dashboard</a></li>
+<%--                      <li><a href="#" class="nav-link"><i class="icon-dashboard"></i> Dashboard</a></li>--%>
                       <li><a href="#" class="nav-link"><i class="icon-info2"></i> Manual</a></li>
                       <li><a href="#" class="nav-link"><i class="icon-contacts"></i> Contato</a></li>
                   </ul>
               </nav>
             </div>
           </div>
-        <div class="container body-content">
+        <div class="container body-content" >
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <footer class="footer-content">

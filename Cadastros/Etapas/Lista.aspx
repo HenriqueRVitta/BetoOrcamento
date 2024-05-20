@@ -4,7 +4,7 @@
     <div class="panel-container show">
         <div class="panel-content">
             <div class="row" style="width:100%">
-                     <div class="card text-left">
+                 <div class="card text-left" style="background-color:#000438">
                         <div class="card-header text-center">
                         <h3>Cadastro - Lista Etapas</h3>
                         </div>
@@ -20,8 +20,8 @@
                                     <Columns>
                                         <asp:BoundField DataField="et_codigo" HeaderText="Código" SortExpression="et_codigo"/>
                                         <asp:BoundField DataField="et_descricao" HeaderText="Descrição" SortExpression="et_descricao"/>  
-                                        <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapisP.png"></asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeiraP.png"></asp:ButtonField>
+                                        <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapis.png"></asp:ButtonField>
+                                        <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeira.png"></asp:ButtonField>
                                     </Columns>
                                     <PagerSettings Position="Bottom" Mode="NextPreviousFirstLast"
                                     PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior' class='navpage'/>"

@@ -24,6 +24,24 @@ namespace Orcamento.Projeto.Fases
         protected global::System.Web.UI.WebControls.Label lblProjeto;
 
         /// <summary>
+        /// Controle lblTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotal;
+
+        /// <summary>
+        /// Controle LblNome.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblNome;
+
+        /// <summary>
         /// Controle GrdCustos.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace Orcamento.Projeto.Fases
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnVolta;
+
+        /// <summary>
+        /// Controle BtnObservacao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnObservacao;
 
         /// <summary>
         /// Controle BtnAvanca.

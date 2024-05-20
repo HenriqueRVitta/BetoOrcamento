@@ -4,12 +4,52 @@
     <div class="panel-container show">
         <div class="panel-content">
             <div class="row" style="width:100%">
-                 <div class="card text-left">
+                 <div class="card text-left" style="background-color:#000438">
                     <div class="card-header text-center">
-                    <h3>Projeto - Criação</h3>
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm" style="color:white">
+                                        Projetos
+                                    </div>
+                                    <div class="col-sm">
+                                    </div>
+                                    <div class="col-sm">
+                                    </div>
+                                    <div class="col-sm">
+                                    </div>
+                                    <div class="col-sm">
+                                    </div>
+                                    <div class="col-sm">
+                                    </div>
+                                    <div class="col-sm">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    &nbsp;
+                                </div>
+                                <div class="col-sm">
+                                </div>
+                                <div class="col-sm">
+                                </div>
+                                <div class="col-sm">
+                                </div>
+                                <div class="col-sm">
+                                </div>
+                                <div class="col-sm">
+                                </div>
+                                <div class="col-sm">
+                                </div>
+                                </div>
+                            </div>
+                        </div>  
                     </div>
-                 </div>
+                 </div>                 
 
+                    </div>
                     <div class="col-12 text-left" style="margin-top:5px">
                         <asp:HyperLink NavigateUrl="/Projeto/Criacao/Cadastro" runat="server" asp-route-id="@pr_id" title="Editar Custos" style="background-color:#000438; color:white" class="btn btn-primary">Novo Projeto</asp:HyperLink>
                     </div>
@@ -19,8 +59,8 @@
                                 <ContentTemplate>
                                     <asp:GridView ID="GrdProjetos" runat="server" AutoGenerateColumns="false" class="table table-bordered table-hover table-striped w-100" AlternatingRowStyle-HorizontalAlign="Left" DataKeyNames="pr_id,ti_id" AllowSorting="True" OnSorting="GrdProjetos_Sorting" OnRowCommand="GrdProjetos_RowCommand" AllowPaging="True" onpageindexchanging="GrdProjetos_PageIndexChanging" PageSize="11">
                                         <Columns>
-                                            <asp:ButtonField ButtonType="Image" CommandName="Editar" HeaderText="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapisP.png"></asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Image" CommandName="Excluir" HeaderText="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeiraP.png"></asp:ButtonField>
+                                            <asp:ButtonField ButtonType="Image" CommandName="Editar" HeaderText="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapis.png"></asp:ButtonField>
+                                            <asp:ButtonField ButtonType="Image" CommandName="Excluir" HeaderText="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeira.png"></asp:ButtonField>
                                             <asp:ButtonField ButtonType="Image" CommandName="Selecionar" HeaderText="Selecionar" ItemStyle-Width="100px" ImageUrl="~/Content/images/checkbox.png"></asp:ButtonField>
                                             <asp:ButtonField ButtonType="Image" CommandName="Colonar" HeaderText="Clonar" ItemStyle-Width="60px" ImageUrl="~/Content/images/clone.png"></asp:ButtonField>
                                             <asp:BoundField DataField="ti_descricao" HeaderText="Tipologia" SortExpression="ti_descricao"/>

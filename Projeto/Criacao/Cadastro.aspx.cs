@@ -41,7 +41,7 @@ namespace Orcamento.Movimentacao.Criacao
 
                     con.Open();
 
-                    string Sel = "select pr_cliente,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto from tb_projetos where pr_id = @id";
+                    string Sel = "select pr_cliente,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto,pr_nome from tb_projetos where pr_id = @id";
                     MySqlCommand qrySelect = new MySqlCommand(Sel, con);
                     qrySelect.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
 
@@ -66,6 +66,7 @@ namespace Orcamento.Movimentacao.Criacao
                         pr_impostos.Text=valor.ToString();
                         valor=Convert.ToDecimal(reader["pr_desconto"].ToString())*100;
                         pr_desconto.Text=valor.ToString();
+                        pr_nome.Text = reader["pr_nome"].ToString();
                     }
 
                     qrySelect.Dispose();
@@ -84,7 +85,7 @@ namespace Orcamento.Movimentacao.Criacao
             {
                 con.Open();
 
-                string Ins = "insert INTO tb_projetos(pr_cliente,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto) values(@cliente,@tipologia,@metragem,@endereco,@conteudo,@proprietario,@data,@responsavel,@margem_lucro,@margem_dificuldade,@margem_criativo,@impostos,@desconto)";
+                string Ins = "insert INTO tb_projetos(pr_cliente,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto,pr_nome,pr_data_cadastro) values(@cliente,@tipologia,@metragem,@endereco,@conteudo,@proprietario,@data,@responsavel,@margem_lucro,@margem_dificuldade,@margem_criativo,@impostos,@desconto,@nome,@data_cadastro)";
                 MySqlCommand qryInsert = new MySqlCommand(Ins, con);
                 qryInsert.Parameters.Add("@cliente", MySqlDbType.Int32).Value = 1;
                 qryInsert.Parameters.Add("@tipologia", MySqlDbType.Int16).Value = Convert.ToInt16(pr_tipologia.SelectedValue.ToString());
@@ -99,6 +100,8 @@ namespace Orcamento.Movimentacao.Criacao
                 qryInsert.Parameters.Add("@margem_criativo", MySqlDbType.Decimal).Value = Convert.ToDecimal(pr_margem_criativo.Text)/100;
                 qryInsert.Parameters.Add("@impostos", MySqlDbType.Decimal).Value = Convert.ToDecimal(pr_impostos.Text)/100;
                 qryInsert.Parameters.Add("@desconto", MySqlDbType.Decimal).Value = Convert.ToDecimal(pr_desconto.Text)/100;
+                qryInsert.Parameters.Add("@nome", MySqlDbType.Decimal).Value = pr_desconto.Text.ToUpper();
+                qryInsert.Parameters.Add("@data_cadastro", MySqlDbType.DateTime).Value = DateTime.Now;
 
 
                 try
@@ -122,7 +125,7 @@ namespace Orcamento.Movimentacao.Criacao
             {
                 con.Open();
 
-                string Upd = "update tb_custos set pr_cliente=@cliente,pr_tipologia=@tipologia,pr_metragem=metragem,pr_endereco=@endereco,pr_conteudo=conteudo,pr_proprietario=@proprietario,pr_data=@data,pr_responsavel=@responsavel,pr_margem_lucro=@margem_lucro,pr_margem_dificuldade=@margem_dificuldade,pr_margem_criativo=@margem_criativo,pr_impostos=@impostos,pr_desconto=@desconto where pr_id=@id";
+                string Upd = "update tb_custos set pr_cliente=@cliente,pr_tipologia=@tipologia,pr_metragem=metragem,pr_endereco=@endereco,pr_conteudo=conteudo,pr_proprietario=@proprietario,pr_data=@data,pr_responsavel=@responsavel,pr_margem_lucro=@margem_lucro,pr_margem_dificuldade=@margem_dificuldade,pr_margem_criativo=@margem_criativo,pr_impostos=@impostos,pr_desconto=@desconto,pr_nome=@nome where pr_id=@id";
                 MySqlCommand qryUpdate = new MySqlCommand(Upd, con);
                 qryUpdate.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
                 qryUpdate.Parameters.Add("@cliente", MySqlDbType.Int32).Value = 1;
@@ -137,6 +140,7 @@ namespace Orcamento.Movimentacao.Criacao
                 qryUpdate.Parameters.Add("@margem_criativo", MySqlDbType.Decimal).Value = Convert.ToDecimal(pr_margem_criativo.Text);
                 qryUpdate.Parameters.Add("@impostos", MySqlDbType.Decimal).Value = Convert.ToDecimal(pr_impostos.Text);
                 qryUpdate.Parameters.Add("@desconto", MySqlDbType.Decimal).Value = Convert.ToDecimal(pr_desconto.Text);
+                qryUpdate.Parameters.Add("@nome", MySqlDbType.Decimal).Value = pr_desconto.Text.ToUpper();
 
                 try
                 {
@@ -156,7 +160,7 @@ namespace Orcamento.Movimentacao.Criacao
                 }
             }
 
-            Response.Redirect("~/Movimentacao/Criacao/Lista.aspx");
+            Response.Redirect("~/Projeto/Criacao/Lista.aspx");
         }
     }
 }

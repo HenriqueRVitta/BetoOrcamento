@@ -74,7 +74,7 @@ namespace Orcamento.Cadastros.Etapas
 
         protected void GrdEtapa_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandArgument.ToString()!="First" && e.CommandArgument.ToString()!="Next" && e.CommandArgument.ToString()!="Prev" && e.CommandArgument.ToString()!="Last" && e.CommandArgument.ToString()!="da_codigo" && e.CommandArgument.ToString()!="da_descricao")
+            if (e.CommandArgument.ToString()!="First" && e.CommandArgument.ToString()!="Next" && e.CommandArgument.ToString()!="Prev" && e.CommandArgument.ToString()!="Last" && e.CommandArgument.ToString()!="et_codigo" && e.CommandArgument.ToString()!="et_descricao")
             {
                 if (Convert.ToInt16(e.CommandArgument.ToString())>=0)
                 {

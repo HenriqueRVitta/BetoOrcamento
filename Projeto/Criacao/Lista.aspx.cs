@@ -86,7 +86,6 @@ namespace Orcamento.Movimentacao.Criacao
                     if (e.CommandName.CompareTo("Editar") == 0)
                     {
                         Response.Redirect("~/Projeto/Criacao/Cadastro.aspx?ID=" + id);
-
                     }
                     else
                     {
@@ -123,7 +122,7 @@ namespace Orcamento.Movimentacao.Criacao
 
             MySqlDataReader reader = qrySelect.ExecuteReader();
 
-            DateTime data = DateTime.Now;
+            string data = DateTime.Now.ToString();
 
             while (reader.Read())
             {
@@ -145,13 +144,11 @@ namespace Orcamento.Movimentacao.Criacao
                 qryInsert.Parameters.Add("@impostos", MySqlDbType.Decimal).Value = Convert.ToDecimal(reader["pr_impostos"].ToString());
                 qryInsert.Parameters.Add("@desconto", MySqlDbType.Decimal).Value = Convert.ToDecimal(reader["pr_desconto"].ToString());
                 qryInsert.Parameters.Add("@nome", MySqlDbType.VarChar, 80).Value = reader["pr_nome"].ToString();
-                qryInsert.Parameters.Add("@data_cadastro", MySqlDbType.DateTime).Value = data;
+                qryInsert.Parameters.Add("@data_cadastro", MySqlDbType.DateTime).Value = Convert.ToDateTime(data);
 
                 try
                 {
                     qryInsert.ExecuteNonQuery();
-
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Mensagem", "alert('Processo Executado Com Sucesso.');", true);
                 }
                 catch
                 {
@@ -170,7 +167,7 @@ namespace Orcamento.Movimentacao.Criacao
 
                 string SelM = "select pr_id from tb_projetos where pr_data_cadastro = @data";
                 MySqlCommand qrySelectM = new MySqlCommand(SelM, con1);
-                qrySelectM.Parameters.Add("@data", MySqlDbType.DateTime).Value = data;
+                qrySelectM.Parameters.Add("@data", MySqlDbType.DateTime).Value = Convert.ToDateTime(data);
 
                 MySqlDataReader readerM = qrySelectM.ExecuteReader();
 
@@ -296,7 +293,6 @@ namespace Orcamento.Movimentacao.Criacao
 
                 // Inserir Etapas
 
-
                 con2.Open();
 
                 string SelE = "select pe_etapa,pe_hora_previsto,pe_realisado from tb_projeto_etapas where pe_projeto=@projeto";
@@ -313,8 +309,14 @@ namespace Orcamento.Movimentacao.Criacao
                     MySqlCommand qryInsertE = new MySqlCommand(InsE, con1);
                     qryInsertE.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Id_Novo;
                     qryInsertE.Parameters.Add("@etapa", MySqlDbType.Int32).Value = Convert.ToInt32(readerE["pe_etapa"].ToString());
-                    qryInsertE.Parameters.Add("@hora_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(readerE["pe_hora_previsto"].ToString());
-                    qryInsertE.Parameters.Add("@pe_realisado", MySqlDbType.Decimal).Value = Convert.ToDecimal(readerE["pe_realisado"].ToString());
+                    if (readerE["pe_hora_previsto"].ToString().Length > 0)
+                        qryInsertE.Parameters.Add("@hora_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(readerE["pe_hora_previsto"].ToString());
+                    else
+                        qryInsertE.Parameters.Add("@hora_previsto", MySqlDbType.Decimal).Value = null;
+                    if (readerE["pe_realisado"].ToString().Length > 0)
+                        qryInsertE.Parameters.Add("@pe_realisado", MySqlDbType.Decimal).Value = Convert.ToDecimal(readerE["pe_realisado"].ToString());
+                    else
+                        qryInsertE.Parameters.Add("@pe_realisado", MySqlDbType.Decimal).Value = null;
 
                     try
                     {

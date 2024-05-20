@@ -5,54 +5,59 @@
     <div class="panel-container show">
         <div class="panel-content">
             <div class="row" style="width:100%">
-                <div class="container">
-                    <div class="row" style="background-color:#000438">
-                    <div class="col-sm" style="color:white">
-                        Projeto
-                    </div>
-                    <div style="color:white;width:500px;">
-                        <asp:Label ID="LblNome" runat="server" Text=""></asp:Label>
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    </div>
-                </div>
-                <div class="container">
-                <div class="row" style="background-color:#000438">
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm" style="color:white">
-                        Profissionais
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
+                <div class="card text-left" style="background-color:#000438">
+                    <div class="card-header text-center">
+                        <div class="container">
+                            <div class="row">
+                            <div class="col-sm" style="color:white">
+                                Projeto
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div style="color:white;width:500px;">
+                                <asp:Label ID="LblNome" runat="server" Text=""></asp:Label>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                Profissionais
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="card-body">
                 <div class="col-sm-offset-1 col-sm-10">
                      <div>
@@ -63,14 +68,14 @@
                             <div>
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
-                                        <asp:GridView ID="GrdProfissional" runat="server" AutoGenerateColumns="false" class="table table-bordered table-hover table-striped w-100" AlternatingRowStyle-HorizontalAlign="Left" DataKeyNames="pp_id,pp_profissional" OnRowCommand="GrdProfissional_RowCommand" AllowPaging="True" onpageindexchanging="GrdProfissional_PageIndexChanging" PageSize="11">
+                                        <asp:GridView ID="GrdProfissional" runat="server" AutoGenerateColumns="false" class="table table-bordered table-hover table-striped w-100" AlternatingRowStyle-HorizontalAlign="Left" DataKeyNames="pp_id,pp_profissional" OnRowCommand="GrdProfissional_RowCommand" AllowPaging="True" onpageindexchanging="GrdProfissional_PageIndexChanging" PageSize="20">
                                             <Columns>
                                                 <asp:BoundField DataField="pp_projeto" HeaderText="Projeto"/>
                                                 <asp:BoundField DataField="da_descricao" HeaderText="Profissional"/>  
-                                                <asp:BoundField DataField="pp_valor" HeaderText="Valor"/>
+                                                <asp:BoundField DataField="pp_valor" HeaderText="Valor" DataFormatString="{0:c}"/>
                                                 <asp:BoundField DataField="pp_quantidade" HeaderText="Quantidade"/>  
-                                                <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapisP.png"></asp:ButtonField>
-                                                <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeiraP.png"></asp:ButtonField>
+                                                <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapis.png"></asp:ButtonField>
+                                                <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeira.png"></asp:ButtonField>
                                             </Columns>
                                             <PagerSettings Position="Bottom" Mode="NextPreviousFirstLast"
                                             PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior'/>"

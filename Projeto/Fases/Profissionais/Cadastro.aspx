@@ -4,7 +4,7 @@
     <asp:Label ID="lblProjeto" runat="server" Text="" Visible="false"></asp:Label>
     <div class="panel-container show">
         <div class="panel-content">
-            <div class="row">
+            <div class="row" style="width:100%">
                 <div class="container">
                     <div class="row" style="background-color:#000438">
                     <div class="col-sm" style="color:white">
@@ -33,17 +33,14 @@
                 <div class="row" style="background-color:#000438">
                     <div class="col-sm">
                     </div>
-                    <div class="col-sm" style="color:red">
-                        Despesas Administrativas
-                    </div>
-                    <div class="col-sm" style="color:red">
-                        Custos
-                    </div>
-                    <div class="col-sm" style="color:red">
-                        Etapas
-                    </div>
                     <div class="col-sm" style="color:white">
                         Profissionais
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
                     </div>
                     <div class="col-sm">
                     </div>

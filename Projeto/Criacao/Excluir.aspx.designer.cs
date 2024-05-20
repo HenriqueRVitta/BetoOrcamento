@@ -24,6 +24,24 @@ namespace Orcamento.Movimentacao.Criacao
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden da_id;
 
         /// <summary>
+        /// Controle lblpr_nome.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpr_nome;
+
+        /// <summary>
+        /// Controle pr_nome.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox pr_nome;
+
+        /// <summary>
         /// Controle lblpr_tipologia.
         /// </summary>
         /// <remarks>

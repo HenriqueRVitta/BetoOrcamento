@@ -10,6 +10,7 @@ namespace Orcamento.Projeto.Fases.Profissionais
     public partial class Excluir : System.Web.UI.Page
     {
         MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString());
+        MySqlConnection con1 = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString());
         int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,7 +38,7 @@ namespace Orcamento.Projeto.Fases.Profissionais
 
                 con.Open();
 
-                string Sel = "Select pr_id as codigo,pr_descricao as descricao from tb_profissional order by pr_descricao";
+                string Sel = "select da_id as codigo,da_descricao as descricao from tb_despesas where LENGTH(da_codigo)=4 and SUBSTRING(da_codigo,1,2)='01' order by da_descricao";
                 MySqlCommand qrySelect = new MySqlCommand(Sel, con);
                 MySqlDataReader reader = qrySelect.ExecuteReader();
 
@@ -106,7 +107,81 @@ namespace Orcamento.Projeto.Fases.Profissionais
                 con.Close();
             }
 
-            Response.Redirect("~/Projeto/Fases/Profissionais/Lista.aspx");
+            con.Open();
+
+            string DelP = "delete from tb_projeto_despesas where pd_projeto=@projeto and pd_despesa=@despesa";
+            MySqlCommand qryDeleteP = new MySqlCommand(DelP, con);
+            qryDeleteP.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
+            qryDeleteP.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(pp_profissional.SelectedValue);
+
+            try
+            {
+                qryDeleteP.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                qryDeleteP.Dispose();
+
+                con.Close();
+            }
+
+            string codigo="";
+
+            con.Open();
+
+            string SelD = "select da_codigo from tb_despesas where da_id=@despesa";
+            MySqlCommand qrySelectD = new MySqlCommand(SelD, con);
+            qrySelectD.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(pp_profissional.SelectedValue);
+            MySqlDataReader readerD = qrySelectD.ExecuteReader();
+
+            while (readerD.Read())
+            {
+                codigo = readerD["da_codigo"].ToString();
+            }
+
+            qrySelectD.Dispose();
+            con.Close();
+
+            con.Open();
+
+            string SelV = "select da_id from tb_despesas where da_formula like ('%se#" + codigo + "%')";
+            MySqlCommand qrySelectV = new MySqlCommand(SelV, con);
+            qrySelectV.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(pp_profissional.SelectedValue);
+            MySqlDataReader readerV = qrySelectV.ExecuteReader();
+
+            while (readerV.Read())
+            {
+                con1.Open();
+
+                string DelN = "delete from tb_projeto_despesas where pd_projeto=@projeto and pd_despesa=@despesa";
+                MySqlCommand qryDeleteN = new MySqlCommand(DelN, con1);
+                qryDeleteN.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
+                qryDeleteN.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(readerV["da_id"].ToString());
+
+                try
+                {
+                    qryDeleteN.ExecuteNonQuery();
+                }
+                catch
+                {
+                }
+                finally
+                {
+                    qryDeleteN.Dispose();
+
+                    con1.Close();
+                }
+
+            }
+
+            qrySelectV.Dispose();
+            con.Close();
+
+            Response.Redirect("~/Projeto/Fases/Profissionais/Lista.aspx?Projeto=" + lblProjeto.Text);
+
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)

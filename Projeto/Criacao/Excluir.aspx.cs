@@ -41,7 +41,7 @@ namespace Orcamento.Movimentacao.Criacao
 
                     con.Open();
 
-                    string Sel = "select pr_cliente,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto from tb_projetos where pr_id = @id";
+                    string Sel = "select pr_cliente,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto,pr_nome from tb_projetos where pr_id = @id";
                     MySqlCommand qrySelect = new MySqlCommand(Sel, con);
                     qrySelect.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
 
@@ -66,6 +66,7 @@ namespace Orcamento.Movimentacao.Criacao
                         pr_impostos.Text=valor.ToString();
                         valor=Convert.ToDecimal(reader["pr_desconto"].ToString())*100;
                         pr_desconto.Text=valor.ToString();
+                        pr_nome.Text = reader["pr_nome"].ToString();
                     }
 
                     qrySelect.Dispose();
@@ -81,6 +82,107 @@ namespace Orcamento.Movimentacao.Criacao
 
         protected void btExcluir_Click(object sender, EventArgs e)
         {
+
+            con.Open();
+
+            string DelD = "delete from tb_projeto_despesas where pd_projeto=@projeto";
+            MySqlCommand qryDeleteD= new MySqlCommand(DelD, con);
+            qryDeleteD.Parameters.Add("@projeto", MySqlDbType.Int32).Value = id;
+
+            try
+            {
+                qryDeleteD.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                qryDeleteD.Dispose();
+
+                con.Close();
+            }
+
+            con.Open();
+
+            string DelC = "delete from tb_projeto_custo where pc_projeto=@projeto";
+            MySqlCommand qryDeleteC = new MySqlCommand(DelC, con);
+            qryDeleteC.Parameters.Add("@projeto", MySqlDbType.Int32).Value = id;
+
+            try
+            {
+                qryDeleteC.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                qryDeleteD.Dispose();
+
+                con.Close();
+            }
+
+            con.Open();
+
+            string DelE = "delete from tb_projeto_etapas where pe_projeto=@projeto";
+            MySqlCommand qryDeleteE = new MySqlCommand(DelE, con);
+            qryDeleteE.Parameters.Add("@projeto", MySqlDbType.Int32).Value = id;
+
+            try
+            {
+                qryDeleteE.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                qryDeleteE.Dispose();
+
+                con.Close();
+            }
+
+            con.Open();
+
+            string DelP = "delete from tb_projeto_profissional where pp_projeto=@projeto";
+            MySqlCommand qryDeleteP = new MySqlCommand(DelP, con);
+            qryDeleteP.Parameters.Add("@projeto", MySqlDbType.Int32).Value = id;
+
+            try
+            {
+                qryDeleteP.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                qryDeleteP.Dispose();
+
+                con.Close();
+            }
+
+            con.Open();
+
+            string DelO = "delete from tb_projeto_observacao where pb_projeto=@projeto";
+            MySqlCommand qryDeleteO = new MySqlCommand(DelO, con);
+            qryDeleteO.Parameters.Add("@projeto", MySqlDbType.Int32).Value = id;
+
+            try
+            {
+                qryDeleteO.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                qryDeleteO.Dispose();
+
+                con.Close();
+            }
+
             con.Open();
 
             string Del = "delete from tb_projetos where pr_id=@id";
@@ -104,7 +206,7 @@ namespace Orcamento.Movimentacao.Criacao
                 con.Close();
             }
 
-            Response.Redirect("~/Cadastros/Custos/Lista.aspx");
+            Response.Redirect("~/Projeto/Criacao/Lista.aspx");
         }
     }
 }

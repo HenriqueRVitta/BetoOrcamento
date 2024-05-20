@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -20,11 +22,43 @@ namespace Orcamento.Projeto.Fases
             {
                 if (!Page.IsPostBack)
                 {
+                    lblProjeto.Text = Request.QueryString["Projeto"].ToString();
+
+                    con.Open();
+
+                    string SelN = "select pr_nome from tb_projetos where pr_id=@projeto";
+                    MySqlCommand qrySelectN = new MySqlCommand(SelN, con);
+                    qrySelectN.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
+                    MySqlDataReader readerN = qrySelectN.ExecuteReader();
+
+                    while (readerN.Read())
+                    {
+                        LblNome.Text = readerN["pr_nome"].ToString();
+                    }
+
+                    qrySelectN.Dispose();
+                    con.Close();
+
+                    con.Open();
+
+                    string SelT = "select sum(pc_valor_previsto) as total from tb_projeto_custo where pc_projeto=@projeto";
+                    MySqlCommand qrySelectT = new MySqlCommand(SelT, con);
+                    qrySelectT.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
+                    MySqlDataReader readerT = qrySelectT.ExecuteReader();
+
+                    double total = 0;
+
+                    while (readerT.Read())
+                    {
+                        lblTotal.Text= readerT["total"].ToString();
+                    }
+
+                    qrySelectT.Dispose();
+                    con.Close();
+
                     dtb = new DataTable();
 
                     dtb = CriaDataTable();
-
-                    lblProjeto.Text=Request.QueryString["Projeto"].ToString();
 
                     con.Open();
 
@@ -33,6 +67,7 @@ namespace Orcamento.Projeto.Fases
                     qrySelect.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
                     MySqlDataReader reader = qrySelect.ExecuteReader();
 
+                    total = Convert.ToDouble(lblTotal.Text);
                     int indice = 0;
 
                     while (reader.Read())
@@ -46,7 +81,13 @@ namespace Orcamento.Projeto.Fases
                         linha["pc_id"] = reader["pc_id"].ToString();
                         linha["cu_id"] = reader["cu_id"].ToString();
                         linha["cu_descricao"] = reader["cu_descricao"].ToString();
-                        linha["pc_valor_previsto"] = reader["pc_valor_previsto"].ToString();
+
+                        if (reader["pc_valor_previsto"].ToString().Length > 0)
+                           linha["pc_valor_previsto"] = Convert.ToDouble(reader["pc_valor_previsto"].ToString());
+                        else
+                            linha["pc_valor_previsto"] = 0;
+
+                        linha["percentual"] = ((double)linha["pc_valor_previsto"] / total);
 
                         dtb.Rows.Add(linha);
                     }
@@ -61,10 +102,26 @@ namespace Orcamento.Projeto.Fases
             }
         }
 
+        protected void GrdCustos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GrdCustos.PageIndex = e.NewPageIndex;
+            ShowData();
+        }
+
         protected void ShowData()
         {
-            GrdCustos.DataSource = Session["DataTable"];
+            DataTable DataTable = new DataTable();
+            DataTable = (DataTable)Session["DataTable"];
+            GrdCustos.DataSource = DataTable;
             GrdCustos.DataBind();
+
+            if (DataTable.Rows.Count > 0)
+            {
+                string total = DataTable.Compute("SUM(pc_valor_previsto)", String.Empty).ToString();
+
+                GrdCustos.FooterRow.Cells[0].Text = "Total--> ";
+                GrdCustos.FooterRow.Cells[1].Text = string.Format("{0:c}", Convert.ToDecimal(total));
+            }
         }
 
         private DataTable CriaDataTable()
@@ -93,8 +150,13 @@ namespace Orcamento.Projeto.Fases
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = Type.GetType("System.Double");
             DataColumn.ColumnName = "pc_valor_previsto";
+            DataTable.Columns.Add(DataColumn);
+
+            DataColumn = new DataColumn();
+            DataColumn.DataType = Type.GetType("System.Double");
+            DataColumn.ColumnName = "percentual";
             DataTable.Columns.Add(DataColumn);
 
             return DataTable;
@@ -113,9 +175,10 @@ namespace Orcamento.Projeto.Fases
         }
         protected void GrdCustos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            double total = Convert.ToDouble(lblTotal.Text);
             DataTable DataTable = new DataTable();
 
-            DataTable=(DataTable)Session["DataTable"];
+            DataTable = (DataTable)Session["DataTable"];
 
             GridViewRow row = (GridViewRow)GrdCustos.Rows[e.RowIndex];
             string id = GrdCustos.DataKeys[row.RowIndex].Values["id"].ToString();
@@ -125,11 +188,35 @@ namespace Orcamento.Projeto.Fases
             {
                 DataRow dr = DataTable.Rows[i];
 
+                if (txt_valor_previsto.Text.Length == 0)
+                    txt_valor_previsto.Text = "0";
+
+                if (dr["pc_valor_previsto"].ToString().Length > 0)
+                {
+                    total = total - (double)dr["pc_valor_previsto"];
+                }
+
                 if (dr["id"].ToString() == id)
                 {
-                    dr["pc_valor_previsto"] = txt_valor_previsto.Text;
+                    dr["pc_valor_previsto"] = Convert.ToDouble(txt_valor_previsto.Text);
+                }
+
+                if (dr["pc_valor_previsto"].ToString().Length > 0)
+                {
+                    total = total + (double)dr["pc_valor_previsto"];
                 }
             }
+
+            for (int i = DataTable.Rows.Count - 1; i >= 0; i--)
+            {
+                DataRow dr = DataTable.Rows[i];
+
+                if (dr["pc_valor_previsto"].ToString().Length > 0)
+                {
+                    dr["percentual"] = ((double)dr["pc_valor_previsto"] / total);
+                }
+            }
+            lblTotal.Text = total.ToString();
             DataTable.AcceptChanges();
             GrdCustos.EditIndex = -1;
             ShowData();
@@ -144,13 +231,13 @@ namespace Orcamento.Projeto.Fases
         {
             DataTable DataTable = new DataTable();
 
-            DataTable=(DataTable)Session["DataTable"];
+            DataTable = (DataTable)Session["DataTable"];
 
             for (int i = DataTable.Rows.Count - 1; i >= 0; i--)
             {
                 DataRow dr = DataTable.Rows[i];
 
-                if (dr["pc_id"].ToString().Length == 0 && dr["pc_valor_previsto"].ToString().Length>0)
+                if (dr["pc_id"].ToString().Length == 0 && (dr["pc_valor_previsto"].ToString().Length>0 && Convert.ToDecimal(dr["pc_valor_previsto"].ToString()) > 0))
                 {
                     con.Open();
 
@@ -158,7 +245,7 @@ namespace Orcamento.Projeto.Fases
                     MySqlCommand qryInsert = new MySqlCommand(Ins, con);
                     qryInsert.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
                     qryInsert.Parameters.Add("@custo", MySqlDbType.Int32).Value = Convert.ToInt32(dr["cu_id"].ToString());
-                    qryInsert.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(dr["pc_valor_previsto"].ToString());
+                    qryInsert.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = dr["pc_valor_previsto"];
 
                     try
                     {
@@ -176,7 +263,7 @@ namespace Orcamento.Projeto.Fases
                 }
                 else
                 {
-                    if (dr["pc_valor_previsto"].ToString().Length == 0 && dr["pc_id"].ToString().Length>0)
+                    if (dr["pc_valor_previsto"].ToString().Length == 0 && dr["pc_id"].ToString().Length > 0)
                     {
                         con.Open();
 
@@ -201,7 +288,7 @@ namespace Orcamento.Projeto.Fases
                     }
                     else
                     {
-                        if (dr["pc_valor_previsto"].ToString().Length > 0 && dr["pc_id"].ToString().Length>0)
+                        if (dr["pc_valor_previsto"].ToString().Length > 0 && dr["pc_id"].ToString().Length > 0)
                         {
                             con.Open();
 
@@ -210,7 +297,7 @@ namespace Orcamento.Projeto.Fases
                             qryUpdate.Parameters.Add("@id", MySqlDbType.Int32).Value = Convert.ToInt32(dr["pc_id"].ToString());
                             qryUpdate.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
                             qryUpdate.Parameters.Add("@custo", MySqlDbType.Int32).Value = Convert.ToInt32(dr["cu_id"].ToString());
-                            qryUpdate.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(dr["pc_valor_previsto"].ToString());
+                            qryUpdate.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = dr["pc_valor_previsto"];
 
                             try
                             {

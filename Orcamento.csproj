@@ -270,12 +270,14 @@
     <Content Include="Content\fonts\icomoon\Read Me.txt" />
     <Content Include="Content\fonts\icomoon\style.css" />
     <Content Include="Content\images\Cabecalho.png" />
+    <Content Include="Content\images\cancel.png" />
     <Content Include="Content\images\checkbox.png" />
     <Content Include="Content\images\hero_bg_1.jpg" />
     <Content Include="Content\images\hero_bg_2.jpg" />
     <Content Include="Content\images\hero_bg_3.jpg" />
     <Content Include="Content\images\lapis.png" />
     <Content Include="Content\images\lixeira.png" />
+    <Content Include="Content\images\salvar.png" />
     <Content Include="Content\images\setadupladireita.png" />
     <Content Include="Content\images\setaduplaesquerda.png" />
     <Content Include="Content\images\setasimplesdireita.png" />

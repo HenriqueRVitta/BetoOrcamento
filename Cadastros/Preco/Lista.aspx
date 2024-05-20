@@ -4,7 +4,7 @@
     <div class="panel-container show">
         <div class="panel-content">
             <div class="row" style="width:100%">
-                 <div class="card text-left">
+                 <div class="card text-left" style="background-color:#000438">
                     <div class="card-header text-center">
                     <h3>Cadastro - Lista de Preços</h3>
                     </div>
@@ -19,9 +19,9 @@
                                 <asp:GridView ID="GrdPreco" runat="server" AutoGenerateColumns="false" class="table table-bordered table-hover table-striped w-100" AlternatingRowStyle-HorizontalAlign="Left" DataKeyNames="pe_id" AllowSorting="True" OnSorting="GrdPreco_Sorting" OnRowCommand="GrdPreco_RowCommand" AllowPaging="True" onpageindexchanging="GrdPreco_PageIndexChanging" PageSize="11">
                                     <Columns>
                                         <asp:BoundField DataField="pe_meses" HeaderText="Nº Meses" SortExpression="pe_meses"/>
-                                        <asp:BoundField DataField="pe_preco" HeaderText="Valor" SortExpression="pe_preco"/>  
-                                        <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapisP.png"></asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeiraP.png"></asp:ButtonField>
+                                        <asp:BoundField DataField="pe_preco" HeaderText="Valor" SortExpression="pe_preco" DataFormatString="{0:c}"/>  
+                                        <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapis.png"></asp:ButtonField>
+                                        <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeira.png"></asp:ButtonField>
                                     </Columns>
                                     <PagerSettings Position="Bottom" Mode="NextPreviousFirstLast"
                                     PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior' class='navpage'/>"

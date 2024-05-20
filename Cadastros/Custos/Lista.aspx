@@ -4,9 +4,9 @@
     <div class="panel-container show">
         <div class="panel-content">
             <div class="row" style="width:100%">
-                 <div class="card text-left">
+                 <div class="card text-left" style="background-color:#000438">
                     <div class="card-header text-center">
-                    <h3>Cadastro - Lista dos Custos</h3>
+                    <h3>Cadastro - Lista Custos</h3>
                     </div>
                  </div>
                     <div class="col-12 text-left" style="margin-top:5px">
@@ -20,8 +20,8 @@
                                     <Columns>
                                         <asp:BoundField DataField="cu_codigo" HeaderText="Código" SortExpression="cu_codigo"/>
                                         <asp:BoundField DataField="cu_descricao" HeaderText="Descrição" SortExpression="cu_descricao"/>  
-                                        <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapisP.png"></asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeiraP.png"></asp:ButtonField>
+                                        <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapis.png"></asp:ButtonField>
+                                        <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeira.png"></asp:ButtonField>
                                     </Columns>
                                     <PagerSettings Position="Bottom" Mode="NextPreviousFirstLast"
                                     PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior' class='navpage'/>"

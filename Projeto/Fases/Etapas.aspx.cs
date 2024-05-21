@@ -1,4 +1,5 @@
 ﻿using Antlr.Runtime;
+using Microsoft.Ajax.Utilities;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Asn1.X509;
@@ -32,6 +33,25 @@ namespace Orcamento.Projeto.Fases
 
                     lblProjeto.Text = Request.QueryString["Projeto"].ToString();
 
+                    string OBS = "";
+
+                    con.Open();
+
+                    string SelecO = "select pb_observacao from tb_projeto_observacao where pb_projeto = @idProjeto";
+                    MySqlCommand qrySelectO = new MySqlCommand(SelecO, con);
+                    qrySelectO.Parameters.Add("@idProjeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
+                    MySqlDataReader readerO = qrySelectO.ExecuteReader();
+
+                    while (readerO.Read())
+                    {
+                        OBS = readerO["pb_observacao"].ToString(); ;
+                    }
+
+                    qrySelectO.Dispose();
+                    con.Close();
+
+                    TextBox1.Text = OBS;
+
                     con.Open();
 
                     string SelN = "select pr_nome from tb_projetos where pr_id=@projeto";
@@ -61,10 +81,11 @@ namespace Orcamento.Projeto.Fases
                         lblTotal.Text = readerT["total"].ToString();
                     }
 
+                    if (lblTotal.Text != "")
+                        total = Convert.ToDouble(lblTotal.Text);
+
                     qrySelectT.Dispose();
                     con.Close();
-
-                    total = Convert.ToDouble(lblTotal.Text);
 
                     con.Open();
 
@@ -438,5 +459,84 @@ namespace Orcamento.Projeto.Fases
             }
             Response.Redirect("~/Projeto/Fases/Resultado.aspx?Projeto=" + lblProjeto.Text);
         }
+
+        protected void btnSalvarOBS_Click(object sender, System.EventArgs e)
+        {
+
+            var idProjeto = Request.QueryString["Projeto"].ToString();
+            bool existeOrcamento = false;
+            string observacao = TextBox1.Text;
+
+            if (Convert.ToDecimal(idProjeto) > 0)
+            {
+                con.Open();
+
+                string Selec = "select pb_projeto from tb_projeto_observacao where pb_projeto = @idProjeto";
+                MySqlCommand qrySelect = new MySqlCommand(Selec, con);
+                qrySelect.Parameters.Add("@idProjeto", MySqlDbType.Int32).Value = idProjeto;
+                MySqlDataReader readerN = qrySelect.ExecuteReader();
+
+                while (readerN.Read())
+                {
+                    existeOrcamento = true;
+                }
+
+                qrySelect.Dispose();
+                con.Close();
+
+                if (!existeOrcamento)
+                {
+                    con.Open();
+                    string Ins = "insert INTO tb_projeto_observacao(pb_projeto,pb_observacao) values(@idProjeto,@observacao)";
+                    MySqlCommand qryInsert = new MySqlCommand(Ins, con);
+                    qryInsert.Parameters.Add("@idProjeto", MySqlDbType.Int32).Value = idProjeto;
+                    qryInsert.Parameters.Add("@observacao", MySqlDbType.VarChar, 2083).Value = observacao;
+
+                    try
+                    {
+                        qryInsert.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                    }
+                    finally
+                    {
+                        qryInsert.Dispose();
+                        con.Close();
+                    }
+
+
+                }
+                else
+                {
+
+                    con.Open();
+
+                    string Upd = "update tb_projeto_observacao set pb_observacao=@observacao where pb_projeto=@idProjeto";
+                    MySqlCommand qryUpdate = new MySqlCommand(Upd, con);
+                    qryUpdate.Parameters.Add("@idProjeto", MySqlDbType.Int32).Value = idProjeto;
+                    qryUpdate.Parameters.Add("@observacao", MySqlDbType.VarChar, 2083).Value = observacao;
+
+                    try
+                    {
+                        qryUpdate.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                    }
+                    finally
+                    {
+                        qryUpdate.Dispose();
+
+                        con.Close();
+                    }
+
+                }
+
+            }
+
+        }
+
+
     }
 }

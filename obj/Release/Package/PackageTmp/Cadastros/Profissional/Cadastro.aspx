@@ -3,10 +3,11 @@
     <div class="panel" id="Cadastro">
     <div class="panel-container show">
         <div class="panel-content">
-            <div class="row">
-                <div class="card text-left">
-                    <div class="card-header text-center">
-                    <h2>Cadastro de Profissional</h2>
+             <div class="row">
+                    <div class="card text-left">
+                        <div class="card-header text-center">
+                        <h3>Cadastro - Profissionais</h3>
+                        </div>
                     </div>
                     <div class="card-body">
                     <div class="col-sm-offset-1 col-sm-10">
@@ -29,7 +30,6 @@
                       </div>
                    </div>
                 </div>
-            </div>
         </div>
    </div>
 </div>

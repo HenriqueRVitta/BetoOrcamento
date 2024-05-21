@@ -1,7 +1,6 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Orcamento._Default" %>
+﻿<%@ Page Title="Precificação para Arquitetos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Orcamento._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
     <main>
         <!--
         <section class="row" aria-labelledby="aspnetTitle">
@@ -42,5 +41,7 @@
         </div>
         -->
     </main>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </asp:Content>

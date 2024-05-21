@@ -6,14 +6,14 @@
             <div class="row" style="width:100%">
              <div class="card text-left">
                 <div class="card-header text-center">
-                <h2>Lista Profissionais</h2>
+                <h3>Cadastro - Lista dos Profissionais</h3>
                 </div>
-                 <div>
-                    <div class="col-12 text-left" style="margin-top:5px">
-                        <asp:HyperLink NavigateUrl="/Cadastros/Profissional/Cadastro" runat="server" asp-route-id="@cu_id" title="Editar Despesa" class="btn btn-primary">Novo Profissional</asp:HyperLink>
-                    </div>
+             </div>
+                <div class="col-12 text-left">
+                    <asp:HyperLink NavigateUrl="/Cadastros/Profissional/Cadastro" runat="server" asp-route-id="@cu_id" title="Editar Despesa" class="btn btn-primary">Novo Profissional</asp:HyperLink>
+                </div>
                 <div class="card-body">
-                    <div class="col-sm-offset-1 col-sm-10" style="width:100%">
+                    <div>
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <asp:GridView ID="GrdProfissional" runat="server" AutoGenerateColumns="false" class="table table-bordered table-hover table-striped w-100" AlternatingRowStyle-HorizontalAlign="Left" DataKeyNames="pr_id" AllowSorting="True" OnSorting="GrdProfissional_Sorting" OnRowCommand="GrdProfissional_RowCommand" AllowPaging="True" onpageindexchanging="GrdProfissional_PageIndexChanging" PageSize="11">
@@ -23,10 +23,10 @@
                                         <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeiraP.png"></asp:ButtonField>
                                     </Columns>
                                     <PagerSettings Position="Bottom" Mode="NextPreviousFirstLast"
-                                    PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior'/>"
-                                    NextPageText="<img src='/Content/images/setasimplesdireita.png' border='0' title='Próxima Página'/>"
-                                    FirstPageText="<img src='/Content/images/setaduplaesquerda.png' border='0' title='Primeira Página'/>"
-                                    LastPageText="<img src='/Content/images/setadupladireita.png' border='0' title='Última Página'/>" 
+                                    PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior' class='navpage'/>"
+                                    NextPageText="<img src='/Content/images/setasimplesdireita.png' border='0' title='Próxima Página' class='navpage'/>"
+                                    FirstPageText="<img src='/Content/images/setaduplaesquerda.png' border='0' title='Primeira Página' class='navpage'/>"
+                                    LastPageText="<img src='/Content/images/setadupladireita.png' border='0' title='Última Página' class='navpage'/>" 
                                     PageButtonCount="11"/>
                                 </asp:GridView>
                             </ContentTemplate>
@@ -35,8 +35,15 @@
                </div>
             </div>
          </div>
-      </div>
     </div>
 </div>
-    </div>
+
+    <!-- Adicionado em Default.aspx
+    <script src="Content/js/jquery-3.3.1.min.js"></script>
+    <script src="Content/js/popper.min.js"></script>
+    <script src="Content/js/bootstrap.min.js"></script>
+    <script src="Content/js/jquery.sticky.js"></script>
+    <script src="Content/js/main.js"></script>
+     -->
+
 </asp:Content>

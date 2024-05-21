@@ -298,7 +298,6 @@
     <Content Include="Projeto\Fases\Custos.aspx" />
     <Content Include="Projeto\Fases\Despesas.aspx" />
     <Content Include="Projeto\Fases\Etapas.aspx" />
-    <Content Include="Projeto\Fases\Profissionais.aspx" />
     <Content Include="Projeto\Fases\Profissionais\Cadastro.aspx" />
     <Content Include="Projeto\Fases\Profissionais\Excluir.aspx" />
     <Content Include="Projeto\Fases\Profissionais\Lista.aspx" />
@@ -769,13 +768,6 @@
     </Compile>
     <Compile Include="Projeto\Fases\Etapas.aspx.designer.cs">
       <DependentUpon>Etapas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Projeto\Fases\Profissionais.aspx.cs">
-      <DependentUpon>Profissionais.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Projeto\Fases\Profissionais.aspx.designer.cs">
-      <DependentUpon>Profissionais.aspx</DependentUpon>
     </Compile>
     <Compile Include="Projeto\Fases\Profissionais\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>

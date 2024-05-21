@@ -22,14 +22,24 @@
 
 .footer-content {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 394px;
+    left: -342px;
+    right: 342px;
     width: 100%;
     height: 25px;
-    background: #dee2e6;
 }
 
+    .footer-content p {
+        color: blue;
+        font-size:large;
+        font-weight:100;
+    }
+
+.navpage {
+    vertical-align: middle;
+    height: 15px;
+    mix-blend-mode: multiply; /* Tira fundo da imagem */
+}
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input[type="text"],
@@ -37,7 +47,7 @@ input[type="password"],
 input[type="email"],
 input[type="tel"],
 input[type="select"] {
-    max-width: 280px;
+    max-width: 480px;
 }
 
 /* Responsive: Portrait tablets and up */

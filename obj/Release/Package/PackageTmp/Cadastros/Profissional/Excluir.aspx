@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Excluir.aspx.cs" Inherits="Orcamento.Cadastros.Profissional.Excluir" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="panel" id="Excluir">
+<div class="panel" id="Excluir">
     <div class="panel-container show">
         <div class="panel-content">
             <div class="row">
-                <div class="card text-left">
-                    <div class="card-header text-center">
-                    <h2>Excluir Tipo Profissional</h2>
+                    <div class="card text-left">
+                        <div class="card-header text-center">
+                        <h3>Cadastro - Profissionais - Excluir</h3>
+                        </div>
                     </div>
                     <div class="card-body">
                     <div class="col-sm-offset-1 col-sm-10">
@@ -30,7 +31,6 @@
                       </div>
                    </div>
                 </div>
-            </div>
         </div>
    </div>
 </div>

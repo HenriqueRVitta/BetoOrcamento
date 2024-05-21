@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
--- Host: mysql.isagor.com.br    Database: isagorcombr
+-- Host: localhost    Database: orcamento
 -- ------------------------------------------------------
--- Server version	5.7.44-48-log
+-- Server version	8.0.33
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,120 +16,120 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `AspNetRoleClaims`
+-- Table structure for table `aspnetroleclaims`
 --
 
-DROP TABLE IF EXISTS `AspNetRoleClaims`;
+DROP TABLE IF EXISTS `aspnetroleclaims`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `AspNetRoleClaims` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `aspnetroleclaims` (
+  `Id` int NOT NULL AUTO_INCREMENT,
   `RoleId` varchar(255) NOT NULL,
   `ClaimType` longtext,
   `ClaimValue` longtext,
   PRIMARY KEY (`Id`),
   KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`),
-  CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `AspNetRoles` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `AspNetRoleClaims`
+-- Dumping data for table `aspnetroleclaims`
 --
 
-LOCK TABLES `AspNetRoleClaims` WRITE;
-/*!40000 ALTER TABLE `AspNetRoleClaims` DISABLE KEYS */;
-/*!40000 ALTER TABLE `AspNetRoleClaims` ENABLE KEYS */;
+LOCK TABLES `aspnetroleclaims` WRITE;
+/*!40000 ALTER TABLE `aspnetroleclaims` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetroleclaims` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `AspNetRoles`
+-- Table structure for table `aspnetroles`
 --
 
-DROP TABLE IF EXISTS `AspNetRoles`;
+DROP TABLE IF EXISTS `aspnetroles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `AspNetRoles` (
+CREATE TABLE `aspnetroles` (
   `Id` varchar(255) NOT NULL,
   `Name` varchar(256) DEFAULT NULL,
   `NormalizedName` varchar(256) DEFAULT NULL,
   `ConcurrencyStamp` longtext,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `RoleNameIndex` (`NormalizedName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `AspNetRoles`
+-- Dumping data for table `aspnetroles`
 --
 
-LOCK TABLES `AspNetRoles` WRITE;
-/*!40000 ALTER TABLE `AspNetRoles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `AspNetRoles` ENABLE KEYS */;
+LOCK TABLES `aspnetroles` WRITE;
+/*!40000 ALTER TABLE `aspnetroles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `AspNetUserClaims`
+-- Table structure for table `aspnetuserclaims`
 --
 
-DROP TABLE IF EXISTS `AspNetUserClaims`;
+DROP TABLE IF EXISTS `aspnetuserclaims`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `AspNetUserClaims` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `aspnetuserclaims` (
+  `Id` int NOT NULL AUTO_INCREMENT,
   `UserId` varchar(255) NOT NULL,
   `ClaimType` longtext,
   `ClaimValue` longtext,
   PRIMARY KEY (`Id`),
   KEY `IX_AspNetUserClaims_UserId` (`UserId`),
-  CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE
+  CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `AspNetUserClaims`
+-- Dumping data for table `aspnetuserclaims`
 --
 
-LOCK TABLES `AspNetUserClaims` WRITE;
-/*!40000 ALTER TABLE `AspNetUserClaims` DISABLE KEYS */;
-/*!40000 ALTER TABLE `AspNetUserClaims` ENABLE KEYS */;
+LOCK TABLES `aspnetuserclaims` WRITE;
+/*!40000 ALTER TABLE `aspnetuserclaims` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetuserclaims` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `AspNetUserLogins`
+-- Table structure for table `aspnetuserlogins`
 --
 
-DROP TABLE IF EXISTS `AspNetUserLogins`;
+DROP TABLE IF EXISTS `aspnetuserlogins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `AspNetUserLogins` (
+CREATE TABLE `aspnetuserlogins` (
   `LoginProvider` varchar(128) NOT NULL,
   `ProviderKey` varchar(128) NOT NULL,
   `ProviderDisplayName` longtext,
   `UserId` varchar(255) NOT NULL,
   PRIMARY KEY (`LoginProvider`,`ProviderKey`),
   KEY `IX_AspNetUserLogins_UserId` (`UserId`),
-  CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE
+  CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `AspNetUserLogins`
+-- Dumping data for table `aspnetuserlogins`
 --
 
-LOCK TABLES `AspNetUserLogins` WRITE;
-/*!40000 ALTER TABLE `AspNetUserLogins` DISABLE KEYS */;
-/*!40000 ALTER TABLE `AspNetUserLogins` ENABLE KEYS */;
+LOCK TABLES `aspnetuserlogins` WRITE;
+/*!40000 ALTER TABLE `aspnetuserlogins` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetuserlogins` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `AspNetUserRoles`
+-- Table structure for table `aspnetuserroles`
 --
 
-DROP TABLE IF EXISTS `AspNetUserRoles`;
+DROP TABLE IF EXISTS `aspnetuserroles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `AspNetUserRoles` (
+CREATE TABLE `aspnetuserroles` (
   `UserId` varchar(255) NOT NULL,
   `RoleId` varchar(255) NOT NULL,
   PRIMARY KEY (`UserId`,`RoleId`)
@@ -137,48 +137,22 @@ CREATE TABLE `AspNetUserRoles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `AspNetUserRoles`
+-- Dumping data for table `aspnetuserroles`
 --
 
-LOCK TABLES `AspNetUserRoles` WRITE;
-/*!40000 ALTER TABLE `AspNetUserRoles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `AspNetUserRoles` ENABLE KEYS */;
+LOCK TABLES `aspnetuserroles` WRITE;
+/*!40000 ALTER TABLE `aspnetuserroles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetuserroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `AspNetUserTokens`
+-- Table structure for table `aspnetusers`
 --
 
-DROP TABLE IF EXISTS `AspNetUserTokens`;
+DROP TABLE IF EXISTS `aspnetusers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `AspNetUserTokens` (
-  `UserId` varchar(255) NOT NULL,
-  `LoginProvider` varchar(128) NOT NULL,
-  `Name` varchar(128) NOT NULL,
-  `Value` longtext,
-  PRIMARY KEY (`UserId`,`LoginProvider`,`Name`),
-  CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `AspNetUserTokens`
---
-
-LOCK TABLES `AspNetUserTokens` WRITE;
-/*!40000 ALTER TABLE `AspNetUserTokens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `AspNetUserTokens` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `AspNetUsers`
---
-
-DROP TABLE IF EXISTS `AspNetUsers`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `AspNetUsers` (
+CREATE TABLE `aspnetusers` (
   `Id` varchar(255) NOT NULL,
   `NomeDoUsuario` longtext NOT NULL,
   `UserName` varchar(256) DEFAULT NULL,
@@ -195,7 +169,7 @@ CREATE TABLE `AspNetUsers` (
   `LockoutEnd` datetime(6) DEFAULT NULL,
   `LockoutEnabled` tinyint(1) NOT NULL,
   `LockoutEndDateUtc` datetime(6) DEFAULT NULL,
-  `AccessFailedCount` int(11) NOT NULL,
+  `AccessFailedCount` int NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
   KEY `EmailIndex` (`NormalizedEmail`)
@@ -203,37 +177,39 @@ CREATE TABLE `AspNetUsers` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `AspNetUsers`
+-- Dumping data for table `aspnetusers`
 --
 
-LOCK TABLES `AspNetUsers` WRITE;
-/*!40000 ALTER TABLE `AspNetUsers` DISABLE KEYS */;
-INSERT INTO `AspNetUsers` VALUES ('4734946b-8388-4f6c-87db-e41eba64b532','','suporte@hrvinformatica.com.br',NULL,'suporte@hrvinformatica.com.br',NULL,0,'AEAui1YfMy9DSHbV78z3AXb7mLVmH6CoqGQIAfxRlZmguqS5u8DZnMuXqx9dlaK/dA==','80619428-6b63-45dd-9206-ce389c5b605f',NULL,NULL,0,0,NULL,1,NULL,0),('4dc2248c-2f12-435f-aad5-44614f25a1d5','','chrvitta@gmail.com',NULL,'chrvitta@gmail.com',NULL,0,'AJlkICNSIxDsOyH+d5aCaU7Am7zBTi2MyRW2FYaNT9cMzJ36E2nL12PjUGU2R0NTxw==','6b1023e2-2ee4-4364-afd5-acb2b72de27c',NULL,NULL,0,0,NULL,1,NULL,0),('67397dae-1908-4c37-8833-702135aa8fd0','','vitta@gmail.com',NULL,'vitta@gmail.com',NULL,0,'AN/iURIiPXypYbPMBId5X2I2oGxZoDCWYXDv/rHKCwDt3s+HQt/lSVv41xwp/mKV7w==','171e1a3f-2a1c-4eae-b25a-1d3c2efff81d',NULL,NULL,0,0,NULL,1,NULL,0),('dc48902a-e7b8-48cd-9ed2-7eb31278aecb','Carlos Henrique','chrvitta@yahoo.com.br',NULL,'chrvitta@yahoo.com.br',NULL,0,'AH1HaioO0VziARjOmLm2HFlA+UmfONvXb87FlvrKiujdmeXCiWhegpqQbKwVzNv3hw==','62f44e66-7112-48cd-81eb-2a330a6cc22c',NULL,NULL,0,0,NULL,1,NULL,0),('e8739f07-1fbd-45a4-a7fa-89f0c0ca1a20','','vitta@gmail.com2',NULL,'vitta@gmail.com2',NULL,0,'ADuYmUyiuHiRqVMUPboI9tFndz5x51ftsdhYeVhD+dcU9zuFgk/yxcXDKdAER5ANew==','8b52b49c-8765-4f28-8059-942661d58a18',NULL,NULL,0,0,NULL,1,NULL,0);
-/*!40000 ALTER TABLE `AspNetUsers` ENABLE KEYS */;
+LOCK TABLES `aspnetusers` WRITE;
+/*!40000 ALTER TABLE `aspnetusers` DISABLE KEYS */;
+INSERT INTO `aspnetusers` VALUES ('4734946b-8388-4f6c-87db-e41eba64b532','','suporte@hrvinformatica.com.br',NULL,'suporte@hrvinformatica.com.br',NULL,0,'AEAui1YfMy9DSHbV78z3AXb7mLVmH6CoqGQIAfxRlZmguqS5u8DZnMuXqx9dlaK/dA==','80619428-6b63-45dd-9206-ce389c5b605f',NULL,NULL,0,0,NULL,1,NULL,0),('4dc2248c-2f12-435f-aad5-44614f25a1d5','','chrvitta@gmail.com',NULL,'chrvitta@gmail.com',NULL,0,'AJlkICNSIxDsOyH+d5aCaU7Am7zBTi2MyRW2FYaNT9cMzJ36E2nL12PjUGU2R0NTxw==','6b1023e2-2ee4-4364-afd5-acb2b72de27c',NULL,NULL,0,0,NULL,1,NULL,0),('67397dae-1908-4c37-8833-702135aa8fd0','','vitta@gmail.com',NULL,'vitta@gmail.com',NULL,0,'AN/iURIiPXypYbPMBId5X2I2oGxZoDCWYXDv/rHKCwDt3s+HQt/lSVv41xwp/mKV7w==','171e1a3f-2a1c-4eae-b25a-1d3c2efff81d',NULL,NULL,0,0,NULL,1,NULL,0),('dc48902a-e7b8-48cd-9ed2-7eb31278aecb','Carlos Henrique','chrvitta@yahoo.com.br',NULL,'chrvitta@yahoo.com.br',NULL,0,'AH1HaioO0VziARjOmLm2HFlA+UmfONvXb87FlvrKiujdmeXCiWhegpqQbKwVzNv3hw==','62f44e66-7112-48cd-81eb-2a330a6cc22c',NULL,NULL,0,0,NULL,1,NULL,0),('e8739f07-1fbd-45a4-a7fa-89f0c0ca1a20','','vitta@gmail.com2',NULL,'vitta@gmail.com2',NULL,0,'ADuYmUyiuHiRqVMUPboI9tFndz5x51ftsdhYeVhD+dcU9zuFgk/yxcXDKdAER5ANew==','8b52b49c-8765-4f28-8059-942661d58a18',NULL,NULL,0,0,NULL,1,NULL,0);
+/*!40000 ALTER TABLE `aspnetusers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `beto`
+-- Table structure for table `aspnetusertokens`
 --
 
-DROP TABLE IF EXISTS `beto`;
+DROP TABLE IF EXISTS `aspnetusertokens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `beto` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `quantidade` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `aspnetusertokens` (
+  `UserId` varchar(255) NOT NULL,
+  `LoginProvider` varchar(128) NOT NULL,
+  `Name` varchar(128) NOT NULL,
+  `Value` longtext,
+  PRIMARY KEY (`UserId`,`LoginProvider`,`Name`),
+  CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `beto`
+-- Dumping data for table `aspnetusertokens`
 --
 
-LOCK TABLES `beto` WRITE;
-/*!40000 ALTER TABLE `beto` DISABLE KEYS */;
-INSERT INTO `beto` VALUES (1,10),(2,15);
-/*!40000 ALTER TABLE `beto` ENABLE KEYS */;
+LOCK TABLES `aspnetusertokens` WRITE;
+/*!40000 ALTER TABLE `aspnetusertokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aspnetusertokens` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -244,7 +220,7 @@ DROP TABLE IF EXISTS `categoria_armazenamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categoria_armazenamento` (
-  `ca_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ca_id` int NOT NULL AUTO_INCREMENT,
   `ca_descricao` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`ca_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
@@ -268,10 +244,10 @@ DROP TABLE IF EXISTS `classe_terapeutica`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `classe_terapeutica` (
-  `ct_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ct_id` int NOT NULL AUTO_INCREMENT,
   `ct_descricao` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ct_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -292,7 +268,7 @@ DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cliente` (
-  `cl_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cl_id` int NOT NULL AUTO_INCREMENT,
   `cl_razao` varchar(120) NOT NULL DEFAULT '',
   `cl_telefone` varchar(15) DEFAULT NULL,
   `cl_logo` varchar(45) DEFAULT NULL,
@@ -308,7 +284,7 @@ CREATE TABLE `cliente` (
   `cl_cep` varchar(10) DEFAULT NULL,
   `cl_status` char(1) DEFAULT NULL,
   PRIMARY KEY (`cl_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -329,17 +305,17 @@ DROP TABLE IF EXISTS `codigo_rastreio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `codigo_rastreio` (
-  `cr_id` int(11) NOT NULL AUTO_INCREMENT,
-  `cr_cliente` int(11) DEFAULT NULL,
-  `cr_codigo` int(11) DEFAULT NULL,
+  `cr_id` int NOT NULL AUTO_INCREMENT,
+  `cr_cliente` int DEFAULT NULL,
+  `cr_codigo` int DEFAULT NULL,
   `cr_lote` varchar(15) DEFAULT NULL,
   `cr_validade` datetime DEFAULT NULL,
   `cr_rastreio` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`cr_id`),
   KEY `fk_cliente_idx` (`cr_cliente`),
   KEY `fk_codigo_idx` (`cr_codigo`),
-  CONSTRAINT `fk_cliente` FOREIGN KEY (`cr_cliente`) REFERENCES `cliente` (`cl_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_codigo` FOREIGN KEY (`cr_codigo`) REFERENCES `produto` (`pr_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_cliente` FOREIGN KEY (`cr_cliente`) REFERENCES `cliente` (`cl_id`),
+  CONSTRAINT `fk_codigo` FOREIGN KEY (`cr_codigo`) REFERENCES `produto` (`pr_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=417 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -361,9 +337,9 @@ DROP TABLE IF EXISTS `contato`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contato` (
-  `co_id` int(11) NOT NULL AUTO_INCREMENT,
+  `co_id` int NOT NULL AUTO_INCREMENT,
   `co_nome` varchar(45) DEFAULT NULL,
-  `co_cliente` int(11) DEFAULT NULL,
+  `co_cliente` int DEFAULT NULL,
   `co_telefone` varchar(15) DEFAULT NULL,
   `co_crf` varchar(12) DEFAULT NULL,
   `co_email` varchar(80) DEFAULT NULL,
@@ -377,7 +353,7 @@ CREATE TABLE `contato` (
   PRIMARY KEY (`co_id`) USING BTREE,
   UNIQUE KEY `co_email_UNIQUE` (`co_email`),
   KEY `fk_cliente_idx` (`co_cliente`),
-  CONSTRAINT `fk_contato_cliente` FOREIGN KEY (`co_cliente`) REFERENCES `cliente` (`cl_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_contato_cliente` FOREIGN KEY (`co_cliente`) REFERENCES `cliente` (`cl_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -399,10 +375,10 @@ DROP TABLE IF EXISTS `etiqueta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `etiqueta` (
-  `et_id` int(11) NOT NULL AUTO_INCREMENT,
+  `et_id` int NOT NULL AUTO_INCREMENT,
   `et_altura` decimal(6,2) DEFAULT NULL,
   `et_largura` decimal(6,2) DEFAULT NULL,
-  `et_fonte` int(11) DEFAULT NULL,
+  `et_fonte` int DEFAULT NULL,
   `et_descricao` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`et_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
@@ -426,10 +402,10 @@ DROP TABLE IF EXISTS `fabricante`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fabricante` (
-  `fa_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fa_id` int NOT NULL AUTO_INCREMENT,
   `fa_nome` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`fa_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -450,7 +426,7 @@ DROP TABLE IF EXISTS `forma`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `forma` (
-  `fo_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fo_id` int NOT NULL AUTO_INCREMENT,
   `fo_nome` varchar(30) DEFAULT NULL,
   `fo_nome_reduzido` varchar(10) DEFAULT NULL,
   `fo_volume` varchar(5) DEFAULT NULL,
@@ -478,14 +454,14 @@ DROP TABLE IF EXISTS `forma_pictograma`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `forma_pictograma` (
-  `fp_id` int(11) NOT NULL AUTO_INCREMENT,
-  `fp_forma` int(11) DEFAULT NULL,
-  `fp_pictograma` int(11) DEFAULT NULL,
+  `fp_id` int NOT NULL AUTO_INCREMENT,
+  `fp_forma` int DEFAULT NULL,
+  `fp_pictograma` int DEFAULT NULL,
   PRIMARY KEY (`fp_id`),
   KEY `fk_forma_idx` (`fp_forma`),
   KEY `fk_pictograma_idx` (`fp_pictograma`),
-  CONSTRAINT `fk_forma` FOREIGN KEY (`fp_forma`) REFERENCES `forma` (`fo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_pictograma` FOREIGN KEY (`fp_pictograma`) REFERENCES `pictograma` (`pi_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_forma` FOREIGN KEY (`fp_forma`) REFERENCES `forma` (`fo_id`),
+  CONSTRAINT `fk_pictograma` FOREIGN KEY (`fp_pictograma`) REFERENCES `pictograma` (`pi_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=780 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -507,55 +483,55 @@ DROP TABLE IF EXISTS `itens_servico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `itens_servico` (
-  `is_id` int(11) NOT NULL AUTO_INCREMENT,
-  `is_ordem_servico` int(11) DEFAULT NULL,
-  `is_produto` int(11) DEFAULT NULL,
+  `is_id` int NOT NULL AUTO_INCREMENT,
+  `is_ordem_servico` int DEFAULT NULL,
+  `is_produto` int DEFAULT NULL,
   `is_data_validade` date DEFAULT NULL,
   `is_lote` varchar(15) DEFAULT NULL,
-  `is_qtde_caixa` int(11) DEFAULT NULL,
-  `is_qtde_recebida_caixa` int(11) DEFAULT NULL,
+  `is_qtde_caixa` int DEFAULT NULL,
+  `is_qtde_recebida_caixa` int DEFAULT NULL,
   `is_data_recebimento` datetime DEFAULT NULL,
-  `is_recebido` int(11) DEFAULT NULL,
-  `is_qtde_processada` int(11) DEFAULT NULL,
+  `is_recebido` int DEFAULT NULL,
+  `is_qtde_processada` int DEFAULT NULL,
   `is_data_processamento` datetime DEFAULT NULL,
-  `is_processado` int(11) DEFAULT NULL,
+  `is_processado` int DEFAULT NULL,
   `is_data_liberacao` datetime DEFAULT NULL,
-  `is_liberado` int(11) DEFAULT NULL,
+  `is_liberado` int DEFAULT NULL,
   `is_observacao` longtext,
-  `is_qtde_fracionado` int(11) DEFAULT NULL,
+  `is_qtde_fracionado` int DEFAULT NULL,
   `is_codigo_rastreio` varchar(15) DEFAULT NULL,
-  `is_qtde_recebida_fracionada` int(11) DEFAULT NULL,
+  `is_qtde_recebida_fracionada` int DEFAULT NULL,
   `is_bloqueio` char(1) DEFAULT NULL,
   `is_nao_conformidade` char(1) DEFAULT NULL,
   `is_data_saida` datetime DEFAULT NULL,
   `is_transportador` varchar(45) DEFAULT NULL,
   `is_registro` varchar(45) DEFAULT NULL,
-  `is_saida` int(11) DEFAULT NULL,
-  `is_qtde_recebida_real` int(11) DEFAULT NULL,
-  `is_qtde_embalagem` int(11) DEFAULT NULL,
-  `is_qtde_por_embalagem` int(11) DEFAULT NULL,
+  `is_saida` int DEFAULT NULL,
+  `is_qtde_recebida_real` int DEFAULT NULL,
+  `is_qtde_embalagem` int DEFAULT NULL,
+  `is_qtde_por_embalagem` int DEFAULT NULL,
   `is_lacrea_saida` varchar(10) DEFAULT NULL,
   `is_lacreb_saida` varchar(10) DEFAULT NULL,
   `is_cadastrar` char(1) DEFAULT NULL,
   `is_data_previsao` datetime DEFAULT NULL,
-  `is_medicamento` int(11) DEFAULT NULL,
+  `is_medicamento` int DEFAULT NULL,
   `is_data_corte` datetime DEFAULT NULL,
-  `is_corte` int(11) DEFAULT NULL,
-  `is_qtde_corte` int(11) DEFAULT NULL,
-  `is_organizador` int(11) DEFAULT NULL,
-  `is_maquina` int(11) DEFAULT NULL,
+  `is_corte` int DEFAULT NULL,
+  `is_qtde_corte` int DEFAULT NULL,
+  `is_organizador` int DEFAULT NULL,
+  `is_maquina` int DEFAULT NULL,
   `is_lacrea_entrada` varchar(10) DEFAULT NULL,
   `is_lacreb_entrada` varchar(10) DEFAULT NULL,
-  `is_container_entrada` int(11) DEFAULT NULL,
-  `is_container_saida` int(11) DEFAULT NULL,
+  `is_container_entrada` int DEFAULT NULL,
+  `is_container_saida` int DEFAULT NULL,
   `is_cortar` char(1) DEFAULT NULL,
   `is_data_fabricacao` datetime DEFAULT NULL,
   `is_coleta` char(1) DEFAULT NULL,
   `is_data_coleta` datetime DEFAULT NULL,
-  `is_qtde_liberada` int(11) DEFAULT NULL,
-  `is_libera_coleta` int(11) DEFAULT NULL,
+  `is_qtde_liberada` int DEFAULT NULL,
+  `is_libera_coleta` int DEFAULT NULL,
   `is_prioridade` char(1) DEFAULT NULL,
-  `is_sequencia` int(11) DEFAULT NULL,
+  `is_sequencia` int DEFAULT NULL,
   `is_data_cadastro` datetime DEFAULT NULL,
   PRIMARY KEY (`is_id`),
   KEY `fk_itens_produto_idx` (`is_produto`),
@@ -566,15 +542,15 @@ CREATE TABLE `itens_servico` (
   KEY `fk_itens_medicamento_idx` (`is_medicamento`),
   KEY `fk_maquina_idx` (`is_maquina`),
   KEY `fk_organizador_idx` (`is_organizador`),
-  CONSTRAINT `fk_intes_os` FOREIGN KEY (`is_ordem_servico`) REFERENCES `ordem_servico` (`os_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_itens_medicamento` FOREIGN KEY (`is_medicamento`) REFERENCES `medicamento` (`me_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_itens_produto` FOREIGN KEY (`is_produto`) REFERENCES `produto` (`pr_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_liberado` FOREIGN KEY (`is_liberado`) REFERENCES `contato` (`co_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_maquina` FOREIGN KEY (`is_maquina`) REFERENCES `maquina` (`ma_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_organizador` FOREIGN KEY (`is_organizador`) REFERENCES `organizador` (`or_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_processado` FOREIGN KEY (`is_processado`) REFERENCES `contato` (`co_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_recebido` FOREIGN KEY (`is_recebido`) REFERENCES `contato` (`co_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1457 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_intes_os` FOREIGN KEY (`is_ordem_servico`) REFERENCES `ordem_servico` (`os_id`),
+  CONSTRAINT `fk_itens_medicamento` FOREIGN KEY (`is_medicamento`) REFERENCES `medicamento` (`me_id`),
+  CONSTRAINT `fk_itens_produto` FOREIGN KEY (`is_produto`) REFERENCES `produto` (`pr_id`),
+  CONSTRAINT `fk_liberado` FOREIGN KEY (`is_liberado`) REFERENCES `contato` (`co_id`),
+  CONSTRAINT `fk_maquina` FOREIGN KEY (`is_maquina`) REFERENCES `maquina` (`ma_id`),
+  CONSTRAINT `fk_organizador` FOREIGN KEY (`is_organizador`) REFERENCES `organizador` (`or_id`),
+  CONSTRAINT `fk_processado` FOREIGN KEY (`is_processado`) REFERENCES `contato` (`co_id`),
+  CONSTRAINT `fk_recebido` FOREIGN KEY (`is_recebido`) REFERENCES `contato` (`co_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1457 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -595,20 +571,20 @@ DROP TABLE IF EXISTS `itens_servico_container_saida`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `itens_servico_container_saida` (
-  `iscs_id` int(11) NOT NULL AUTO_INCREMENT,
-  `iscs_itens_servico` int(11) DEFAULT NULL,
-  `iscs_container` int(11) DEFAULT NULL,
+  `iscs_id` int NOT NULL AUTO_INCREMENT,
+  `iscs_itens_servico` int DEFAULT NULL,
+  `iscs_container` int DEFAULT NULL,
   `iscs_lacre_a` varchar(10) DEFAULT NULL,
   `iscs_lacre_b` varchar(10) DEFAULT NULL,
-  `iscs_quantidade` int(11) DEFAULT NULL,
+  `iscs_quantidade` int DEFAULT NULL,
   `iscs_data_retorno` datetime DEFAULT NULL,
-  `iscs_retorno` int(11) DEFAULT NULL,
-  `iscs_qtde_retorno` int(11) DEFAULT NULL,
+  `iscs_retorno` int DEFAULT NULL,
+  `iscs_qtde_retorno` int DEFAULT NULL,
   PRIMARY KEY (`iscs_id`),
   KEY `container_itens_idx` (`iscs_itens_servico`),
   KEY `fk_container_organizador_idx` (`iscs_container`),
-  CONSTRAINT `container_itens` FOREIGN KEY (`iscs_itens_servico`) REFERENCES `itens_servico` (`is_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_container_organizador` FOREIGN KEY (`iscs_container`) REFERENCES `organizador` (`or_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `container_itens` FOREIGN KEY (`iscs_itens_servico`) REFERENCES `itens_servico` (`is_id`),
+  CONSTRAINT `fk_container_organizador` FOREIGN KEY (`iscs_container`) REFERENCES `organizador` (`or_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=791 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -630,10 +606,10 @@ DROP TABLE IF EXISTS `kits`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kits` (
-  `ki_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ki_numero` int(11) DEFAULT NULL,
-  `ki_item_servico` int(11) DEFAULT NULL,
-  `ki_quantidade` int(11) DEFAULT NULL,
+  `ki_id` int NOT NULL AUTO_INCREMENT,
+  `ki_numero` int DEFAULT NULL,
+  `ki_item_servico` int DEFAULT NULL,
+  `ki_quantidade` int DEFAULT NULL,
   `ki_data` datetime DEFAULT NULL,
   PRIMARY KEY (`ki_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -656,13 +632,13 @@ DROP TABLE IF EXISTS `log_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `log_usuario` (
-  `lu_id` int(11) NOT NULL AUTO_INCREMENT,
-  `lu_cliente` int(11) unsigned DEFAULT NULL,
-  `lu_usuario` int(11) DEFAULT NULL,
+  `lu_id` int NOT NULL AUTO_INCREMENT,
+  `lu_cliente` int unsigned DEFAULT NULL,
+  `lu_usuario` int DEFAULT NULL,
   `lu_programa` longtext,
   `lu_data_execucao` datetime DEFAULT NULL,
   PRIMARY KEY (`lu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14938 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14938 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -684,12 +660,12 @@ DROP TABLE IF EXISTS `maquina`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `maquina` (
-  `ma_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ma_id` int NOT NULL AUTO_INCREMENT,
   `ma_nome` varchar(45) DEFAULT NULL,
   `ma_banco_dados` varchar(20) DEFAULT NULL,
   `ma_usuario_banco` varchar(20) DEFAULT NULL,
   `ma_senha_banco` varchar(20) DEFAULT NULL,
-  `ma_quantidade_perda` int(11) DEFAULT NULL,
+  `ma_quantidade_perda` int DEFAULT NULL,
   `ma_endereco_ip` varchar(15) DEFAULT NULL,
   `ma_porta` varchar(5) DEFAULT NULL,
   `ma_impressora` char(1) DEFAULT NULL,
@@ -715,23 +691,23 @@ DROP TABLE IF EXISTS `medicamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `medicamento` (
-  `me_id` int(11) NOT NULL AUTO_INCREMENT,
+  `me_id` int NOT NULL AUTO_INCREMENT,
   `me_nome_comercial` varchar(40) DEFAULT NULL,
-  `me_nome_dcb` int(11) DEFAULT NULL,
+  `me_nome_dcb` int DEFAULT NULL,
   `me_dosagem` varchar(12) DEFAULT NULL,
-  `me_fabricante` int(11) DEFAULT NULL,
+  `me_fabricante` int DEFAULT NULL,
   `me_embalagem` char(1) DEFAULT NULL,
   `me_preco` decimal(12,2) DEFAULT NULL,
   `me_controlado` char(1) DEFAULT NULL,
-  `me_categoria_armazenamento` int(11) DEFAULT NULL,
+  `me_categoria_armazenamento` int DEFAULT NULL,
   PRIMARY KEY (`me_id`),
   KEY `fk_medicamento_fabricante_idx` (`me_fabricante`),
   KEY `fm_medicamento_nome_dcb_idx` (`me_nome_dcb`),
   KEY `fk_medicamento_categoria_armazenamento_idx` (`me_categoria_armazenamento`),
-  CONSTRAINT `fk_medicamento_categoria_armazenamento` FOREIGN KEY (`me_categoria_armazenamento`) REFERENCES `categoria_armazenamento` (`ca_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_medicamento_fabricante` FOREIGN KEY (`me_fabricante`) REFERENCES `fabricante` (`fa_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fm_medicamento_nome_dcb` FOREIGN KEY (`me_nome_dcb`) REFERENCES `nome_dcb` (`nd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=489 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_medicamento_categoria_armazenamento` FOREIGN KEY (`me_categoria_armazenamento`) REFERENCES `categoria_armazenamento` (`ca_id`),
+  CONSTRAINT `fk_medicamento_fabricante` FOREIGN KEY (`me_fabricante`) REFERENCES `fabricante` (`fa_id`),
+  CONSTRAINT `fm_medicamento_nome_dcb` FOREIGN KEY (`me_nome_dcb`) REFERENCES `nome_dcb` (`nd_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=489 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -752,12 +728,12 @@ DROP TABLE IF EXISTS `nao_conformidade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `nao_conformidade` (
-  `nc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nc_id` int NOT NULL AUTO_INCREMENT,
   `nc_descricao` varchar(45) DEFAULT NULL,
   `nc_bloqueio` varchar(1) DEFAULT NULL,
   `nc_corpo_email` longtext,
   PRIMARY KEY (`nc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -778,20 +754,20 @@ DROP TABLE IF EXISTS `nao_conformidade_servico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `nao_conformidade_servico` (
-  `ns_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ns_cliente` int(11) DEFAULT NULL,
-  `ns_nao_conformidade` int(11) DEFAULT NULL,
+  `ns_id` int NOT NULL AUTO_INCREMENT,
+  `ns_cliente` int DEFAULT NULL,
+  `ns_nao_conformidade` int DEFAULT NULL,
   `ns_data` datetime DEFAULT NULL,
-  `ns_usuario` int(11) DEFAULT NULL,
+  `ns_usuario` int DEFAULT NULL,
   `ns_observacao` longtext,
-  `ns_item_servico` int(11) DEFAULT NULL,
-  `ns_quantidade` int(11) DEFAULT NULL,
+  `ns_item_servico` int DEFAULT NULL,
+  `ns_quantidade` int DEFAULT NULL,
   PRIMARY KEY (`ns_id`),
   KEY `fk_nconformidade_nconformidade_idx` (`ns_nao_conformidade`),
   KEY `fk_nconformidade_iservico_idx` (`ns_item_servico`),
-  CONSTRAINT `fk_nconformidade_iservico` FOREIGN KEY (`ns_item_servico`) REFERENCES `itens_servico` (`is_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_nconformidade_nconformidade` FOREIGN KEY (`ns_nao_conformidade`) REFERENCES `nao_conformidade` (`nc_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_nconformidade_iservico` FOREIGN KEY (`ns_item_servico`) REFERENCES `itens_servico` (`is_id`),
+  CONSTRAINT `fk_nconformidade_nconformidade` FOREIGN KEY (`ns_nao_conformidade`) REFERENCES `nao_conformidade` (`nc_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -812,10 +788,10 @@ DROP TABLE IF EXISTS `nome_dcb`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `nome_dcb` (
-  `nd_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nd_id` int NOT NULL AUTO_INCREMENT,
   `nd_descricao` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`nd_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=324 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=324 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -836,17 +812,17 @@ DROP TABLE IF EXISTS `ordem_servico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ordem_servico` (
-  `os_id` int(11) NOT NULL AUTO_INCREMENT,
-  `os_cliente` int(11) DEFAULT NULL,
-  `os_contato` int(11) DEFAULT NULL,
+  `os_id` int NOT NULL AUTO_INCREMENT,
+  `os_cliente` int DEFAULT NULL,
+  `os_contato` int DEFAULT NULL,
   `os_data_abertura` datetime DEFAULT NULL,
   `os_devolucao_caixa` char(1) DEFAULT NULL,
   PRIMARY KEY (`os_id`),
   KEY `fk_cliente_idx` (`os_cliente`),
   KEY `fk_os_contato_idx` (`os_contato`),
-  CONSTRAINT `fk_os_cliente` FOREIGN KEY (`os_cliente`) REFERENCES `cliente` (`cl_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_os_contato` FOREIGN KEY (`os_contato`) REFERENCES `contato` (`co_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=254 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_os_cliente` FOREIGN KEY (`os_cliente`) REFERENCES `cliente` (`cl_id`),
+  CONSTRAINT `fk_os_contato` FOREIGN KEY (`os_contato`) REFERENCES `contato` (`co_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=254 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -867,15 +843,15 @@ DROP TABLE IF EXISTS `organizador`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `organizador` (
-  `or_id` int(11) NOT NULL AUTO_INCREMENT,
+  `or_id` int NOT NULL AUTO_INCREMENT,
   `or_descricao` varchar(30) DEFAULT NULL,
   `or_usado` char(1) DEFAULT NULL,
   `or_interno_externo` char(1) DEFAULT NULL,
   `or_lacre` char(1) DEFAULT NULL,
-  `or_cliente` int(11) DEFAULT NULL,
+  `or_cliente` int DEFAULT NULL,
   PRIMARY KEY (`or_id`),
   KEY `organizador_cliente_idx` (`or_cliente`),
-  CONSTRAINT `organizador_cliente` FOREIGN KEY (`or_cliente`) REFERENCES `cliente` (`cl_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `organizador_cliente` FOREIGN KEY (`or_cliente`) REFERENCES `cliente` (`cl_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -897,7 +873,7 @@ DROP TABLE IF EXISTS `pictograma`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pictograma` (
-  `pi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pi_id` int NOT NULL AUTO_INCREMENT,
   `pi_descricao` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`pi_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
@@ -921,7 +897,7 @@ DROP TABLE IF EXISTS `problema`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `problema` (
-  `pr_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pr_id` int NOT NULL AUTO_INCREMENT,
   `pr_descricao` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`pr_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
@@ -945,11 +921,11 @@ DROP TABLE IF EXISTS `problema_dialogo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `problema_dialogo` (
-  `pd_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pd_problema_servico` int(11) DEFAULT NULL,
+  `pd_id` int NOT NULL AUTO_INCREMENT,
+  `pd_problema_servico` int DEFAULT NULL,
   `pd_data` datetime DEFAULT NULL,
   `pd_detalhe` longtext,
-  `pd_usuario` int(11) DEFAULT NULL,
+  `pd_usuario` int DEFAULT NULL,
   PRIMARY KEY (`pd_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -972,17 +948,17 @@ DROP TABLE IF EXISTS `problema_servico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `problema_servico` (
-  `ps_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ps_item_servico` int(11) DEFAULT NULL,
-  `ps_problema` int(11) DEFAULT NULL,
+  `ps_id` int NOT NULL AUTO_INCREMENT,
+  `ps_item_servico` int DEFAULT NULL,
+  `ps_problema` int DEFAULT NULL,
   `ps_data` datetime DEFAULT NULL,
-  `ps_usuario` int(11) DEFAULT NULL,
+  `ps_usuario` int DEFAULT NULL,
   `ps_observacao` longtext,
-  `ps_quantidade` int(11) DEFAULT NULL,
-  `ps_usuario_finalizou` int(11) DEFAULT NULL,
+  `ps_quantidade` int DEFAULT NULL,
+  `ps_usuario_finalizou` int DEFAULT NULL,
   `ps_data_finalizou` datetime DEFAULT NULL,
   PRIMARY KEY (`ps_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1003,18 +979,18 @@ DROP TABLE IF EXISTS `produto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `produto` (
-  `pr_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pr_cliente` int(11) DEFAULT NULL,
-  `pr_codigo` int(11) DEFAULT NULL,
-  `pr_nome_dcb` int(11) DEFAULT NULL,
-  `pr_qtde_tiras` int(11) DEFAULT NULL,
-  `pr_classe_terapeutica` int(11) DEFAULT NULL,
+  `pr_id` int NOT NULL AUTO_INCREMENT,
+  `pr_cliente` int DEFAULT NULL,
+  `pr_codigo` int DEFAULT NULL,
+  `pr_nome_dcb` int DEFAULT NULL,
+  `pr_qtde_tiras` int DEFAULT NULL,
+  `pr_classe_terapeutica` int DEFAULT NULL,
   `pr_nome_hospital` varchar(40) DEFAULT NULL,
-  `pr_pictograma` int(11) DEFAULT NULL,
+  `pr_pictograma` int DEFAULT NULL,
   `pr_dosagem` varchar(12) DEFAULT NULL,
-  `pr_forma` int(11) DEFAULT NULL,
-  `pr_etiqueta` int(11) DEFAULT NULL,
-  `pr_cor` int(11) DEFAULT NULL,
+  `pr_forma` int DEFAULT NULL,
+  `pr_etiqueta` int DEFAULT NULL,
+  `pr_cor` int DEFAULT NULL,
   PRIMARY KEY (`pr_id`),
   UNIQUE KEY `un_cliente_codigo` (`pr_cliente`,`pr_codigo`),
   KEY `fk_produto_cliente_idx` (`pr_cliente`),
@@ -1023,13 +999,13 @@ CREATE TABLE `produto` (
   KEY `fk_produto_forma_idx` (`pr_forma`),
   KEY `fk_produto_etiqueta_idx` (`pr_etiqueta`),
   KEY `fk_produto_pictograma_idx` (`pr_pictograma`),
-  CONSTRAINT `fk_produto_classe_terapeutica` FOREIGN KEY (`pr_classe_terapeutica`) REFERENCES `classe_terapeutica` (`ct_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_produto_cliente` FOREIGN KEY (`pr_cliente`) REFERENCES `cliente` (`cl_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_produto_etiqueta` FOREIGN KEY (`pr_etiqueta`) REFERENCES `etiqueta` (`et_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_produto_forma` FOREIGN KEY (`pr_forma`) REFERENCES `forma` (`fo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_produto_nome_dcb` FOREIGN KEY (`pr_nome_dcb`) REFERENCES `nome_dcb` (`nd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_produto_pictograma` FOREIGN KEY (`pr_pictograma`) REFERENCES `pictograma` (`pi_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=855 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_produto_classe_terapeutica` FOREIGN KEY (`pr_classe_terapeutica`) REFERENCES `classe_terapeutica` (`ct_id`),
+  CONSTRAINT `fk_produto_cliente` FOREIGN KEY (`pr_cliente`) REFERENCES `cliente` (`cl_id`),
+  CONSTRAINT `fk_produto_etiqueta` FOREIGN KEY (`pr_etiqueta`) REFERENCES `etiqueta` (`et_id`),
+  CONSTRAINT `fk_produto_forma` FOREIGN KEY (`pr_forma`) REFERENCES `forma` (`fo_id`),
+  CONSTRAINT `fk_produto_nome_dcb` FOREIGN KEY (`pr_nome_dcb`) REFERENCES `nome_dcb` (`nd_id`),
+  CONSTRAINT `fk_produto_pictograma` FOREIGN KEY (`pr_pictograma`) REFERENCES `pictograma` (`pi_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=855 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1050,18 +1026,18 @@ DROP TABLE IF EXISTS `quebra_servico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `quebra_servico` (
-  `qs_id` int(11) NOT NULL AUTO_INCREMENT,
-  `qs_cliente` int(11) DEFAULT NULL,
-  `qs_quantidade` int(11) DEFAULT NULL,
+  `qs_id` int NOT NULL AUTO_INCREMENT,
+  `qs_cliente` int DEFAULT NULL,
+  `qs_quantidade` int DEFAULT NULL,
   `qs_data` datetime DEFAULT NULL,
-  `qs_usuario` int(11) DEFAULT NULL,
+  `qs_usuario` int DEFAULT NULL,
   `qs_observacao` longtext,
-  `qs_item_servico` int(11) DEFAULT NULL,
-  `qs_quebra_liberada` int(11) DEFAULT NULL,
+  `qs_item_servico` int DEFAULT NULL,
+  `qs_quebra_liberada` int DEFAULT NULL,
   PRIMARY KEY (`qs_id`),
   KEY `fk_quebra_servico_item_idx` (`qs_item_servico`),
-  CONSTRAINT `fk_quebra_servico_item` FOREIGN KEY (`qs_item_servico`) REFERENCES `itens_servico` (`is_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_quebra_servico_item` FOREIGN KEY (`qs_item_servico`) REFERENCES `itens_servico` (`is_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1082,8 +1058,8 @@ DROP TABLE IF EXISTS `tb_aliquota`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_aliquota` (
-  `al_id` int(11) NOT NULL AUTO_INCREMENT,
-  `al_indice` int(11) DEFAULT NULL,
+  `al_id` int NOT NULL AUTO_INCREMENT,
+  `al_indice` int DEFAULT NULL,
   `al_data` datetime DEFAULT NULL,
   `al_percentual` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`al_id`)
@@ -1108,7 +1084,7 @@ DROP TABLE IF EXISTS `tb_cliente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_cliente` (
-  `cl_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cl_id` int NOT NULL AUTO_INCREMENT,
   `cl_nome` varchar(80) DEFAULT NULL,
   `cl_senha` varchar(255) DEFAULT NULL,
   `cl_email` varchar(80) DEFAULT NULL,
@@ -1134,8 +1110,8 @@ DROP TABLE IF EXISTS `tb_contrato`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_contrato` (
-  `co_id` int(11) NOT NULL AUTO_INCREMENT,
-  `co_cliente` int(11) DEFAULT NULL,
+  `co_id` int NOT NULL AUTO_INCREMENT,
+  `co_cliente` int DEFAULT NULL,
   `co_data` date DEFAULT NULL,
   `co_valor` decimal(15,2) DEFAULT NULL,
   PRIMARY KEY (`co_id`)
@@ -1159,11 +1135,11 @@ DROP TABLE IF EXISTS `tb_custos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_custos` (
-  `cu_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cu_id` int NOT NULL AUTO_INCREMENT,
   `cu_codigo` varchar(4) DEFAULT NULL,
   `cu_descricao` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`cu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1172,7 +1148,7 @@ CREATE TABLE `tb_custos` (
 
 LOCK TABLES `tb_custos` WRITE;
 /*!40000 ALTER TABLE `tb_custos` DISABLE KEYS */;
-INSERT INTO `tb_custos` VALUES (1,'01','TAXAS'),(2,'0101','APROVAÇÃO DE PROJETO LEGAL'),(3,'0102','RRT'),(4,'02','SERVIÇOS'),(5,'0201','PAGAMENTO CARTÃO'),(6,'0202','PLOTAGENS'),(7,'0203','ALUGUEL DE ESPAÇO PARA REUNIÕES'),(8,'0204','CONTRATAÇÃO DE 3D'),(9,'03','DESLOCAMENTOS'),(10,'0301','ENTREGA DE DOCUMENTOS'),(11,'0302','REUNIÕES'),(12,'0303','LEVANTAMENTO TÉCNICO'),(13,'0304','VISITAS TÉCNICAS'),(14,'0305','PREFEITURA'),(15,'0306','ESTACIONAMENTOS'),(16,'04','PÓS VENDA'),(17,'0401','PRESENTE FECHAMENTO DE PARCERIA');
+INSERT INTO `tb_custos` VALUES (1,'01','TAXAS'),(2,'0101','APROVAÇÃO DE PROJETO LEGAL'),(3,'0102','RRT'),(4,'02','SERVIÇOS'),(5,'0201','PAGAMENTO CARTÃO'),(6,'0202','PLOTAGENS'),(7,'0203','ALUGUEL DE ESPAÇO PARA REUNIÕES'),(8,'0205','CONTRATAÇÃO DE 3D'),(9,'03','DESLOCAMENTOS'),(10,'0301','ENTREGA DE DOCUMENTOS'),(11,'0302','REUNIÕES'),(12,'0303','LEVANTAMENTO TÉCNICO'),(13,'0304','VISITAS TÉCNICAS'),(14,'0305','PREFEITURA'),(15,'0306','ESTACIONAMENTOS'),(16,'04','PÓS VENDA'),(17,'0401','PRESENTE FECHAMENTO DE PARCERIA'),(18,'0204','CONTRARTAÇÃO DE ESTAGIARIO EXTRA');
 /*!40000 ALTER TABLE `tb_custos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1184,7 +1160,7 @@ DROP TABLE IF EXISTS `tb_despesas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_despesas` (
-  `da_id` int(11) NOT NULL AUTO_INCREMENT,
+  `da_id` int NOT NULL AUTO_INCREMENT,
   `da_codigo` varchar(6) DEFAULT NULL,
   `da_descricao` varchar(80) DEFAULT NULL,
   `da_formula` varchar(45) DEFAULT NULL,
@@ -1198,7 +1174,7 @@ CREATE TABLE `tb_despesas` (
 
 LOCK TABLES `tb_despesas` WRITE;
 /*!40000 ALTER TABLE `tb_despesas` DISABLE KEYS */;
-INSERT INTO `tb_despesas` VALUES (1,'01','Profissionais e Colaboradores',NULL),(2,'0101','SOCIO',NULL),(3,'0102','SOCIO',NULL),(4,'0103','SOCIO',NULL),(5,'0104','SOCIO',NULL),(6,'0105','SOCIO',NULL),(7,'0106','SOCIO',NULL),(8,'0110','ARQUITETO I',NULL),(9,'011001','PROVISÃO DE 13º','#0110*%1'),(10,'011002','PROVISÃO DE 1/3 13º','#0110*%2'),(11,'011003','FGTS','#0110*%3'),(12,'011004','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0110*%4'),(13,'011005','INSS','#0110*%5'),(14,'011006','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0110*%6'),(15,'0111','ARQUITETO II',NULL),(16,'011101','PROVISÃO DE 13º','#0111*%1'),(17,'011102','PROVISÃO DE 1/3 13º','#0111*%2'),(18,'011103','FGTS','#0111*%3'),(19,'011104','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0111*%4'),(20,'011105','INSS','#0111*%5'),(21,'011106','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0111*%6'),(22,'0112','ARQUITETO III',NULL),(23,'011201','PROVISÃO DE 13º','#0112*%1'),(24,'011202','PROVISÃO DE 1/3 13º','#0112*%2'),(25,'011203','FGTS','#0112*%3'),(26,'011204','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0112*%4'),(27,'011205','INSS','#0112*%5'),(28,'011206','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0112*%6'),(29,'0113','ARQUITETO IV',NULL),(30,'011301','PROVISÃO DE 13º','#0113*%1'),(31,'011302','PROVISÃO DE 1/3 13º','#0113*%2'),(32,'011303','FGTS','#0113*%3'),(33,'011304','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0113*%4'),(34,'011305','INSS','#0113*%5'),(35,'011306','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0113*%6'),(36,'0120','BOLSA',NULL),(37,'012001','AUXILIO TRANSPOTTE','(6*2)*22'),(38,'0130','ADMINISTRATIVO I',NULL),(39,'013001','PROVISÃO DE 13º','#0130*%1'),(40,'013002','PROVISÃO DE 1/3 13º','#0130*%2'),(41,'013003','FGTS','#0130*%3'),(42,'013004','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0130*%4'),(43,'013005','INSS','#0130*%5'),(44,'013006','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0130*%6'),(45,'0140','ASSESSORIA CONTABIL',NULL),(46,'02','GUIAS',NULL),(47,'0201','GUIA DO SIMPLES NACIONAL',NULL),(48,'0202','GUIA DO PRO-LABORE',NULL),(49,'0203','GUIA DO INSS',NULL),(50,'0204','ISS(IMPOSTO MUNICIPAL)',NULL),(51,'0205','ANUIDADE CAU PF',NULL),(52,'0206','ANUIDADE PJ',NULL),(53,'03','ESTRUTURA FÍSICA',NULL),(54,'0301','CONDOMÍNIO',NULL),(55,'0302','ALUGUEL',NULL),(56,'0303','IPTU',NULL),(57,'0304','ENERGIA',NULL),(58,'0305','ÁGUA',NULL),(59,'0306','INTERNET E TELEFONE',NULL),(60,'0307','SUPERMERCADO',NULL),(61,'0308','MATERIAL DE LIMPEZA',NULL),(62,'0309','MANUTENÇÃO ESPAÇO FÍSICO',NULL),(63,'04','ESTRUTURA DE SERVIÇOS',NULL),(64,'0401','MANUTENÇÃO DE COMPUTADORES',NULL),(65,'0402','MATERIAL DE IMPRESSORA',NULL),(66,'0403','GRÁFICA',NULL),(67,'0404','PAPELARIA',NULL),(68,'0405','DOMÍNIO SITE',NULL),(69,'0406','DOMÍNIO EMAIL',NULL),(70,'0407','MKT DIGITAL',NULL),(71,'0408','SOFTWARE OFICIAIS',NULL),(72,'0409','ASSINATURAS MENSAIS',NULL),(73,'0410','TARIFAS BANCÁRIAS',NULL),(74,'05','INVESTIMENTOS',NULL),(75,'0501','CURSO INCORPORAÇÃO',NULL),(76,'0502','MESTRADO UFMG',NULL),(77,'0503','GRADUAÇÃO',NULL),(78,'0504','CURSOS E EVENTOS',NULL),(79,'0505','PÓS',NULL),(80,'0506','COMPUTADOR',NULL),(81,'0507','SOFTWARE',NULL),(82,'06','DESLOCAMENTO',NULL),(83,'0601','DESLOCAMENTO DIÁRIOS AO ESCRITÓRIO','20/6,8*3,3*20'),(84,'0602','DESGASTE DO AUTOMOVEL','(75000*0,01)/12');
+INSERT INTO `tb_despesas` VALUES (1,'01','Profissionais e Colaboradores',NULL),(2,'0101','SOCIO',NULL),(3,'0102','SOCIO',NULL),(4,'0103','SOCIO',NULL),(5,'0104','SOCIO',NULL),(6,'0105','SOCIO',NULL),(7,'0106','SOCIO',NULL),(8,'0110','ARQUITETO I',NULL),(9,'011001','PROVISÃO DE 13º','#0110*%1'),(10,'011002','PROVISÃO DE 1/3 13º','#0110*%2'),(11,'011003','FGTS','#0110*%3'),(12,'011004','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0110*%4'),(13,'011005','INSS','#0110*%5'),(14,'011006','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0110*%6'),(15,'0111','ARQUITETO II',NULL),(16,'011101','PROVISÃO DE 13º','#0111*%1'),(17,'011102','PROVISÃO DE 1/3 13º','#0111*%2'),(18,'011103','FGTS','#0111*%3'),(19,'011104','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0111*%4'),(20,'011105','INSS','#0111*%5'),(21,'011106','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0111*%6'),(22,'0112','ARQUITETO III',NULL),(23,'011201','PROVISÃO DE 13º','#0112*%1'),(24,'011202','PROVISÃO DE 1/3 13º','#0112*%2'),(25,'011203','FGTS','#0112*%3'),(26,'011204','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0112*%4'),(27,'011205','INSS','#0112*%5'),(28,'011206','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0112*%6'),(29,'0113','ARQUITETO IV',NULL),(30,'011301','PROVISÃO DE 13º','#0113*%1'),(31,'011302','PROVISÃO DE 1/3 13º','#0113*%2'),(32,'011303','FGTS','#0113*%3'),(33,'011304','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0113*%4'),(34,'011305','INSS','#0113*%5'),(35,'011306','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0113*%6'),(36,'0120','BOLSA',NULL),(37,'012001','AUXILIO TRANSPORTE','se#0120(6*2)*22'),(38,'0130','ADMINISTRATIVO I',NULL),(39,'013001','PROVISÃO DE 13º','#0130*%1'),(40,'013002','PROVISÃO DE 1/3 13º','#0130*%2'),(41,'013003','FGTS','#0130*%3'),(42,'013004','PROVISÃO DE FGTS SOBRE 13º E FÉRIAS','#0130*%4'),(43,'013005','INSS','#0130*%5'),(44,'013006','PROVISÃO DE INSS SOBRFE 13º E FÉRIAS','#0130*%6'),(45,'0140','ASSESSORIA CONTABIL',NULL),(46,'02','GUIAS',NULL),(47,'0201','GUIA DO SIMPLES NACIONAL',NULL),(48,'0202','GUIA DO PRO-LABORE',NULL),(49,'0203','GUIA DO INSS',NULL),(50,'0204','ISS(IMPOSTO MUNICIPAL)',NULL),(51,'0205','ANUIDADE CAU PF',NULL),(52,'0206','ANUIDADE PJ',NULL),(53,'03','ESTRUTURA FÍSICA',NULL),(54,'0301','CONDOMÍNIO',NULL),(55,'0302','ALUGUEL',NULL),(56,'0303','IPTU',NULL),(57,'0304','ENERGIA',NULL),(58,'0305','ÁGUA',NULL),(59,'0306','INTERNET E TELEFONE',NULL),(60,'0307','SUPERMERCADO',NULL),(61,'0308','MATERIAL DE LIMPEZA',NULL),(62,'0309','MANUTENÇÃO ESPAÇO FÍSICO',NULL),(63,'04','ESTRUTURA DE SERVIÇOS',NULL),(64,'0401','MANUTENÇÃO DE COMPUTADORES',NULL),(65,'0402','MATERIAL DE IMPRESSORA',NULL),(66,'0403','GRÁFICA',NULL),(67,'0404','PAPELARIA',NULL),(68,'0405','DOMÍNIO SITE',NULL),(69,'0406','DOMÍNIO EMAIL',NULL),(70,'0407','MKT DIGITAL',NULL),(71,'0408','SOFTWARE OFICIAIS',NULL),(72,'0409','ASSINATURAS MENSAIS',NULL),(73,'0410','TARIFAS BANCÁRIAS',NULL),(74,'05','INVESTIMENTOS',NULL),(75,'0501','CURSO INCORPORAÇÃO',NULL),(76,'0502','MESTRADO UFMG',NULL),(77,'0503','GRADUAÇÃO',NULL),(78,'0504','CURSOS E EVENTOS',NULL),(79,'0505','PÓS',NULL),(80,'0506','COMPUTADOR',NULL),(81,'0507','SOFTWARE',NULL),(82,'06','DESLOCAMENTO',NULL),(83,'0601','DESLOCAMENTO DIÁRIOS AO ESCRITÓRIO','20/6,8*3,3*20'),(84,'0602','DESGASTE DO AUTOMOVEL','(75000*0,01)/12');
 /*!40000 ALTER TABLE `tb_despesas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1210,11 +1186,11 @@ DROP TABLE IF EXISTS `tb_etapas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_etapas` (
-  `et_id` int(11) NOT NULL AUTO_INCREMENT,
+  `et_id` int NOT NULL AUTO_INCREMENT,
   `et_codigo` varchar(6) DEFAULT NULL,
   `et_descricao` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`et_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1223,7 +1199,7 @@ CREATE TABLE `tb_etapas` (
 
 LOCK TABLES `tb_etapas` WRITE;
 /*!40000 ALTER TABLE `tb_etapas` DISABLE KEYS */;
-INSERT INTO `tb_etapas` VALUES (1,'01','ETAPA PRELIMINAR'),(2,'0101','REUNIÃO DE 1º CONTATO/BRIEFING'),(3,'010101','MONTAGEM DE ATA REUNIÃO'),(4,'010102','OBJETIVOS DO CLIENTE E DA OBRA'),(5,'010103','PRAZOS E RECURSOS DISPONIVEIS'),(6,'010104','PADRÕES DE CONTRUÇÕES E ACABAMENTOS PRETENDID'),(7,'010105','FECHAMENTO E DISTRIBUIÇÃO DE ATA DE REUNIÃO'),(8,'0102','PROPOSTA COMERCIAL E ORÇAMENTO DO TRABALHO'),(9,'010201','ELABORAÇÃO'),(10,'010202','RENIÃO DE APRESENTAÇÃO'),(11,'0103','CONTRATO DE PRESTAÇÃO DE SERVIÇOS'),(12,'010301','ELABORAÇÃO'),(13,'010302','REUNIÃO DE APRESENTAÇÃO'),(14,'0104','PERFIL DO CLIENTE'),(15,'010401','ESTUDO DO \"ESTILO DE VIDA\"'),(16,'0105','LEVANTAMENTO (LV)'),(17,'010501','FÍSICO(CONSIDERADO PASSAR A LIMPO DEPOIS)'),(18,'010502','FOTOGRÁFICO'),(19,'010503','INFORMAÇÕES SOBRE O TERRENO'),(20,'010504','INFORMAÇÕES SOBE O ENTORNO'),(21,'010505','CONVENÇÃO DE OBRAS DO CONDOMÍNIO'),(22,'010506','LEGISLAÇÃO ARQUITETÕNICA E URBANÍSTICA'),(23,'0106','PROGRAMA DE NECESSIDADE (EV)'),(24,'010601','ORGANOGRAMAS E FLUXOGRAMAS'),(25,'010602','RELAÇÃO DOS SETORES'),(26,'010603','NECESSIDADES DE ÁREA'),(27,'010604','CÓDIGO DE OBRAS'),(28,'010605','NORMAS PEERTINENTES'),(29,'0107','ESTUDO DE VIABILIDADE (EV)'),(30,'0108','VISITAS TÉCNICAS'),(31,'010801','ILUMINAÇÃO'),(32,'010802','REVESTIMENTOS'),(33,'010803','MARCENARIA'),(34,'02','ESTUDO PRELIMINAR (EP)'),(35,'0201','SITUAÇÃO');
+INSERT INTO `tb_etapas` VALUES (1,'01','ETAPA PRELIMINAR'),(2,'0101','REUNIÃO DE 1º CONTATO/BRIEFING'),(3,'010101','MONTAGEM DE ATA REUNIÃO'),(4,'010102','OBJETIVOS DO CLIENTE E DA OBRA'),(5,'010103','PRAZOS E RECURSOS DISPONIVEIS'),(6,'010104','PADRÕES DE CONTRUÇÕES E ACABAMENTOS PRETENDID'),(7,'010105','FECHAMENTO E DISTRIBUIÇÃO DE ATA DE REUNIÃO'),(8,'0102','PROPOSTA COMERCIAL E ORÇAMENTO DO TRABALHO'),(9,'010201','ELABORAÇÃO'),(10,'010202','RENIÃO DE APRESENTAÇÃO'),(11,'0103','CONTRATO DE PRESTAÇÃO DE SERVIÇOS'),(12,'010301','ELABORAÇÃO'),(13,'010302','REUNIÃO DE APRESENTAÇÃO'),(14,'0104','PERFIL DO CLIENTE'),(15,'010401','ESTUDO DO \"ESTILO DE VIDA\"'),(16,'0105','LEVANTAMENTO (LV)'),(17,'010501','FÍSICO(CONSIDERADO PASSAR A LIMPO DEPOIS)'),(18,'010502','FOTOGRÁFICO'),(19,'010503','INFORMAÇÕES SOBRE O TERRENO'),(20,'010504','INFORMAÇÕES SOBE O ENTORNO'),(21,'010505','CONVENÇÃO DE OBRAS DO CONDOMÍNIO'),(22,'010506','LEGISLAÇÃO ARQUITETÕNICA E URBANÍSTICA'),(23,'0106','PROGRAMA DE NECESSIDADE (EV)'),(24,'010601','ORGANOGRAMAS E FLUXOGRAMAS'),(25,'010602','RELAÇÃO DOS SETORES'),(26,'010603','NECESSIDADES DE ÁREA'),(27,'010604','CÓDIGO DE OBRAS'),(28,'010605','NORMAS PEERTINENTES'),(29,'0107','ESTUDO DE VIABILIDADE (EV)'),(30,'0108','VISITAS TÉCNICAS'),(31,'010801','ILUMINAÇÃO'),(32,'010802','REVESTIMENTOS'),(33,'010803','MARCENARIA'),(34,'02','ESTUDO PRELIMINAR (EP)'),(35,'0201','SITUAÇÃO'),(36,'0202','PLANTA GERAL DE IMPLANTAÇÃO'),(37,'0203','PLANTAS DOS PAVIMENTOS'),(38,'0204','PLANTA COBERTURA'),(39,'0205','CORTES (LONGITUDINAIS E TRANSVERSAIS)'),(40,'0206','ELAVAÇÕES(FACHADAS)'),(41,'0207','MEMORIAL JUSTIFICADO'),(42,'0208','ANÁLISE PRELIMINAR DE CUSTO'),(43,'0209','MAQUETE(ESTUDO VOLUMÉTRICO)'),(44,'0210','IMAGENS PERSPECTIVADAS'),(45,'0211','VÍDEO'),(46,'0212','REUNIÃO DE APRESENTAÇÃO E APROVAÇÃO'),(47,'0213','POSSÍVEIS ALTERAÇÕES'),(48,'0214','REUNIÃO DE REAPRESENTAÇÃO'),(49,'03','ANTEPROJETO (AP-ARQ)'),(50,'0301','SITUAÇÃO'),(51,'0302','PLANTA GERAL DE IMPLANTAÇÃO'),(52,'0303','PLANTA DE TERRAPLANAGEM'),(53,'0304','PLANTAS DOS PAVIMENTOS'),(54,'0305','PLANTA COBERTURA'),(55,'0306','CORTES (LONGITUDINAIS E TRANSVERSAIS)'),(56,'0307','ELEVAÇÕES(FACHADAS)'),(57,'0308','MEMORIAL DE ASPECTOS CONSTRUTIVOS'),(58,'0309','DISCRIMINAÇÃO TÉCNICA'),(59,'0310','QUADRO GERAL DE ACABAMENTO'),(60,'0311','LISTA PRELIMINAR DE MATERIAIS'),(61,'0312','IMAGENS PERSPECTIVADAS'),(62,'0313','ESTIMATIVA DE CUSTO'),(63,'0314','REUNIÃO DE APRESENTAÇÃO E APROVAÇÃO'),(64,'0315','POSSÍVEIS ALTERAÇÕES'),(65,'0316','REUNIÃO DE REAPRESENTAÇÃO'),(66,'04','PROJETO LEGAL (PL)'),(67,'0401','PLANTA GERAL DE IMPLANTAÇÃO'),(68,'0402','PLANTA DE TERRAPLANAGEM'),(69,'0403','PLANTAS DOS PAVIMENTOS'),(70,'0404','PLANTA DA COBERTURA'),(71,'0405','CORTES (LONGITUDINAIS E TRANSVERSAIS)'),(72,'0406','ELAVAÇÕES(FACHADAS)'),(73,'0407','DETALHES CONSTRUTIVOS'),(74,'0408','MEMORIAL DESCRITIVO DA EDIFICAÇÃO'),(75,'0409','PROTOCOLAÇÃO E ACOMPANHAMENTO EM ORGÃO OFICIAL'),(76,'0410','POSSÍVEIS ALTERAÇÕES'),(77,'05','PROJETO PARA EXECUÇÃO(PE)'),(78,'0501','PLANTA GERAL DE IMPLANTAÇÃO'),(79,'0502','PLANTA DE TERRAPLANAGEM'),(80,'0503','PLANTAS DOS PAVIMENTOS'),(81,'0504','PLANTA DA COBERTURA'),(82,'0505','CORTES (LONGITUDINAIS E TRANSVERSAIS)'),(83,'0506','ELAVAÇÕES(FACHADAS)'),(84,'0507','PLANTAS, CORTES E LEVAÇÕES DE AMBIENTES'),(85,'0508','DETALHES CONSTRUTIVOS'),(86,'0509','DISCRIMINAÇÃO TÉCNICA'),(87,'0510','QUADRO GERAL DE ACABAMENTO'),(88,'0511','ESPECIFICAÇÕES'),(89,'0512','LISTA DE MATERIAIS'),(90,'0513','IMAGENS PERSPECTIVADAS'),(91,'0514','ORÇAMENTO DE PROJETO'),(92,'06','COORDENAÇÃO E COMPATIBILIZAÇÃO DE PROJETO (CP)'),(93,'0601','RELATORIOS TÉCNICOS'),(94,'060101','PRAZOS E CRONOGRAMAS'),(95,'060102','RECURSOS HUMANOS'),(96,'060103','MATERIAIS NECESSÁRIOS'),(97,'060104','INTERFERÊNCIA E DESCONFORMIDADES'),(98,'060105','ACOMPANHAMENTO DO AMDAMENTO DAS ATIVIDADES'),(99,'0602','ATAS REUNIÕES'),(100,'0603','PROJETOS COMPATIBILIDADES'),(101,'07','COORDENAÇÃO DE EQUIPE MULTIDISCIPLINAR (CE)'),(102,'0701','RELATORIOS TÉCNICOS'),(103,'08','ASSISTÊNCIA À PROJETOS COMPLEMENTARES (AP)'),(104,'0801','VISITAS TÉCNICAS PRÉ-DEFINIDAS'),(105,'080101','ORÇAMENTO,VISITAS TÉCNICAS E CONTRATAÇÃO DE PROFISSIONAIS OU EMPRESA'),(106,'080201','INDICAÇÃO DE ITENS EXECUTADOS'),(107,'080202','REVISÃO E AJUSTES'),(108,'080203','APROVAÇÃO E COMPATIBILIZAÇÃO'),(109,'09','ASSITÊNCIA À EXECUÇÃO DA OBRA (AE)'),(110,'0901','VISITAS TÉCNICAS PRÉ-DEFINIDAS'),(111,'0902','RELATORIOS DE ACOMPANHAMENTO DA EXECUÇÃO DAS DIFERENTES ETAPAS DA OBRA'),(112,'10','\"AS BUILT (AB)\"'),(113,'1001','PLANTA GERAL DE IMPLANTAÇÃO'),(114,'1002','PLANTA DE TERRAPLANAGEM'),(115,'1003','CORTES (LONGITUDINAIS E TRANSVERSAIS)'),(116,'1004','PLANTA BAIXA DOS PAVIMENTOS'),(117,'1005','PLANTA DA COBERTURA'),(118,'1006','ELEVAÇÕES'),(119,'1007','MEMORIAL DESCRITIVO'),(120,'100701','DA EDIFICAÇÃO'),(121,'100702','INSTALAÇÕES PREDIAIS'),(122,'100703','COMPONENTES CONSTRUTIVOS'),(123,'100704','MATERIAIS DE CONSTRUÇÃO');
 /*!40000 ALTER TABLE `tb_etapas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1235,8 +1211,8 @@ DROP TABLE IF EXISTS `tb_precos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_precos` (
-  `pe_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pe_meses` int(11) DEFAULT NULL,
+  `pe_id` int NOT NULL AUTO_INCREMENT,
+  `pe_meses` int DEFAULT NULL,
   `pe_preco` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`pe_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
@@ -1260,7 +1236,7 @@ DROP TABLE IF EXISTS `tb_profissional`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_profissional` (
-  `pr_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pr_id` int NOT NULL AUTO_INCREMENT,
   `pr_descricao` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`pr_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
@@ -1284,16 +1260,16 @@ DROP TABLE IF EXISTS `tb_projeto_custo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_projeto_custo` (
-  `pc_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pc_projeto` int(11) DEFAULT NULL,
-  `pc_custo` int(11) DEFAULT NULL,
+  `pc_id` int NOT NULL AUTO_INCREMENT,
+  `pc_projeto` int DEFAULT NULL,
+  `pc_custo` int DEFAULT NULL,
   `pc_valor_previsto` decimal(15,2) DEFAULT NULL,
   PRIMARY KEY (`pc_id`),
   KEY `fk_projeto_custo_idx` (`pc_custo`),
   KEY `fk_projeto_idx` (`pc_projeto`),
-  CONSTRAINT `fk_projeto_custo` FOREIGN KEY (`pc_custo`) REFERENCES `tb_custos` (`cu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_projeto_custo_projeto` FOREIGN KEY (`pc_projeto`) REFERENCES `tb_projetos` (`pr_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_projeto_custo` FOREIGN KEY (`pc_custo`) REFERENCES `tb_custos` (`cu_id`),
+  CONSTRAINT `fk_projeto_custo_projeto` FOREIGN KEY (`pc_projeto`) REFERENCES `tb_projetos` (`pr_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1302,7 +1278,7 @@ CREATE TABLE `tb_projeto_custo` (
 
 LOCK TABLES `tb_projeto_custo` WRITE;
 /*!40000 ALTER TABLE `tb_projeto_custo` DISABLE KEYS */;
-INSERT INTO `tb_projeto_custo` VALUES (6,1,6,150.00),(7,1,3,114.15),(8,1,2,200.00),(9,2,6,150.00),(10,2,3,114.15),(11,2,2,200.00);
+INSERT INTO `tb_projeto_custo` VALUES (6,1,6,150.00),(7,1,3,114.15),(8,1,2,200.00),(15,4,6,150.00),(16,4,3,114.15),(17,4,2,0.00),(18,4,17,500.00),(19,4,13,250.00),(20,4,12,250.00),(21,4,11,100.00),(22,4,10,50.00),(23,4,18,1200.00);
 /*!40000 ALTER TABLE `tb_projeto_custo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1314,16 +1290,16 @@ DROP TABLE IF EXISTS `tb_projeto_despesas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_projeto_despesas` (
-  `pd_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pd_projeto` int(11) DEFAULT NULL,
-  `pd_despesa` int(11) DEFAULT NULL,
+  `pd_id` int NOT NULL AUTO_INCREMENT,
+  `pd_projeto` int DEFAULT NULL,
+  `pd_despesa` int DEFAULT NULL,
   `pd_valor_previsto` decimal(15,2) DEFAULT NULL,
   PRIMARY KEY (`pd_id`),
   KEY `fk_projeto_despesa_idx` (`pd_despesa`),
   KEY `fk_projeto_despesa_projeto_idx` (`pd_projeto`),
-  CONSTRAINT `fk_projeto_despesa` FOREIGN KEY (`pd_despesa`) REFERENCES `tb_despesas` (`da_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_projeto_despesa_projeto` FOREIGN KEY (`pd_projeto`) REFERENCES `tb_projetos` (`pr_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=332 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_projeto_despesa` FOREIGN KEY (`pd_despesa`) REFERENCES `tb_despesas` (`da_id`),
+  CONSTRAINT `fk_projeto_despesa_projeto` FOREIGN KEY (`pd_projeto`) REFERENCES `tb_projetos` (`pr_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=399 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1332,7 +1308,7 @@ CREATE TABLE `tb_projeto_despesas` (
 
 LOCK TABLES `tb_projeto_despesas` WRITE;
 /*!40000 ALTER TABLE `tb_projeto_despesas` DISABLE KEYS */;
-INSERT INTO `tb_projeto_despesas` VALUES (292,1,84,62.50),(293,1,83,194.12),(294,1,37,264.00),(295,1,36,1200.00),(296,1,14,333.00),(297,1,13,3000.00),(298,1,12,133.50),(299,1,11,1200.00),(300,1,10,417.00),(301,1,9,1245.00),(302,1,8,15000.00),(303,1,46,0.00),(304,1,44,66.60),(305,1,43,600.00),(306,1,42,26.70),(307,1,41,240.00),(308,1,40,83.40),(309,1,39,249.00),(310,1,38,3000.00),(311,1,2,30000.00),(312,2,84,62.50),(313,2,83,194.12),(314,2,37,264.00),(315,2,36,1200.00),(316,2,14,333.00),(317,2,13,3000.00),(318,2,12,133.50),(319,2,11,1200.00),(320,2,10,417.00),(321,2,9,1245.00),(322,2,8,15000.00),(323,2,46,250.00),(324,2,44,66.60),(325,2,43,600.00),(326,2,42,26.70),(327,2,41,240.00),(328,2,40,83.40),(329,2,39,249.00),(330,2,38,3000.00),(331,2,2,30000.00);
+INSERT INTO `tb_projeto_despesas` VALUES (292,1,84,62.50),(293,1,83,194.12),(294,1,37,264.00),(295,1,36,1200.00),(296,1,14,333.00),(297,1,13,3000.00),(298,1,12,133.50),(299,1,11,1200.00),(300,1,10,417.00),(301,1,9,1245.00),(302,1,8,15000.00),(303,1,46,0.00),(304,1,44,66.60),(305,1,43,600.00),(306,1,42,26.70),(307,1,41,240.00),(308,1,40,83.40),(309,1,39,249.00),(310,1,38,3000.00),(351,4,84,62.50),(352,4,83,194.12),(355,4,14,333.00),(356,4,13,3000.00),(357,4,12,133.50),(358,4,11,1200.00),(359,4,10,417.00),(360,4,9,1245.00),(361,4,8,15000.00),(362,4,46,150.00),(363,4,44,66.60),(364,4,43,600.00),(365,4,42,26.70),(366,4,41,240.00),(367,4,40,83.40),(368,4,39,249.00),(369,4,38,3000.00),(370,4,81,0.00),(371,4,80,0.00),(372,4,79,0.00),(373,4,78,0.00),(374,4,77,0.00),(375,4,76,0.00),(376,4,75,0.00),(377,4,69,0.00),(378,4,68,0.00),(379,4,67,0.00),(380,4,66,0.00),(381,4,65,0.00),(382,4,64,0.00),(383,4,62,0.00),(384,4,61,0.00),(385,4,60,0.00),(386,4,59,0.00),(387,4,58,0.00),(388,4,57,0.00),(389,4,56,0.00),(390,4,55,0.00),(391,4,54,0.00),(392,4,52,0.00),(393,4,51,0.00),(394,4,50,0.00),(395,4,48,0.00),(396,4,45,1412.00),(397,4,37,264.00),(398,4,36,1200.00);
 /*!40000 ALTER TABLE `tb_projeto_despesas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1344,17 +1320,17 @@ DROP TABLE IF EXISTS `tb_projeto_etapas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_projeto_etapas` (
-  `pe_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pe_projeto` int(11) DEFAULT NULL,
-  `pe_etapa` int(11) DEFAULT NULL,
+  `pe_id` int NOT NULL AUTO_INCREMENT,
+  `pe_projeto` int DEFAULT NULL,
+  `pe_etapa` int DEFAULT NULL,
   `pe_hora_previsto` decimal(10,2) DEFAULT NULL,
   `pe_realisado` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`pe_id`),
   KEY `fk_projeto_etapa_idx` (`pe_etapa`),
   KEY `fk_projeto_etapa_projeto_idx` (`pe_projeto`),
-  CONSTRAINT `fk_projeto_etapa` FOREIGN KEY (`pe_etapa`) REFERENCES `tb_etapas` (`et_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_projeto_etapa_projeto` FOREIGN KEY (`pe_projeto`) REFERENCES `tb_projetos` (`pr_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_projeto_etapa` FOREIGN KEY (`pe_etapa`) REFERENCES `tb_etapas` (`et_id`),
+  CONSTRAINT `fk_projeto_etapa_projeto` FOREIGN KEY (`pe_projeto`) REFERENCES `tb_projetos` (`pr_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1363,7 +1339,7 @@ CREATE TABLE `tb_projeto_etapas` (
 
 LOCK TABLES `tb_projeto_etapas` WRITE;
 /*!40000 ALTER TABLE `tb_projeto_etapas` DISABLE KEYS */;
-INSERT INTO `tb_projeto_etapas` VALUES (1,1,1,1.50,NULL),(2,1,2,252.00,NULL),(3,1,3,23.97,NULL),(4,1,4,22.17,NULL),(5,1,35,0.00,NULL),(6,1,34,0.00,NULL),(7,1,33,0.00,NULL),(8,1,32,0.00,NULL),(9,1,31,0.00,NULL),(10,1,30,0.00,NULL),(11,1,29,0.00,NULL),(12,1,28,0.00,NULL),(13,1,27,0.00,NULL),(14,1,26,0.00,NULL),(15,1,25,0.00,NULL),(16,1,24,0.00,NULL),(17,1,23,0.00,NULL),(18,1,22,0.00,NULL),(19,1,21,0.00,NULL),(20,1,20,0.00,NULL),(21,1,19,0.00,NULL),(22,1,18,0.00,NULL),(23,1,17,0.00,NULL),(24,1,16,0.00,NULL),(25,1,15,0.00,NULL),(26,1,14,0.00,NULL),(27,1,13,0.00,NULL),(28,1,12,0.00,NULL),(29,1,11,0.00,NULL),(30,1,10,0.00,NULL),(31,1,9,0.00,NULL),(32,1,8,0.00,NULL),(33,1,7,0.00,NULL),(34,1,6,219.67,NULL),(35,1,5,0.00,NULL);
+INSERT INTO `tb_projeto_etapas` VALUES (1,1,1,1.50,NULL),(2,1,2,252.00,NULL),(3,1,3,23.97,NULL),(4,1,4,22.17,NULL),(5,1,35,0.00,NULL),(6,1,34,0.00,NULL),(7,1,33,0.00,NULL),(8,1,32,0.00,NULL),(9,1,31,0.00,NULL),(10,1,30,0.00,NULL),(11,1,29,0.00,NULL),(12,1,28,0.00,NULL),(13,1,27,0.00,NULL),(14,1,26,0.00,NULL),(15,1,25,0.00,NULL),(16,1,24,0.00,NULL),(17,1,23,0.00,NULL),(18,1,22,0.00,NULL),(19,1,21,0.00,NULL),(20,1,20,0.00,NULL),(21,1,19,0.00,NULL),(22,1,18,0.00,NULL),(23,1,17,0.00,NULL),(24,1,16,0.00,NULL),(25,1,15,0.00,NULL),(26,1,14,0.00,NULL),(27,1,13,0.00,NULL),(28,1,12,0.00,NULL),(29,1,11,0.00,NULL),(30,1,10,0.00,NULL),(31,1,9,0.00,NULL),(32,1,8,0.00,NULL),(33,1,7,0.00,NULL),(34,1,6,219.67,NULL),(35,1,5,0.00,NULL),(36,4,1,1.50,0.00),(37,4,2,252.00,0.00),(38,4,3,23.97,0.00),(39,4,4,22.17,0.00),(69,4,6,219.67,0.00);
 /*!40000 ALTER TABLE `tb_projeto_etapas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1375,12 +1351,12 @@ DROP TABLE IF EXISTS `tb_projeto_observacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_projeto_observacao` (
-  `pb_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pb_projeto` int(11) DEFAULT NULL,
+  `pb_id` int NOT NULL AUTO_INCREMENT,
+  `pb_projeto` int DEFAULT NULL,
   `pb_observacao` longtext,
   PRIMARY KEY (`pb_id`),
   KEY `fk_projeto_observacao_projeto_idx` (`pb_projeto`),
-  CONSTRAINT `fk_projeto_observacao_projeto` FOREIGN KEY (`pb_projeto`) REFERENCES `tb_projetos` (`pr_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_projeto_observacao_projeto` FOREIGN KEY (`pb_projeto`) REFERENCES `tb_projetos` (`pr_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1401,17 +1377,17 @@ DROP TABLE IF EXISTS `tb_projeto_profissional`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_projeto_profissional` (
-  `pp_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pp_projeto` int(11) DEFAULT NULL,
-  `pp_profissional` int(11) DEFAULT NULL,
+  `pp_id` int NOT NULL AUTO_INCREMENT,
+  `pp_projeto` int DEFAULT NULL,
+  `pp_profissional` int DEFAULT NULL,
   `pp_valor` decimal(15,2) DEFAULT NULL,
-  `pp_quantidade` int(11) DEFAULT NULL,
+  `pp_quantidade` int DEFAULT NULL,
   PRIMARY KEY (`pp_id`),
   KEY `fk_projeto_profissional_idx` (`pp_profissional`),
   KEY `fk_projeto_profissional_projeto_idx` (`pp_projeto`),
-  CONSTRAINT `fk_projeto_profissional` FOREIGN KEY (`pp_profissional`) REFERENCES `tb_despesas` (`da_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_projeto_profissional_projeto` FOREIGN KEY (`pp_projeto`) REFERENCES `tb_projetos` (`pr_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_projeto_profissional` FOREIGN KEY (`pp_profissional`) REFERENCES `tb_despesas` (`da_id`),
+  CONSTRAINT `fk_projeto_profissional_projeto` FOREIGN KEY (`pp_projeto`) REFERENCES `tb_projetos` (`pr_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1420,7 +1396,7 @@ CREATE TABLE `tb_projeto_profissional` (
 
 LOCK TABLES `tb_projeto_profissional` WRITE;
 /*!40000 ALTER TABLE `tb_projeto_profissional` DISABLE KEYS */;
-INSERT INTO `tb_projeto_profissional` VALUES (14,1,8,15000.00,1),(15,1,36,1200.00,1),(16,1,38,3000.00,1),(17,1,2,30000.00,1),(18,2,8,15000.00,1),(19,2,36,1200.00,1),(20,2,38,3000.00,1),(21,2,2,30000.00,1);
+INSERT INTO `tb_projeto_profissional` VALUES (14,1,8,15000.00,1),(15,1,36,1200.00,1),(16,1,38,3000.00,1),(26,4,8,15000.00,1),(28,4,38,3000.00,1),(29,4,45,1412.00,1),(38,4,36,1200.00,1);
 /*!40000 ALTER TABLE `tb_projeto_profissional` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1432,10 +1408,10 @@ DROP TABLE IF EXISTS `tb_projetos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_projetos` (
-  `pr_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pr_cliente` int(11) DEFAULT NULL,
-  `pr_tipologia` int(11) DEFAULT NULL,
-  `pr_metragem` int(11) DEFAULT NULL,
+  `pr_id` int NOT NULL AUTO_INCREMENT,
+  `pr_cliente` int DEFAULT NULL,
+  `pr_tipologia` int DEFAULT NULL,
+  `pr_metragem` int DEFAULT NULL,
   `pr_endereco` varchar(45) DEFAULT NULL,
   `pr_conteudo` varchar(45) DEFAULT NULL,
   `pr_proprietario` varchar(45) DEFAULT NULL,
@@ -1450,7 +1426,7 @@ CREATE TABLE `tb_projetos` (
   `pr_data_cadastro` datetime DEFAULT NULL,
   PRIMARY KEY (`pr_id`),
   KEY `fk_projeto_cliente_idx` (`pr_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1459,7 +1435,7 @@ CREATE TABLE `tb_projetos` (
 
 LOCK TABLES `tb_projetos` WRITE;
 /*!40000 ALTER TABLE `tb_projetos` DISABLE KEYS */;
-INSERT INTO `tb_projetos` VALUES (1,1,1,1000,'PLANTA DE BERNEFICIAMENTO EM SABARÁ','ARQUITETURA, LAY-OUT, ÁREA EXTERNA','GLOBAL MINERAÇÃO','2021-06-18','IVAN MARTINS',0.10,0.15,0.12,0.12,0.15,'PROJET JULIANA & IVAN','0000-00-00 00:00:00'),(2,1,1,1000,'PLANTA DE BERNEFICIAMENTO EM SABARÁ','ARQUITETURA, LAY-OUT, ÁREA EXTERNA','GLOBAL MINERAÇÃO','2021-06-18','IVAN MARTINS',0.10,0.15,0.12,0.12,0.15,'PROJET JULIANA & IVAN','2024-05-14 11:36:02');
+INSERT INTO `tb_projetos` VALUES (1,1,1,1000,'PLANTA DE BERNEFICIAMENTO EM SABARÁ','ARQUITETURA, LAY-OUT, ÁREA EXTERNA','GLOBAL MINERAÇÃO','2021-06-18','IVAN MARTINS',0.10,0.15,0.12,0.12,0.15,'PROJET JULIANA & IVAN','0000-00-00 00:00:00'),(4,1,1,1000,'PLANTA DE BERNEFICIAMENTO EM SABARÁ','ARQUITETURA, LAY-OUT, ÁREA EXTERNA','GLOBAL MINERAÇÃO','2021-06-18','IVAN MARTINS',0.10,0.15,0.12,0.12,0.15,'PROJET JULIANA & IVAN','2024-05-17 12:53:32');
 /*!40000 ALTER TABLE `tb_projetos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1471,7 +1447,7 @@ DROP TABLE IF EXISTS `tb_tipologia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_tipologia` (
-  `ti_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ti_id` int NOT NULL AUTO_INCREMENT,
   `ti_descricao` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ti_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -1495,9 +1471,9 @@ DROP TABLE IF EXISTS `tp_cidades`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_cidades` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_Estado` int(9) NOT NULL,
-  `Codigo` int(11) NOT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `ID_Estado` int NOT NULL,
+  `Codigo` int NOT NULL,
   `Nome` varchar(255) NOT NULL,
   `Uf` char(2) NOT NULL,
   PRIMARY KEY (`ID`),
@@ -1524,8 +1500,8 @@ DROP TABLE IF EXISTS `tp_estados`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_estados` (
-  `ID` int(9) NOT NULL AUTO_INCREMENT,
-  `CodigoIbge` int(3) NOT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `CodigoIbge` int NOT NULL,
   `Nome` varchar(255) DEFAULT NULL,
   `Sigla` varchar(2) NOT NULL,
   PRIMARY KEY (`ID`)
@@ -1551,4 +1527,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-15 11:48:10
+-- Dump completed on 2024-05-20 17:20:59

@@ -2,6 +2,7 @@
 
 <%@ Import Namespace="Orcamento" %>
 <%@ Import Namespace="Microsoft.AspNet.Identity" %>
+
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
 <div class="row">
@@ -16,7 +17,13 @@
                         <hr />
                         <asp:ValidationSummary runat="server" CssClass="text-danger" />
                         <div class="row">
-                            <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 col-form-label">E-mail</asp:Label>
+                            <asp:Label runat="server" CssClass="col-md-5 col-form-label">Nome do Usuário</asp:Label>
+                            <div class="col-md-10">
+                                <asp:TextBox runat="server" ID="TextBox4" CssClass="form-control"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-5 col-form-label">E-mail</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="TextBox1" CssClass="form-control" TextMode="Email" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
@@ -24,7 +31,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 col-form-label">Senha</asp:Label>
+                            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-5 col-form-label">Senha</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="TextBox2" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
@@ -32,7 +39,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 col-form-label">Confirmar senha</asp:Label>
+                            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-5 col-form-label">Confirmar senha</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="TextBox3" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
@@ -41,8 +48,9 @@
                                     CssClass="text-danger" Display="Dynamic" ErrorMessage="A senha e a senha de confirmação não coincidem." />
                             </div>
                         </div>
+                        <hr />
                         <div class="row">
-                            <div class="offset-md-2 col-md-10">
+                            <div class="col-md-5">
                                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Registre-se" CssClass="btn btn-primary" />
                             </div>
                         </div>
@@ -52,12 +60,12 @@
       <div class="col-sm-6">
         <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
          <div class="card-header"><h4>A senha deve conter</h4></div>
-              <div class="card-body" style="color:green;">
-                <p class="card-text">Mínimo de 8 caracteres</p>
-                <p class="card-text">Máximo de 16 caracteres</p>
-                <p class="card-text">Pelo menos um caractere maiúsculo</p>
-                <p class="card-text">Um número</p>
-                <p class="card-text">Um caractere especial</p>
+              <div class="card-body" style="color:black; background-color:aliceblue; font-weight: bold;">
+                <p class="card-text" style="color:black;">Mínimo de 8 caracteres</p>
+                <p class="card-text" style="color:black;">Máximo de 16 caracteres</p>
+                <p class="card-text" style="color:black;">Pelo menos um caractere maiúsculo</p>
+                <p class="card-text" style="color:black;">Um número</p>
+                <p class="card-text" style="color:black;">Um caractere especial</p>
               </div>
         </div>
       </div>

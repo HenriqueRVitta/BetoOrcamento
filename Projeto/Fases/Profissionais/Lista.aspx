@@ -59,7 +59,7 @@
             </div>
 
             <div class="card-body">
-                <div class="col-sm-offset-1 col-sm-10">
+                <div>
                      <div>
                         <div class="col-12 text-left" style="margin-top:5px">
                             <asp:Button ID="BtnNovo" runat="server" Text="Novo Profissional" class="btn btn-primary" style="background-color:#000438; color:white" OnClick="BtnNovo_Click" />

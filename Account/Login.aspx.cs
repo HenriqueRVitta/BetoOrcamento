@@ -11,6 +11,7 @@ namespace Orcamento.Account
 {
     public partial class Login : Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
@@ -36,10 +37,12 @@ namespace Orcamento.Account
                 // Para habilitar falhas de senha para acionar o bloqueio, mude para shouldLockout: true
                 var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
 
+                var NmUsuario = manager.FindByEmail(Email.Text);
+
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        Session["logado"] = Email.Text;
+                        Session["logado"] = NmUsuario.NomeDoUsuario;
                         IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                         break;
                     case SignInStatus.LockedOut:

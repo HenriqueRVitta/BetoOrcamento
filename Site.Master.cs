@@ -95,8 +95,8 @@ namespace Orcamento
                 //CadastroLinkListItem.Visible = true;
                 //MovimentacaoLinkListItem.Visible = true;
                 //DashboardLinkListItem.Visible = true;
-                //FundoInicial.Style.Value = "";
-                //FundoInicial.Attributes.Add("background-color", "#DC143C");
+                FundoInicial.Style.Value = "";
+                FundoInicial.Attributes.Add("background-color", "#DC143C");
 
             }
 

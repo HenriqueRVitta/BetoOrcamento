@@ -33,7 +33,7 @@
 
 <body>
 <div id="FundoInicial"  runat="server" class="hero" 
-     style="background-image: url('Content/images/ivan.jpg');">
+     style="background-image: url('/Content/images/ivan.jpg');">
 
     <form runat="server">
 
@@ -56,7 +56,6 @@
             </Scripts>
         </asp:ScriptManager>
 
-
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header" style="background-color:#000438" >
           <div class="site-mobile-menu-close mt-3">
@@ -69,32 +68,59 @@
         <div class="container">
           <div class="row align-items-center position-relative">
             <div class="col-2 ml-auto text-right order-2">
-              <div class="site-logo">
-                <a href="Default.aspx" class="font-weight-bold text-white" style="font-size: 22px; font-family:Tahoma;">Pralucrar</a>
+              <div class="site-navbar site-logo">
+                    <a href="#" class="font-weight-bold text-white" style="font-size: 22px; font-family:Tahoma;">Pralucrar</a>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                                 <a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Register">Cadastrar-se</a>
                                 <a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Login">Entrar</a>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <!-- <a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Manage" title="Manage your account">Olá, <%: Context.User.Identity.GetUserName()  %> </a> -->
-                            <asp:LoginStatus runat="server" CssClass="nav-link font-weight-bold text-white" LogoutAction="Redirect" LogoutText="Sair" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink_" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="avatar me-1">
+                                    <img src="/Content/images/user.png" style="width:22px; height:22px;" alt="" srcset="">  <%: Session["logado"]  %>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink_">
+                                <a class="dropdown-item" href="#"><i class="feather icon-settings"></i> Meu plano</a>
+                                <a class="dropdown-item" href="#"><i class="feather icon-users"></i> Alterar senha</a>
+                                <div class="dropdown-divider"></div>
+                                <asp:LoginStatus runat="server" CssClass="dropdown-item icon-exit_to_app" LogoutAction="Redirect" LogoutText=" Sair" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            </div>
                        </LoggedInTemplate>
                     </asp:LoginView>
               </div>
             </div>
 
+            <asp:LoginView runat="server" ViewStateMode="Disabled">
+            <LoggedInTemplate>
             <div class="col-9 order-1 text-left mr-auto">
-              <span class="d-inline-block d-lg-block"><a href="/" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+              <span class="d-inline-block d-lg-block"><a href="#" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
               <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
-                  <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                      <a runat="server" class="icon-account_circle" style="font-size: 62px; text-align:center;"><a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Manage" title="Usuário logado..."><%: Context.User.Identity.GetUserName()  %> </a></a>
-                      <li><a href="index.html" class="nav-link"><i class="icon-home"></i> Home</a></li>
+                  <ul class="site-menu main-menu js-clone-nav ml-auto">
+
+                      <!-- <a runat="server" class="icon-account_circle" style="font-size: 62px; text-align:center;"><a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Manage" title="Usuário logado..."><%: Context.User.Identity.GetUserName()  %> </a></a> -->
+                      <li><a href="/" class="nav-link"><i class="icon-home"></i> Home</a></li>
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="icon-clipboard"></i> Cadastro
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="#"><i class="icon-person"></i> Cliente</a>
+                          <a class="dropdown-item" href="/Cadastros/Despesa/Lista"><i class="icon-circle"></i> Despesas Administrativas</a>
+                          <a class="dropdown-item" href="/Cadastros/Custos/Lista"><i class="icon-card_travel"></i> Custos</a>
+                          <a class="dropdown-item" href="/Cadastros/Etapas/Lista"><i class="icon-card_membership"></i> Etapas de Projetos</a>
+                          <a class="dropdown-item" href="/Cadastros/Preco/Lista"><i class="icon-money"></i> Preços</a>
+                          <a class="dropdown-item" href="/Cadastros/Tipologia/Lista"><i class="icon-circle"></i> Tipologia</a>
+                        </div>
+                      </li>
+
+                      <!--
                       <li class="has-children">
-                          <a href="#" class="nav-link"><i class="icon-clipboard"></i> Cadastro</a>
+                          <a href="#" class="dropdown-item"><i class="icon-clipboard"></i> Cadastro</a>
                           <ul class="dropdown arrow-top">
                               <li><a href="#" class="nav-link"><i class="icon-person"></i> Cliente</a></li>
-                              <!-- <li><a href="/Cadastros/Profissional/Lista" class="nav-link"><i class="icon-people"></i> Profissional</a></li> -->
                               <li><a href="/Cadastros/Despesa/Lista" class="nav-link"><i class="icon-circle"></i> Despesas Administrativas</a></li>
                               <li><a href="/Cadastros/Custos/Lista" class="nav-link"><i class="icon-card_travel"></i> Custos</a></li>
                               <li><a href="/Cadastros/Etapas/Lista" class="nav-link"><i class="icon-card_membership"></i> Etapas de Projetos</a></li>
@@ -102,31 +128,34 @@
                               <li><a href="/Cadastros/Tipologia/Lista" class="nav-link"><i class="icon-circle"></i> Tipologia</a></li>
                           </ul>
                       </li>
+                      -->
                       <li><a href="/Projeto/Criacao/Lista" class="nav-link"><i class="icon-product-hunt"></i> Projetos</a></li>
-<%--                      <li><a href="#" class="nav-link"><i class="icon-dashboard"></i> Dashboard</a></li>--%>
                       <li><a href="#" class="nav-link"><i class="icon-info2"></i> Manual</a></li>
                       <li><a href="#" class="nav-link"><i class="icon-contacts"></i> Contato</a></li>
                   </ul>
               </nav>
             </div>
+           </LoggedInTemplate>
+           </asp:LoginView>
+
           </div>
-        <div class="container body-content" >
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <footer class="footer-content">
-                <p>&copy; <%: DateTime.Now.Year %> - Precificação para Arquitetos</p>
-            </footer>
-        </div>
+                <div class="container body-content" >
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <footer class="footer-content">
+                        <p>&copy; <%: DateTime.Now.Year %> - Precificação para Arquitetos</p>
+                    </footer>
+                </div>
         </div>
       </header>
 
     <!-- <div class="hero" style="background-image: url('Content/images/ivan.jpg');"></div> -->
 
-    <script src="Content/js/jquery-3.3.1.min.js"></script>
-    <script src="Content/js/popper.min.js"></script>
-    <script src="Content/js/bootstrap.min.js"></script>
-    <script src="Content/js/jquery.sticky.js"></script>
-    <script src="Content/js/main.js"></script>
+    <script src="/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="/Content/js/popper.min.js"></script>
+    <script src="/Content/js/bootstrap.min.js"></script>
+    <script src="/Content/js/jquery.sticky.js"></script>
+    <script src="/Content/js/main.js"></script>
 
     </form>
 </div>

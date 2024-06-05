@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.UI.WebControls.WebParts;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -15,6 +16,8 @@ namespace Orcamento.Models
     // É possível adicionar Dados de usuário para o usuário ao incluir mais propriedades na sua Classe de usuário, visite https://go.microsoft.com/fwlink/?LinkID=317594 para obter mais informações.
     public class ApplicationUser : IdentityUser
     {
+
+        [Personalizable]
         public string NomeDoUsuario { get; set; }
 
         [DbConfigurationType(typeof(MySqlEFConfiguration))]

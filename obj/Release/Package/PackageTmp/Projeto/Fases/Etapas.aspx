@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Etapas.aspx.cs" Inherits="Orcamento.Projeto.Fases.Etapas1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link rel="stylesheet" href="../../Content/bootstrap.min.css">
+    <script src="../../Content/js/jquery-3.3.1.min.js"></script>
+    <script src="../../Content/js/bootstrap.min.js"></script>
 <div class="panel" id="Etapas">
         <asp:Label ID="lblProjeto" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="lblTotal" runat="server" Text="" Visible="false"></asp:Label>
@@ -36,16 +39,16 @@
                         <div class="row">
                             <div class="col-sm">
                             </div>
-                            <div class="col-sm" style="color:red">
+                            <div class="col-sm" style="color:white">
                                 Profissionais
                             </div>
-                            <div class="col-sm" style="color:red">
+                            <div class="col-sm" style="color:white">
                                 Despesas Administrativas
                             </div>
-                            <div class="col-sm" style="color:red">
+                            <div class="col-sm" style="color:white">
                                 Custos
                             </div>
-                            <div class="col-sm" style="color:white">
+                            <div class="col-sm" style="color:red">
                                 Etapas
                             </div>
                             <div class="col-sm">
@@ -116,12 +119,10 @@
                                     </asp:TemplateField>
                                 </Columns>
                                 <FooterStyle BackColor="#CCCC99" />
-                                <PagerSettings Position="Bottom" Mode="NextPreviousFirstLast"
+                                <PagerSettings Position="Bottom" Mode="NextPrevious"
                                 PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior' class='navpage'/>"
                                 NextPageText="<img src='/Content/images/setasimplesdireita.png' border='0' title='Próxima Página' class='navpage'/>"
-                                FirstPageText="<img src='/Content/images/setaduplaesquerda.png' border='0' title='Primeira Página' class='navpage'/>"
-                                LastPageText="<img src='/Content/images/setadupladireita.png' border='0' title='Última Página' class='navpage'/>" 
-                                PageButtonCount="12"/>
+                                PageButtonCount="11"/>
                             </asp:GridView>
                         </ContentTemplate>
                        <Triggers>
@@ -165,7 +166,27 @@
                 <div class="col-sm">
                 </div>
                 <div class="col-sm">
-                    <asp:Button ID="BtnObservacao" runat="server" Text="Observação" style="background-color:#000438; color:white" class="btn btn-primary"/>
+                        <button type="button" ID="BtnObservacao" style="background-color:#000438; color:white" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Minhas Considerações</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Minhas Considerações</h3>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <asp:TextBox runat="server" ID="TextBox1" TextMode="MultiLine" rows="10" maxlength="2083" style="width: 100%;"></asp:TextBox>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" Text="Salvar" OnClick="btnSalvarOBS_Click" class="btn btn-primary btnPrimary"></asp:Button>
+                                        <asp:Button runat="server" class="btn btn-secondary btnSecundary" data-dismiss="modal" Text="Fechar"></asp:Button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                 </div>
                 <div class="col-sm">
                 </div>

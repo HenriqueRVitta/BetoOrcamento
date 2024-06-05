@@ -6,7 +6,7 @@
             <div class="row">
                  <div class="card text-left" style="background-color:#000438">
                         <div class="card-header text-center">
-                        <h3>Cadastro - Tipologia - Excluir</h3>
+                        <h3>Cadastro - Tipologia</h3>
                         </div>
                     </div>
                     <div class="card-body">

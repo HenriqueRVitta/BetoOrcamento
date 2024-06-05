@@ -6,7 +6,7 @@
             <div class="row">
                  <div class="card text-left" style="background-color:#000438">
                         <div class="card-header text-center">
-                        <h3>Cadastro - Custos - Excluir</h3>
+                        <h3>Cadastro - Custos e Serviços</h3>
                         </div>
                     </div>
 

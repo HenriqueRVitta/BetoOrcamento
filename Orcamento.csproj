@@ -226,9 +226,6 @@
     <Content Include="Cadastros\Preco\Cadastro.aspx" />
     <Content Include="Cadastros\Preco\Excluir.aspx" />
     <Content Include="Cadastros\Preco\Lista.aspx" />
-    <Content Include="Cadastros\Profissional\Cadastro.aspx" />
-    <Content Include="Cadastros\Profissional\Excluir.aspx" />
-    <Content Include="Cadastros\Profissional\Lista.aspx" />
     <Content Include="Cadastros\Tipologia\Cadastro.aspx" />
     <Content Include="Cadastros\Tipologia\Excluir.aspx" />
     <Content Include="Cadastros\Tipologia\Lista.aspx" />
@@ -275,6 +272,7 @@
     <Content Include="Content\images\hero_bg_1.jpg" />
     <Content Include="Content\images\hero_bg_2.jpg" />
     <Content Include="Content\images\hero_bg_3.jpg" />
+    <Content Include="Content\images\Ivan.jpg" />
     <Content Include="Content\images\lapis.png" />
     <Content Include="Content\images\lixeira.png" />
     <Content Include="Content\images\salvar.png" />
@@ -292,18 +290,23 @@
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Escritorio\Despesas\Despesas01.aspx" />
+    <Content Include="Escritorio\Despesas\Despesas02.aspx" />
+    <Content Include="Escritorio\Despesas\Despesas03.aspx" />
+    <Content Include="Escritorio\Despesas\Despesas04.aspx" />
+    <Content Include="Escritorio\Despesas\Despesas05.aspx" />
+    <Content Include="Escritorio\Despesas\Despesas06.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Projeto\Criacao\Cadastro.aspx" />
-    <Content Include="Projeto\Criacao\Excluir.aspx" />
-    <Content Include="Projeto\Criacao\Lista.aspx" />
-    <Content Include="Projeto\Fases\Custos.aspx" />
-    <Content Include="Projeto\Fases\Despesas.aspx" />
-    <Content Include="Projeto\Fases\Etapas.aspx" />
-    <Content Include="Projeto\Fases\Profissionais\Cadastro.aspx" />
-    <Content Include="Projeto\Fases\Profissionais\Excluir.aspx" />
-    <Content Include="Projeto\Fases\Profissionais\Lista.aspx" />
-    <Content Include="Projeto\Fases\Resultado.aspx" />
+    <Content Include="Escritorio\Projeto\Criacao\Cadastro.aspx" />
+    <Content Include="Escritorio\Projeto\Criacao\Excluir.aspx" />
+    <Content Include="Escritorio\Projeto\Criacao\Lista.aspx" />
+    <Content Include="Escritorio\Projeto\Fases\Custos.aspx" />
+    <Content Include="Escritorio\Projeto\Fases\Etapas.aspx" />
+    <Content Include="Escritorio\Projeto\Fases\Profissionais\Cadastro.aspx" />
+    <Content Include="Escritorio\Projeto\Fases\Profissionais\Excluir.aspx" />
+    <Content Include="Escritorio\Projeto\Fases\Profissionais\Lista.aspx" />
+    <Content Include="Escritorio\Projeto\Fases\Resultado.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -662,27 +665,6 @@
     <Compile Include="Cadastros\Preco\Lista.aspx.designer.cs">
       <DependentUpon>Lista.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Cadastros\Profissional\Cadastro.aspx.cs">
-      <DependentUpon>Cadastro.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Cadastros\Profissional\Cadastro.aspx.designer.cs">
-      <DependentUpon>Cadastro.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Cadastros\Profissional\Excluir.aspx.cs">
-      <DependentUpon>Excluir.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Cadastros\Profissional\Excluir.aspx.designer.cs">
-      <DependentUpon>Excluir.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Cadastros\Profissional\Lista.aspx.cs">
-      <DependentUpon>Lista.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Cadastros\Profissional\Lista.aspx.designer.cs">
-      <DependentUpon>Lista.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Cadastros\Tipologia\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -725,78 +707,113 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas01.aspx.cs">
+      <DependentUpon>Despesas01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas01.aspx.designer.cs">
+      <DependentUpon>Despesas01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas02.aspx.cs">
+      <DependentUpon>Despesas02.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas02.aspx.designer.cs">
+      <DependentUpon>Despesas02.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas03.aspx.cs">
+      <DependentUpon>Despesas03.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas03.aspx.designer.cs">
+      <DependentUpon>Despesas03.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas04.aspx.cs">
+      <DependentUpon>Despesas04.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas04.aspx.designer.cs">
+      <DependentUpon>Despesas04.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas05.aspx.cs">
+      <DependentUpon>Despesas05.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas05.aspx.designer.cs">
+      <DependentUpon>Despesas05.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas06.aspx.cs">
+      <DependentUpon>Despesas06.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Escritorio\Despesas\Despesas06.aspx.designer.cs">
+      <DependentUpon>Despesas06.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Projeto\Criacao\Cadastro.aspx.cs">
+    <Compile Include="Escritorio\Projeto\Criacao\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projeto\Criacao\Cadastro.aspx.designer.cs">
+    <Compile Include="Escritorio\Projeto\Criacao\Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Projeto\Criacao\Excluir.aspx.cs">
+    <Compile Include="Escritorio\Projeto\Criacao\Excluir.aspx.cs">
       <DependentUpon>Excluir.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projeto\Criacao\Excluir.aspx.designer.cs">
+    <Compile Include="Escritorio\Projeto\Criacao\Excluir.aspx.designer.cs">
       <DependentUpon>Excluir.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Projeto\Criacao\Lista.aspx.cs">
+    <Compile Include="Escritorio\Projeto\Criacao\Lista.aspx.cs">
       <DependentUpon>Lista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projeto\Criacao\Lista.aspx.designer.cs">
+    <Compile Include="Escritorio\Projeto\Criacao\Lista.aspx.designer.cs">
       <DependentUpon>Lista.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Projeto\Fases\Custos.aspx.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Custos.aspx.cs">
       <DependentUpon>Custos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projeto\Fases\Custos.aspx.designer.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Custos.aspx.designer.cs">
       <DependentUpon>Custos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Projeto\Fases\Despesas.aspx.cs">
-      <DependentUpon>Despesas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Projeto\Fases\Despesas.aspx.designer.cs">
-      <DependentUpon>Despesas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Projeto\Fases\Etapas.aspx.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Etapas.aspx.cs">
       <DependentUpon>Etapas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projeto\Fases\Etapas.aspx.designer.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Etapas.aspx.designer.cs">
       <DependentUpon>Etapas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Projeto\Fases\Profissionais\Cadastro.aspx.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Profissionais\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projeto\Fases\Profissionais\Cadastro.aspx.designer.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Profissionais\Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Projeto\Fases\Profissionais\Excluir.aspx.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Profissionais\Excluir.aspx.cs">
       <DependentUpon>Excluir.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projeto\Fases\Profissionais\Excluir.aspx.designer.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Profissionais\Excluir.aspx.designer.cs">
       <DependentUpon>Excluir.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Projeto\Fases\Profissionais\Lista.aspx.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Profissionais\Lista.aspx.cs">
       <DependentUpon>Lista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projeto\Fases\Profissionais\Lista.aspx.designer.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Profissionais\Lista.aspx.designer.cs">
       <DependentUpon>Lista.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Projeto\Fases\Resultado.aspx.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Resultado.aspx.cs">
       <DependentUpon>Resultado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Projeto\Fases\Resultado.aspx.designer.cs">
+    <Compile Include="Escritorio\Projeto\Fases\Resultado.aspx.designer.cs">
       <DependentUpon>Resultado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

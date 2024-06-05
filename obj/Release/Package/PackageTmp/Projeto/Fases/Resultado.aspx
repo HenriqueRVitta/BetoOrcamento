@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Resultado.aspx.cs" Inherits="Orcamento.Projeto.Fases.Resultado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link rel="stylesheet" href="../../Content/bootstrap.min.css">
+    <script src="../../Content/js/jquery-3.3.1.min.js"></script>
+    <script src="../../Content/js/bootstrap.min.js"></script>
     <div class="panel" id="Cadastro">
             <asp:Label ID="lblProjeto" runat="server" Text="" Visible="false"></asp:Label>
                 <div class="card text-left" style="background-color:#000438">
@@ -40,19 +43,19 @@
                             <div class="col-sm">
                                 &nbsp;
                             </div>
-                            <div class="col-sm" style="color:red">
+                            <div class="col-sm" style="color:white">
                                 Profissionais
                             </div>
-                            <div class="col-sm" style="color:red">
+                            <div class="col-sm" style="color:white">
                                 Despesas Administrativas
                             </div>
-                            <div class="col-sm" style="color:red">
+                            <div class="col-sm" style="color:white">
                                 Custos
                             </div>
-                            <div class="col-sm" style="color:red">
+                            <div class="col-sm" style="color:white">
                                 Etapas
                             </div>
-                            <div class="col-sm" style="color:white">
+                            <div class="col-sm" style="color:red">
                                 Resultado
                             </div>
                             <div class="col-sm">
@@ -116,7 +119,7 @@
                             <div style="width:100px; text-align:left;">Arquiteto
                             </div>
                             <div style="width:200px;">
-                                <asp:Label ID="lblCapProdutivaA" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtCapProdutivaA" runat="server"></asp:TextBox>
                             </div>
                             <div style="width:200px;">
                                 &nbsp;
@@ -128,16 +131,15 @@
                             <div style="width:100px; text-align:left;">Estagiário
                             </div>
                             <div style="width:200px;">
-                               <asp:Label ID="lblCapProdutivaE" runat="server" Text=""></asp:Label>
+                               <asp:TextBox ID="txtCapProdutivaE" runat="server"></asp:TextBox>
                             </div>
                             <div style="width:200px;">
                             </div>
                         </div>
                         <div class="row">
-                            <div style="width:400px;">
-                                &nbsp;
+                            <div style="width:400px;">Total Horas de Projeto
                             </div>
-                            <div style="width:100px; text-align:left;">Total
+                            <div style="width:100px; text-align:left;">
                             </div>
                             <div style="width:200px;">
                                 <asp:Label ID="lblTempoTotal" runat="server" Text=""></asp:Label>
@@ -147,26 +149,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div style="width:400px;">Estimativa de Tempo para Produção (em Horas)
-                            </div>
-                            <div  style="width:100px; text-align:left;">Arquiteto 50%
-                            </div>
-                            <div style="width:200px;">
-                                <asp:Label ID="lblTempArquiteto" runat="server" Text=""></asp:Label>
-                            </div>
-                            <div style="width:200px;">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div style="width:400px;">
-                            </div>
-                            <div  style="width:100px; text-align:left;">Estagiario 50%
-                            </div>
-                            <div style="width:200px;">
-                                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                            </div>
-                            <div style="width:200px;">
-                            </div>
+                            <asp:GridView ID="grdProfisionais" runat="server" AutoGenerateColumns="false" >
+                                <Columns>
+                                    <asp:BoundField DataField="da_descricao" HeaderText="Profissional" />
+                                    <asp:BoundField DataField="pp_quantidade" HeaderText="Nº Profissionais"/>  
+                                    <asp:BoundField DataField="pp_valor" HeaderText="Valor Mensal" DataFormatString="{0:c}"/>
+                                    <asp:BoundField DataField="pp_valor_hora" HeaderText="Valor Hora" DataFormatString="{0:c}"/>
+                                </Columns>
+                            </asp:GridView>
                         </div>
                         <div class="row">
                             <div style="width:400px;">Valor Hora Técnica (em reais)
@@ -300,15 +290,6 @@
                                 &nbsp;
                             </div>
                         </div>
-                        <div class="row">
-                            <asp:GridView ID="grdProfisionais" runat="server" AutoGenerateColumns="false" >
-                                <Columns>
-                                    <asp:BoundField DataField="da_descricao" HeaderText="Profissional" />
-                                    <asp:BoundField DataField="pp_quantidade" HeaderText="Nº Profissionais"/>  
-                                    <asp:BoundField DataField="pp_valor" HeaderText="Horas Trabalhadas"/>
-                                </Columns>
-                            </asp:GridView>
-                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -335,7 +316,27 @@
                 <div class="col-sm">
                 </div>
                 <div class="col-sm">
-                    <asp:Button ID="BtnObservacao" runat="server" Text="Observação" style="background-color:#000438; color:white" class="btn btn-primary"/>
+                        <button type="button" ID="BtnObservacao" style="background-color:#000438; color:white" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Minhas Considerações</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Minhas Considerações</h3>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <asp:TextBox runat="server" ID="TextBox1" TextMode="MultiLine" rows="10" maxlength="2083" style="width: 100%;"></asp:TextBox>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" Text="Salvar" OnClick="btnSalvarOBS_Click" class="btn btn-primary btnPrimary"></asp:Button>
+                                        <asp:Button runat="server" class="btn btn-secondary btnSecundary" data-dismiss="modal" Text="Fechar"></asp:Button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                 </div>
                 <div class="col-sm">
                 </div>

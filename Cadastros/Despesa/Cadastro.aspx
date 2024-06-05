@@ -6,7 +6,7 @@
             <div class="row">
                  <div class="card text-left" style="background-color:#000438">
                         <div class="card-header text-center">
-                        <h3>Cadastro - Despesas Administrativas</h3>
+                        <h3>Cadastro - Despesas</h3>
                         </div>
                     </div>
                     <div class="card-body">
@@ -18,13 +18,24 @@
                                         <input ID="da_id" runat="server" type="hidden" />
                                         <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3">
                                             <asp:Label ID="lblda_codigo" runat="server" Text="Código" />
-                                            <asp:TextBox ID="da_codigo" runat="server" CssClass="form-control" required="true"/>
+                                            <asp:TextBox ID="da_codigo" runat="server" CssClass="form-control" required="true" AutoPostBack="True" OnTextChanged="da_codigo_TextChanged"/>
                                             <span asp-validation-for="da_codigo" class="text-danger"></span>
                                         </div>
                                         <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3">
                                             <asp:Label ID="lblda_descricao" runat="server" Text="Descrição" />
                                             <asp:TextBox ID="da_descricao" runat="server" CssClass="form-control" required="true"/>
                                         </div>
+                                        <asp:Panel ID="pnlFormula_Hora" runat="server" Visible="false">
+                                            <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3">
+                                                <asp:Label ID="lblda_formula" runat="server" Text="Formula" />
+                                                <asp:TextBox ID="da_formula" runat="server" CssClass="form-control"/>
+                                            </div>
+                                            <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3">
+                                                <asp:Label ID="lblHoras" runat="server" Text="Horas Trabalhadas Mês" />
+                                                <asp:TextBox ID="da_hora_trabalhada" runat="server" CssClass="form-control"/>
+                                            </div>
+                                        </asp:Panel>
+
                                         <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3" style="margin-top: 10px;">
     <%--                                        <button type="submit" id="btnSalvar_" onclick="btnSalvar_" runat="server" class="btn btn-primary btnPrimary">Salvar</button>--%>
                                             <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="btnSalvar_Click" class="btn btn-primary btnPrimary" />

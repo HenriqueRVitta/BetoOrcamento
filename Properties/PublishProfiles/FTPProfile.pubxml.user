@@ -60,7 +60,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/09/2024 17:19:12</publishTime>
     </File>
     <File Include="bin/AjaxControlToolkit.dll">
-      <publishTime>05/20/2020 11:04:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>09/10/2013 16:29:20</publishTime>
@@ -69,22 +69,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.jQuery.dll">
-      <publishTime>05/16/2019 12:33:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/BouncyCastle.Crypto.dll">
-      <publishTime>01/31/2019 17:53:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>04/16/2020 20:38:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>04/16/2020 20:38:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Google.Protobuf.dll">
-      <publishTime>11/13/2020 12:09:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Google.Protobuf.pdb">
-      <publishTime>11/13/2020 17:57:28</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/K4os.Compression.LZ4.dll">
       <publishTime>09/11/2020 22:11:58</publishTime>
@@ -96,16 +96,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/03/2019 17:39:02</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.FriendlyUrls.dll">
-      <publishTime>07/30/2013 16:57:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
-      <publishTime>06/21/2023 10:16:52</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
-      <publishTime>06/21/2023 10:16:52</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
-      <publishTime>06/21/2023 10:16:52</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Web.Optimization.WebForms.dll">
       <publishTime>02/11/2014 16:26:04</publishTime>
@@ -147,13 +147,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/06/2013 11:20:22</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>05/27/2022 23:39:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>12/01/2021 20:08:56</publishTime>
     </File>
     <File Include="bin/mysql.data.entity.EF6.dll">
-      <publishTime>01/13/2014 20:45:40</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/MySql.Data.EntityFramework.dll">
       <publishTime>12/01/2021 20:08:56</publishTime>
@@ -162,25 +162,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/08/2023 07:09:56</publishTime>
     </File>
     <File Include="bin/Orcamento.dll">
-      <publishTime>04/17/2024 12:06:55</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Orcamento.pdb">
-      <publishTime>04/17/2024 12:06:55</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Owin.dll">
-      <publishTime>11/13/2012 13:19:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/pt-br/Microsoft.AspNet.FriendlyUrls.resources.dll">
-      <publishTime>07/30/2013 14:01:52</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/pt-br/Microsoft.AspNet.Identity.Core.resources.dll">
-      <publishTime>06/21/2023 07:20:16</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/pt-br/Microsoft.AspNet.Identity.EntityFramework.resources.dll">
-      <publishTime>06/21/2023 07:20:16</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/pt-br/Microsoft.AspNet.Identity.Owin.resources.dll">
-      <publishTime>06/21/2023 07:20:16</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/pt-br/System.Web.Optimization.resources.dll">
       <publishTime>02/11/2014 13:28:42</publishTime>
@@ -243,7 +243,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/05/2016 19:55:34</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>05/16/2018 03:29:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Console.dll">
       <publishTime>11/05/2016 19:55:48</publishTime>
@@ -279,7 +279,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/05/2016 19:56:34</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>05/16/2018 03:29:44</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
       <publishTime>11/05/2016 19:57:00</publishTime>
@@ -333,16 +333,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/08/2018 12:18:16</publishTime>
     </File>
     <File Include="bin/System.Buffers.dll">
-      <publishTime>02/19/2020 07:05:18</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/System.Memory.dll">
-      <publishTime>02/19/2020 07:05:18</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/System.Numerics.Vectors.dll">
-      <publishTime>05/15/2018 10:29:44</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
-      <publishTime>10/19/2020 15:46:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>02/11/2014 16:26:04</publishTime>
@@ -351,7 +351,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/01/2021 20:07:24</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
-      <publishTime>01/23/2014 14:57:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/ZstdNet.dll">
       <publishTime>12/01/2021 20:07:24</publishTime>
@@ -360,58 +360,58 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/11/2024 06:55:18</publishTime>
     </File>
     <File Include="Cadastros/Custos/Cadastro.aspx">
-      <publishTime>04/16/2024 13:05:52</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Custos/Excluir.aspx">
-      <publishTime>04/16/2024 13:32:14</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Custos/Lista.aspx">
-      <publishTime>04/17/2024 07:28:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Despesa/Cadastro.aspx">
-      <publishTime>04/16/2024 13:05:52</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Despesa/Excluir.aspx">
       <publishTime>04/12/2024 17:41:16</publishTime>
     </File>
     <File Include="Cadastros/Despesa/Lista.aspx">
-      <publishTime>04/16/2024 12:53:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Etapas/Cadastro.aspx">
-      <publishTime>04/16/2024 13:29:02</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Etapas/Excluir.aspx">
-      <publishTime>04/16/2024 13:32:14</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Etapas/Lista.aspx">
-      <publishTime>04/16/2024 13:24:38</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Preco/Cadastro.aspx">
-      <publishTime>04/17/2024 07:43:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Preco/Excluir.aspx">
-      <publishTime>04/17/2024 07:33:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Preco/Lista.aspx">
-      <publishTime>04/17/2024 07:28:44</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Profissional/Cadastro.aspx">
-      <publishTime>04/16/2024 15:49:40</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Profissional/Excluir.aspx">
-      <publishTime>04/16/2024 15:53:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Profissional/Lista.aspx">
-      <publishTime>04/16/2024 16:24:46</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Tipologia/Cadastro.aspx">
-      <publishTime>04/16/2024 16:15:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Tipologia/Excluir.aspx">
-      <publishTime>04/16/2024 16:07:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Cadastros/Tipologia/Lista.aspx">
-      <publishTime>04/16/2024 16:14:02</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Contact.aspx">
       <publishTime>04/09/2024 17:18:56</publishTime>
@@ -537,10 +537,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/09/2024 18:31:08</publishTime>
     </File>
     <File Include="Content/images/lapis.png">
-      <publishTime>04/16/2024 07:36:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/images/lixeira.png">
-      <publishTime>04/16/2024 07:36:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/images/setadupladireita.png">
       <publishTime>02/04/2023 10:53:32</publishTime>
@@ -567,16 +567,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/09/2024 17:18:56</publishTime>
     </File>
     <File Include="Index.aspx">
-      <publishTime>04/17/2024 08:31:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Movimentacao/Criacao/Cadastro.aspx">
-      <publishTime>04/17/2024 10:38:18</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Movimentacao/Criacao/Excluir.aspx">
-      <publishTime>04/17/2024 10:38:18</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Movimentacao/Criacao/Lista.aspx">
-      <publishTime>04/17/2024 11:57:37</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>04/09/2024 17:19:08</publishTime>
@@ -708,7 +708,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/09/2024 17:19:12</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>04/17/2024 08:31:24</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>04/09/2024 17:19:12</publishTime>
@@ -720,7 +720,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/09/2024 17:19:12</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/17/2024 12:07:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\Deploy</_PublishTargetUrl>
-    <History>True|2024-05-20T19:56:14.7022224Z;</History>
+    <History>True|2024-05-21T13:02:31.7731384Z;True|2024-05-20T16:56:14.7022224-03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -160,10 +160,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/08/2024 09:11:19</publishTime>
     </File>
     <File Include="bin/Orcamento.dll">
-      <publishTime>05/20/2024 16:56:10</publishTime>
+      <publishTime>05/21/2024 10:02:28</publishTime>
     </File>
     <File Include="bin/Orcamento.pdb">
-      <publishTime>05/20/2024 16:56:10</publishTime>
+      <publishTime>05/21/2024 10:02:28</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>05/08/2024 09:11:20</publishTime>
@@ -943,28 +943,28 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/19/2024 21:13:04</publishTime>
     </File>
     <File Include="Projeto/Fases/Custos.aspx">
-      <publishTime>05/20/2024 15:30:20</publishTime>
+      <publishTime>05/20/2024 20:05:15</publishTime>
     </File>
     <File Include="Projeto/Fases/Despesas.aspx">
-      <publishTime>05/20/2024 15:30:20</publishTime>
+      <publishTime>05/20/2024 19:50:13</publishTime>
     </File>
     <File Include="Projeto/Fases/Etapas.aspx">
-      <publishTime>05/20/2024 15:30:19</publishTime>
+      <publishTime>05/20/2024 20:11:30</publishTime>
     </File>
     <File Include="Projeto/Fases/Profissionais.aspx">
       <publishTime>05/08/2024 16:00:26</publishTime>
     </File>
     <File Include="Projeto/Fases/Profissionais/Cadastro.aspx">
-      <publishTime>05/08/2024 12:48:58</publishTime>
+      <publishTime>05/20/2024 16:51:04</publishTime>
     </File>
     <File Include="Projeto/Fases/Profissionais/Excluir.aspx">
-      <publishTime>05/08/2024 12:48:57</publishTime>
+      <publishTime>05/20/2024 16:51:04</publishTime>
     </File>
     <File Include="Projeto/Fases/Profissionais/Lista.aspx">
-      <publishTime>05/20/2024 11:08:56</publishTime>
+      <publishTime>05/20/2024 17:08:04</publishTime>
     </File>
     <File Include="Projeto/Fases/Resultado.aspx">
-      <publishTime>05/20/2024 15:34:48</publishTime>
+      <publishTime>05/20/2024 20:16:40</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>05/08/2024 09:11:16</publishTime>
@@ -1096,7 +1096,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/08/2024 09:11:16</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>05/20/2024 10:10:54</publishTime>
+      <publishTime>05/21/2024 09:26:28</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>05/08/2024 09:11:16</publishTime>
@@ -1108,7 +1108,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/08/2024 09:11:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/20/2024 16:56:12</publishTime>
+      <publishTime>05/21/2024 10:02:29</publishTime>
     </File>
   </ItemGroup>
 </Project>

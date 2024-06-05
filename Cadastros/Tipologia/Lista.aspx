@@ -6,7 +6,7 @@
             <div class="row" style="width:100%">
                  <div class="card text-left" style="background-color:#000438">
                     <div class="card-header text-center">
-                    <h3>Cadastro - Lista Tipologia</h3>
+                    <h3>Cadastro - Tipologia</h3>
                     </div>
                  </div>
                     <div class="col-12 text-left" style="margin-top:5px">
@@ -22,11 +22,9 @@
                                         <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapis.png"></asp:ButtonField>
                                         <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeira.png"></asp:ButtonField>
                                     </Columns>
-                                    <PagerSettings Position="Bottom" Mode="NextPreviousFirstLast"
-                                    PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior'/>"
-                                    NextPageText="<img src='/Content/images/setasimplesdireita.png' border='0' title='Próxima Página'/>"
-                                    FirstPageText="<img src='/Content/images/setaduplaesquerda.png' border='0' title='Primeira Página'/>"
-                                    LastPageText="<img src='/Content/images/setadupladireita.png' border='0' title='Última Página'/>" 
+                                    <PagerSettings Position="Bottom" Mode="NextPrevious"
+                                    PreviousPageText="<img src='/Content/images/setasimplesesquerda.png' border='0' title='Página Anterior' class='navpage'/>"
+                                    NextPageText="<img src='/Content/images/setasimplesdireita.png' border='0' title='Próxima Página' class='navpage'/>"
                                     PageButtonCount="11"/>
                                 </asp:GridView>
                             </ContentTemplate>

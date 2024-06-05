@@ -17,7 +17,7 @@ namespace Orcamento.Cadastros.Despesa
 
                 con.Open();
 
-                string Sel = "select da_codigo,da_descricao from tb_despesas where da_id = @id";
+                string Sel = "select da_codigo,da_descricao,da_formula,da_hora_trabalhada from tb_despesas where da_id = @id";
                 MySqlCommand qrySelect = new MySqlCommand(Sel, con);
                 qrySelect.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
 
@@ -27,6 +27,13 @@ namespace Orcamento.Cadastros.Despesa
                 {
                     da_codigo.Text = reader["da_codigo"].ToString();
                     da_descricao.Text = reader["da_descricao"].ToString();
+                    da_formula.Text = reader["da_formula"].ToString();
+                    da_hora_trabalhada.Text = reader["da_hora_trabalhada"].ToString();
+
+                    if (reader["da_codigo"].ToString().Substring(0, 2) == "01")
+                        pnlFormula_Hora.Visible = true;
+                    else
+                        pnlFormula_Hora.Visible = false;
                 }
 
                 qrySelect.Dispose();

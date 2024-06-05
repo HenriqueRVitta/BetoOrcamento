@@ -86,6 +86,8 @@
 
             <div class="col-9 order-1 text-left mr-auto">
               <span class="d-inline-block d-lg-block"><a href="/" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+
+
               <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
                   <ul class="site-menu main-menu js-clone-nav ml-auto ">
                       <a runat="server" class="icon-account_circle" style="font-size: 62px; text-align:center;"><a runat="server" class="nav-link font-weight-bold text-white" href="~/Account/Manage" title="Usuário logado..."><%: Context.User.Identity.GetUserName()  %> </a></a>
@@ -95,19 +97,30 @@
                           <ul class="dropdown arrow-top">
                               <li><a href="#" class="nav-link"><i class="icon-person"></i> Cliente</a></li>
                               <!-- <li><a href="/Cadastros/Profissional/Lista" class="nav-link"><i class="icon-people"></i> Profissional</a></li> -->
-                              <li><a href="/Cadastros/Despesa/Lista" class="nav-link"><i class="icon-circle"></i> Despesas Administrativas</a></li>
-                              <li><a href="/Cadastros/Custos/Lista" class="nav-link"><i class="icon-card_travel"></i> Custos</a></li>
-                              <li><a href="/Cadastros/Etapas/Lista" class="nav-link"><i class="icon-card_membership"></i> Etapas de Projetos</a></li>
+                              <li><a href="/Cadastros/Despesa/Lista" class="nav-link"><i class="icon-circle"></i> Despesas</a></li>
+                              <li><a href="/Cadastros/Custos/Lista" class="nav-link"><i class="icon-card_travel"></i> Custos do Serviços</a></li>
+                              <li><a href="/Cadastros/Etapas/Lista" class="nav-link"><i class="icon-card_membership"></i> Etapas do Projeto</a></li>
                               <li><a href="/Cadastros/Preco/Lista" class="nav-link"><i class="icon-money"></i> Preços</a></li>
                               <li><a href="/Cadastros/Tipologia/Lista" class="nav-link"><i class="icon-circle"></i> Tipologia</a></li>
                           </ul>
                       </li>
-                      <li><a href="/Projeto/Criacao/Lista" class="nav-link"><i class="icon-product-hunt"></i> Projetos</a></li>
+                      <li class="has-children">
+                          <a href="#" class="nav-link"><i class="icon-clipboard"></i> Escritório</a>
+                          <ul class="dropdown arrow-top">
+                              <li><a href="/Escritorio/Despesas/Despesas01" class="nav-link"><i class="icon-person"></i> Despesas</a></li>
+                              <li><a href="/Escritorio/Projeto/Criacao/Lista" class="nav-link"><i class="icon-circle"></i> Projetos</a></li>
+                          </ul>
+                      </li>
+
+
+ <%--                     <li><a href="/Projeto/Criacao/Lista" class="nav-link"><i class="icon-product-hunt"></i> Projetos</a></li>--%>
 <%--                      <li><a href="#" class="nav-link"><i class="icon-dashboard"></i> Dashboard</a></li>--%>
                       <li><a href="#" class="nav-link"><i class="icon-info2"></i> Manual</a></li>
                       <li><a href="#" class="nav-link"><i class="icon-contacts"></i> Contato</a></li>
                   </ul>
               </nav>
+
+
             </div>
           </div>
         <div class="container body-content" >

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MySql.Data.Entity;
 using Orcamento.Models;
+using Org.BouncyCastle.Utilities;
 
 namespace Orcamento.Models
 {
@@ -19,6 +20,15 @@ namespace Orcamento.Models
 
         [Personalizable]
         public string NomeDoUsuario { get; set; }
+
+        [Personalizable]
+        public DateTime? DataValidade { get; set; }
+
+        [Personalizable]
+        public bool Administrador { get; set; }
+
+        [Personalizable]
+        public int? IdPrecos { get; set; }
 
         [DbConfigurationType(typeof(MySqlEFConfiguration))]
         public partial class DefaultConnection : DbContext

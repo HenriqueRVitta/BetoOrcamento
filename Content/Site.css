@@ -7,6 +7,15 @@
     padding-bottom: 100px; /* altura do rodapé */
 }
 
+.bgSizeContain {
+    background-image: url('/Content/images/fundo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+
 .colOpcoes {
     display: flex;
     justify-content: space-evenly;

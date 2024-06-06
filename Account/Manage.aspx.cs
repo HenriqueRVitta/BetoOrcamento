@@ -40,7 +40,7 @@ namespace Orcamento.Account
             HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(User.Identity.GetUserId()));
 
             // Habilitar isso após a configuração da autenticação de dois fatores
-            //PhoneNumber.Text = manager.GetPhoneNumber(User.Identity.GetUserId()) ?? String.Empty;
+            PhoneNumber.Text = manager.GetPhoneNumber(User.Identity.GetUserId()) ?? String.Empty;
 
             TwoFactorEnabled = manager.GetTwoFactorEnabled(User.Identity.GetUserId());
 

@@ -82,7 +82,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink_">
                                 <a class="dropdown-item" href="#"><i class="feather icon-settings"></i> Meu plano</a>
-                                <a class="dropdown-item" href="#"><i class="feather icon-users"></i> Alterar senha</a>
+                                <a class="dropdown-item" href="/Account/Manage"><i class="feather icon-users"></i> Minha Conta</a>
                                 <div class="dropdown-divider"></div>
                                 <asp:LoginStatus runat="server" CssClass="dropdown-item icon-exit_to_app" LogoutAction="Redirect" LogoutText=" Sair" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                             </div>

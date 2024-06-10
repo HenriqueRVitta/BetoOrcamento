@@ -31,8 +31,8 @@
 </head>
 
 <body>
-<div id="FundoInicial"  runat="server" class="hero" 
-     style="background-image: url('/Content/images/ivan.jpg');">
+<div id="FundoInicial"  runat="server" class="hero"
+ style="background-image: url('/Content/images/fundo.jpg'); background-size: cover; background-repeat: no-repeat; width: 100%;  height: 100%;">
 
     <form runat="server">
 
@@ -82,7 +82,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink_">
                                 <a class="dropdown-item" href="#"><i class="feather icon-settings"></i> Meu plano</a>
-                                <a class="dropdown-item" href="#"><i class="feather icon-users"></i> Alterar senha</a>
+                                <a class="dropdown-item" href="/Account/Manage"><i class="feather icon-users"></i> Minha Conta</a>
                                 <div class="dropdown-divider"></div>
                                 <asp:LoginStatus runat="server" CssClass="dropdown-item icon-exit_to_app" LogoutAction="Redirect" LogoutText=" Sair" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                             </div>
@@ -117,11 +117,11 @@
 
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkP" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="icon-clipboard"></i> Escritório
+                          <i class="icon-contacts"></i> Escritório
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkP">
                           <a class="dropdown-item" href="/Escritorio/Despesas/Despesas01"><i class="icon-person"></i> Despesas</a>
-                          <a class="dropdown-item" href="/Escritorio/Projeto/Criacao/Lista"><i class="icon-circle"></i> Projetos</a>
+                          <!-- <a class="dropdown-item" href="/Escritorio/Projeto/Criacao/Lista"><i class="icon-product-hunt"></i> Projetos</a> -->
                         </div>
                       </li>
 

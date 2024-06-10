@@ -43,10 +43,12 @@ namespace Orcamento.Account
                 {
                     case SignInStatus.Success:
                         Session["logado"] = NmUsuario.NomeDoUsuario;
+                        Session["IdUser"] = NmUsuario.Id;
                         IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                         break;
                     case SignInStatus.LockedOut:
                         Session["logado"] = null;
+                        Session["IdUser"] = null;
                         Response.Redirect("/Account/Lockout");
                         break;
                     case SignInStatus.RequiresVerification:
@@ -58,6 +60,7 @@ namespace Orcamento.Account
                     case SignInStatus.Failure:
                     default:
                         Session["logado"] = null;
+                        Session["IdUser"] = null;
                         FailureText.Text = "Tentativa de login inválida";
                         ErrorMessage.Visible = true;
                         break;

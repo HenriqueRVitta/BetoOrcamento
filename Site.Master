@@ -121,7 +121,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkP">
                           <a class="dropdown-item" href="/Escritorio/Despesas/Despesas01"><i class="icon-person"></i> Despesas</a>
-                          <a class="dropdown-item" href="/Escritorio/Projeto/Criacao/Lista"><i class="icon-product-hunt"></i> Projetos</a>
+                          <!-- <a class="dropdown-item" href="/Escritorio/Projeto/Criacao/Lista"><i class="icon-product-hunt"></i> Projetos</a> -->
                         </div>
                       </li>
 

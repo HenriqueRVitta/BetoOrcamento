@@ -37,27 +37,43 @@
                         <div class="row">
                             <div class="col-sm">
                             </div>
-                            <div class="col-sm" style="color:red; font:10px;" >
+                            <div class="col-sm" style="color:red">
                                 <asp:Label ID="lblDespesa1" runat="server" Text=""></asp:Label>
                             </div>
-                            <div class="col-sm" style="color:white; font:10px;" >
+                            <div class="col-sm" style="color:white">
+                                <asp:Label ID="lblSeta1" runat="server" Text="->" ></asp:Label>
+                            </div>
+                             <div class="col-sm" style="color:white">
                                 <asp:Label ID="lblDespesa2" runat="server" Text=""></asp:Label>
                             </div>
-                            <div class="col-sm" style="color:white; font:10px;" >
+                            <div class="col-sm" style="color:white">
+                                <asp:Label ID="lblSeta2" runat="server" Text="->"></asp:Label>
+                            </div>
+                             <div class="col-sm" style="color:white">
                                 <asp:Label ID="lblDespesa3" runat="server" Text=""></asp:Label>
                             </div>
-                            <div class="col-sm" style="color:white; font:10px;" >
+                            <div class="col-sm" style="color:white">
+                                <asp:Label ID="lblSeta3" runat="server" Text="->"></asp:Label>
+                            </div>
+                             <div class="col-sm" style="color:white">
                                 <asp:Label ID="lblDespesa4" runat="server" Text=""></asp:Label>
                             </div>
-                            <div class="col-sm" style="color:white; font:10px;" >
+                            <div class="col-sm" style="color:white">
+                                <asp:Label ID="lblSeta4" runat="server" Text="->"></asp:Label>
+                            </div>
+                             <div class="col-sm" style="color:white">
                                 <asp:Label ID="lblDespesa5" runat="server" Text=""></asp:Label>
                             </div>
-                            <div class="col-sm" style="color:white; font:10px;" >
+                            <div class="col-sm" style="color:white">
+                                <asp:Label ID="lblSeta5" runat="server" Text="->"></asp:Label>
+                            </div>
+                            <div class="col-sm" style="color:white">
                                 <asp:Label ID="lblDespesa6" runat="server" Text=""></asp:Label>
                             </div>
                             <div class="col-sm">
                             </div>
                             <div class="col-sm">
+                            </div>ass="col-sm">
                             </div>
                             </div>
                         </div>

@@ -10,9 +10,10 @@
                         <div class="container">
                             <div class="row">
                             <div class="col-sm" style="color:white">
-                                Projeto
+                                Escritório
                             </div>
-                            <div class="col-sm">
+                            <div class="col-sm" style="color:white">
+                                Projeto
                             </div>
                             <div class="col-sm">
                             </div>
@@ -34,11 +35,28 @@
                         <div class="container">
                         <div class="row">
                             <div class="col-sm">
+                                &nbsp;
                             </div>
-                            <div class="col-sm" style="color:white">
+                            <div class="col-sm" style="color:red">
                                 Profissionais Alocados Para o Projeto
                             </div>
-                            <div class="col-sm">
+                            <div class="col-sm" style="color:white">
+                                ->
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                Custos do Serviço
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                ->
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                Etapas do Projeto / Horas
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                ->
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                Orçamento
                             </div>
                             <div class="col-sm">
                             </div>
@@ -48,9 +66,6 @@
                             </div>
                             <div class="col-sm">
                             </div>
-                            <div class="col-sm">
-                            </div>
-                            <div class="col-sm">
                             </div>
                             </div>
                         </div>

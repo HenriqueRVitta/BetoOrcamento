@@ -8,24 +8,25 @@
                 <div class="container">
                     <div class="row" style="background-color:#000438">
                     <div class="col-sm" style="color:white">
+                        Escritório
+                    </div>
+                    <div class="col-sm" style="color:white">
                         Projeto
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
                     </div>
                     <div style="color:white;width:500px;">
                         <asp:Label ID="LblNome" runat="server" Text=""></asp:Label>
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
                     </div>
                     </div>
                 </div>

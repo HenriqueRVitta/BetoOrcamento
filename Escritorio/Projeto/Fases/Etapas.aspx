@@ -39,17 +39,28 @@
                         <div class="container">
                         <div class="row">
                             <div class="col-sm">
+                                &nbsp;
                             </div>
                             <div class="col-sm" style="color:white">
                                 Profissionais Alocados Para o Projeto
                             </div>
                             <div class="col-sm" style="color:white">
-                                Custos dos Serviço
+                                ->
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                Custos do Serviço
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                ->
                             </div>
                             <div class="col-sm" style="color:red">
                                 Etapas do Projeto / Horas
                             </div>
-                            <div class="col-sm">
+                            <div class="col-sm" style="color:white">
+                                ->
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                Orçamento
                             </div>
                             <div class="col-sm">
                             </div>

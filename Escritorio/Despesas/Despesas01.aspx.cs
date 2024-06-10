@@ -122,11 +122,12 @@ namespace Orcamento.Escritorio.Despesas
                 MySqlCommand qrySelectF = new MySqlCommand(SelF, con);
                 qrySelectF.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
                 MySqlDataReader readerF = qrySelectF.ExecuteReader();
-                string Valor = "";
+
                 string Campo = "";
 
                 while (readerF.Read())
                 {
+                    string Valor = "0";
                     string formula = readerF["da_formula"].ToString();
 
                     int c = 0;
@@ -147,6 +148,8 @@ namespace Orcamento.Escritorio.Despesas
                                     Valor = dr["pd_valor_previsto"].ToString();
                                     break;
                                 }
+                                else
+                                    Valor = "0";
                             }
                             formula = formula.Replace(Campo, Valor);
                         }
@@ -200,8 +203,8 @@ namespace Orcamento.Escritorio.Despesas
                         formula = formula.Replace(Campo, "");
                     }
 
-                    if (Valor.Length > 0 && Convert.ToDecimal(Valor) > 0)
-                    {
+                    //if (Valor.Length > 0 && Convert.ToDecimal(Valor) > 0)
+                    //{
                         var norberto = Calcular(formula.Replace(",", "."));
 
                         for (int i = dtb.Rows.Count - 1; i >= 0; i--)
@@ -213,7 +216,7 @@ namespace Orcamento.Escritorio.Despesas
                                 dr["pd_valor_previsto"] = norberto;
                             }
                         }
-                    }
+                    //}
                 }
 
                 for (int i = dtb.Rows.Count - 1; i >= 0; i--)
@@ -363,11 +366,12 @@ namespace Orcamento.Escritorio.Despesas
             MySqlCommand qrySelectF = new MySqlCommand(SelF, con);
             qrySelectF.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
             MySqlDataReader readerF = qrySelectF.ExecuteReader();
-            string Valor = "";
+
             string Campo = "";
 
             while (readerF.Read())
             {
+                string Valor = "0";
                 string formula = readerF["da_formula"].ToString();
 
                 int c = 0;
@@ -388,6 +392,9 @@ namespace Orcamento.Escritorio.Despesas
                                 Valor = dr["pd_valor_previsto"].ToString();
                                 break;
                             }
+                            else
+                                Valor = "0";
+
                         }
                         formula = formula.Replace(Campo, Valor);
                     }
@@ -395,7 +402,7 @@ namespace Orcamento.Escritorio.Despesas
                         c = formula.Length + 1;
                 }
 
-                if (formula.IndexOf("%") != -1)
+                if (formula.IndexOf("%") != -1 && (Valor.Length > 0 && Convert.ToDecimal(Valor) >= 0))
                 {
                     int ano = DateTime.Now.Year;
                     int aliquota = Convert.ToInt16(formula.Substring(formula.IndexOf("%") + 1, 1));

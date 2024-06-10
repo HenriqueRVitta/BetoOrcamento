@@ -244,7 +244,7 @@ namespace Orcamento.Projeto.Fases
 
         protected void BtnVolta_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Escritorio/Projeto/Fases/Despesas.aspx?Projeto=" + lblProjeto.Text);
+            Response.Redirect("~/Escritorio/Projeto/Fases/Profissionais/Lista.aspx?Projeto=" + lblProjeto.Text);
         }
 
         protected void BtnAvanca_Click(object sender, EventArgs e)

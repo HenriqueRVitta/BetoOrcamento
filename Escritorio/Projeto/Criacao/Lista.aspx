@@ -13,7 +13,7 @@
                                         Escritório
                                     </div>
                                     <div class="col-sm" style="color:white">
-                                        Projetos
+                                        Projeto
                                     </div>
                                     <div class="col-sm">
                                     </div>

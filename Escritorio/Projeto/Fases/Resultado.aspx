@@ -48,25 +48,30 @@
                                 Profissionais Alocados Para o Projeto
                             </div>
                             <div class="col-sm" style="color:white">
+                                ->
+                            </div>
+                            <div class="col-sm" style="color:white">
                                 Custos do Serviço
                             </div>
                             <div class="col-sm" style="color:white">
+                                ->
+                            </div>
+                            <div class="col-sm" style="color:white">
                                 Etapas do Projeto / Horas
+                            </div>
+                            <div class="col-sm" style="color:white">
+                                ->
                             </div>
                             <div class="col-sm" style="color:red">
                                 Orçamento
                             </div>
                             <div class="col-sm">
-                                &nbsp;
                             </div>
                             <div class="col-sm">
-                                &nbsp;
                             </div>
                             <div class="col-sm">
-                                &nbsp;
                             </div>
                             <div class="col-sm">
-                                &nbsp;
                             </div>
                             </div>
                         </div>

@@ -42,6 +42,15 @@ namespace Orcamento.Escritorio.Despesas
         protected global::System.Web.UI.WebControls.Label lblDespesa1;
 
         /// <summary>
+        /// Controle lblSeta1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSeta1;
+
+        /// <summary>
         /// Controle lblDespesa2.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Orcamento.Escritorio.Despesas
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDespesa2;
+
+        /// <summary>
+        /// Controle lblSeta2.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSeta2;
 
         /// <summary>
         /// Controle lblDespesa3.
@@ -60,6 +78,15 @@ namespace Orcamento.Escritorio.Despesas
         protected global::System.Web.UI.WebControls.Label lblDespesa3;
 
         /// <summary>
+        /// Controle lblSeta3.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSeta3;
+
+        /// <summary>
         /// Controle lblDespesa4.
         /// </summary>
         /// <remarks>
@@ -69,6 +96,15 @@ namespace Orcamento.Escritorio.Despesas
         protected global::System.Web.UI.WebControls.Label lblDespesa4;
 
         /// <summary>
+        /// Controle lblSeta4.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSeta4;
+
+        /// <summary>
         /// Controle lblDespesa5.
         /// </summary>
         /// <remarks>
@@ -76,6 +112,15 @@ namespace Orcamento.Escritorio.Despesas
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDespesa5;
+
+        /// <summary>
+        /// Controle lblSeta5.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSeta5;
 
         /// <summary>
         /// Controle lblDespesa6.

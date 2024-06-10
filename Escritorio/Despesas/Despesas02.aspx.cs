@@ -120,11 +120,12 @@ namespace Orcamento.Escritorio.Despesas
                     MySqlCommand qrySelectF = new MySqlCommand(SelF, con);
                     qrySelectF.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
                     MySqlDataReader readerF = qrySelectF.ExecuteReader();
-                    string Valor = "";
+
                     string Campo = "";
 
                     while (readerF.Read())
                     {
+                        string Valor = "0";
                         string formula = readerF["da_formula"].ToString();
 
                         int c = 0;

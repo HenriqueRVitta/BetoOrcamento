@@ -2,6 +2,7 @@
 using System;
 using System.Configuration;
 using System.Data;
+using System.Transactions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -69,7 +70,9 @@ namespace Orcamento.Projeto.Fases.Profissionais
                     while (reader.Read())
                     {
                         pp_profissional.SelectedValue=reader["pp_profissional"].ToString();
-                        pp_valor.Text=reader["pp_hora_trabalhada"].ToString();
+
+                        pp_valor.Text= TimeSpan.FromHours(Convert.ToDouble(reader["pp_hora_trabalhada"].ToString())).TotalHours.ToString();
+
                         pp_quantidade.Text=reader["pp_quantidade"].ToString();
                     }
 
@@ -85,6 +88,22 @@ namespace Orcamento.Projeto.Fases.Profissionais
         }
         protected void btnSalvar_Click(object sender, System.EventArgs e)
         {
+            pp_valor.Text = pp_valor.Text.Replace(",", ".");
+
+            int valor = Convert.ToInt32(pp_valor.Text.Substring(0, pp_valor.Text.IndexOf(".")));
+            string cal = "";
+            int dia = Convert.ToInt32(valor) / 24;
+
+            int hor = Convert.ToInt32(valor) - (dia * 24);
+
+            double min = Convert.ToInt32(pp_valor.Text.Substring(pp_valor.Text.IndexOf(".")+1, pp_valor.Text.Length- pp_valor.Text.IndexOf(".")-1));
+
+            if (dia > 0)
+                cal = dia.ToString() + "." + hor.ToString().PadLeft(2, '0') + ":" + min.ToString().PadLeft(2, '0') + ":00";
+            else
+                cal = hor.ToString().PadLeft(2, '0') + ":" + min.ToString().PadLeft(2, '0') + ":00";
+
+
             if (id==0)
             {
                 con.Open();
@@ -93,7 +112,7 @@ namespace Orcamento.Projeto.Fases.Profissionais
                 MySqlCommand qryInsert = new MySqlCommand(Ins, con);
                 qryInsert.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Convert.ToInt32(lblProjeto.Text);
                 qryInsert.Parameters.Add("@profissional", MySqlDbType.Int16).Value = Convert.ToInt16(pp_profissional.SelectedValue.ToString());
-                qryInsert.Parameters.Add("@valor", MySqlDbType.Decimal).Value = Convert.ToDecimal(pp_valor.Text);
+                qryInsert.Parameters.Add("@valor", MySqlDbType.Decimal).Value = Convert.ToDecimal(TimeSpan.Parse(cal).TotalHours);
                 qryInsert.Parameters.Add("@quantidade", MySqlDbType.Int16).Value = Convert.ToInt16(pp_quantidade.Text);
 
                 try
@@ -118,7 +137,7 @@ namespace Orcamento.Projeto.Fases.Profissionais
                 MySqlCommand qryUpdate = new MySqlCommand(Upd, con);
                 qryUpdate.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
                 qryUpdate.Parameters.Add("@profissional", MySqlDbType.Int16).Value = Convert.ToInt16(pp_profissional.SelectedValue.ToString());
-                qryUpdate.Parameters.Add("@valor", MySqlDbType.Decimal).Value =  Convert.ToDecimal(pp_valor.Text);
+                qryUpdate.Parameters.Add("@valor", MySqlDbType.Decimal).Value = Convert.ToDecimal(TimeSpan.Parse(cal).TotalHours);
                 qryUpdate.Parameters.Add("@quantidade", MySqlDbType.Int16).Value = Convert.ToInt16(pp_quantidade.Text);
 
                 try

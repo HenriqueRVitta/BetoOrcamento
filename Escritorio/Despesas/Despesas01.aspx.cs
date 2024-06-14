@@ -252,7 +252,10 @@ namespace Orcamento.Escritorio.Despesas
 
             if (ddlDespesas.SelectedValue != "")
             {
-                GrdDespesas.DataSource = DataTable.Select("Substring(da_codigo,1,4) = '" + ddlDespesas.SelectedValue + "'");
+                //GrdDespesas.DataSource = DataTable.Select("Substring(da_codigo,1,4) = '" + ddlDespesas.SelectedValue + "'").CopyToDataTable(); ;
+                string _sqlWhere = "Substring(da_codigo,1,4) = '" + ddlDespesas.SelectedValue + "'";
+                GrdDespesas.DataSource = DataTable.Select(_sqlWhere).CopyToDataTable();
+
             }
             else
             {

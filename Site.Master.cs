@@ -97,7 +97,6 @@ namespace Orcamento
                 //DashboardLinkListItem.Visible = true;
                 FundoInicial.Style.Value = "";
                 FundoInicial.Attributes.Add("background-color", "#DC143C");
-
             }
 
         }

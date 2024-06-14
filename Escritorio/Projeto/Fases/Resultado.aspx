@@ -69,10 +69,6 @@
                             </div>
                             <div class="col-sm">
                             </div>
-                            <div class="col-sm">
-                            </div>
-                            <div class="col-sm">
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -148,7 +144,9 @@
                             <div style="width:100px; text-align:left;">
                             </div>
                             <div style="width:200px;">
+                                <asp:Label ID="lblTempo" runat="server" Text="" Visible="false"></asp:Label>
                                 <asp:Label ID="lblTempoTotal" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="lblSubTI" runat="server" Visible="false"></asp:Label>
                             </div>
                             <div style="width:200px;">
                                 &nbsp;
@@ -213,7 +211,7 @@
                             <div style="width:400px;">Margem de Lucro
                             </div>
                             <div style="width:100px;">
-                                <asp:Label ID="lblPercMargemLucro" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtPercMargemLucro" runat="server" Width="60 px" MaxLength="5"></asp:TextBox>
                             </div>
                             <div style="width:200px;">
                                 <asp:Label ID="lblMargemLucro" runat="server" Text=""></asp:Label>
@@ -225,7 +223,7 @@
                             <div style="width:400px;">Margem de Dificuldade
                             </div>
                             <div style="width:100px;">
-                                <asp:Label ID="lblPercMargemDificuldade" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtPercMargemDificuldade" runat="server" Width="60px" MaxLength="5"></asp:TextBox>
                             </div>
                             <div style="width:200px;">
                                 <asp:Label ID="lblMargemDificuldade" runat="server" Text=""></asp:Label>
@@ -237,7 +235,7 @@
                             <div style="width:400px;">Margem de Potencial Criativo
                             </div>
                             <div style="width:100px;">
-                                <asp:Label ID="lblPercMargemCriativo" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtPercMargemCriativo" runat="server" Width="60px" MaxLength="5"></asp:TextBox>
                             </div>
                             <div style="width:200px;">
                                 <asp:Label ID="lblMargemCriativo" runat="server" Text=""></asp:Label>
@@ -270,10 +268,22 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div style="width:400px;">Desconto
+                            </div>
+                            <div style="width:100px;">
+                                <asp:TextBox ID="txtPercDesconto" runat="server" Width="60px" MaxLength="5"></asp:TextBox>
+                            </div>
+                            <div style="width:200px;">
+                                <asp:Label ID="lblDesconto" runat="server" Text=""></asp:Label>
+                            </div>
+                            <div style="width:200px;">
+                            </div>
+                        </div>
+                        <div class="row">
                             <div style="width:400px;">Impostos sobre o preço de Venda (em percentual)
                             </div>
                             <div style="width:100px;">
-                                <asp:Label ID="lblTaxaImposto" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="lblTaxaImposto" runat="server" Width="60px"></asp:Label>
                             </div>
                             <div style="width:200px;">
                                 <asp:Label ID="lblImposto" runat="server" Text=""></asp:Label>
@@ -350,6 +360,8 @@
                 <div class="col-sm">
                 </div>
                 <div class="col-sm">
+                    <asp:Button ID="BtnCalcula" runat="server" Text="Calcular/Gravar" style="background-color:#000438; color:white" class="btn btn-primary" OnClick="BtnCalcula_Click"/>
+                </div>
                 </div>
            </div>
         </div>

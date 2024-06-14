@@ -20,7 +20,6 @@ namespace Orcamento.Movimentacao.Criacao
             if (!Page.IsPostBack)
             {
                 Carrega();
-                con.Open();
             }
         }
 
@@ -28,8 +27,10 @@ namespace Orcamento.Movimentacao.Criacao
         {
             con.Open();
 
-            string Sel = "select pr_id,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,DATE_FORMAT(pr_data, '%d/%m/%Y') as pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto,pr_nome,DATE_FORMAT(pr_data_cadastro, '%d/%m/%Y') as pr_data_cadastro,ti_id,ti_descricao from tb_projetos inner join tb_tipologia on pr_tipologia=ti_id where pr_cliente=1";
+            string Sel = "select pr_id,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,DATE_FORMAT(pr_data, '%d/%m/%Y') as pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto,pr_nome,DATE_FORMAT(pr_data_cadastro, '%d/%m/%Y') as pr_data_cadastro,ti_id,ti_descricao from tb_projetos inner join tb_tipologia on pr_tipologia=ti_id where pr_cliente=@cliente";
             MySqlCommand qrySelect = new MySqlCommand(Sel, con);
+            qrySelect.Parameters.Add("@cliente", MySqlDbType.VarChar,255).Value = Session["IdUser"].ToString();
+
             DataTable dataTable = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(qrySelect);
             da.Fill(dataTable);
@@ -131,7 +132,7 @@ namespace Orcamento.Movimentacao.Criacao
 
                 string Ins = "insert INTO tb_projetos(pr_cliente,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto,pr_nome,pr_data_cadastro) values(@cliente,@tipologia,@metragem,@endereco,@conteudo,@proprietario,@data,@responsavel,@margem_lucro,@margem_dificuldade,@margem_criativo,@impostos,@desconto,@nome,@data_cadastro)";
                 MySqlCommand qryInsert = new MySqlCommand(Ins, con1);
-                qryInsert.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(reader["pr_cliente"].ToString());
+                qryInsert.Parameters.Add("@cliente", MySqlDbType.VarChar,255).Value = reader["pr_cliente"].ToString();
                 qryInsert.Parameters.Add("@tipologia", MySqlDbType.Int16).Value = Convert.ToInt16(reader["pr_tipologia"].ToString());
                 qryInsert.Parameters.Add("@metragem", MySqlDbType.Int32).Value = Convert.ToInt32(reader["pr_metragem"].ToString());
                 qryInsert.Parameters.Add("@endereco", MySqlDbType.VarChar, 45).Value = reader["pr_endereco"].ToString();
@@ -218,43 +219,42 @@ namespace Orcamento.Movimentacao.Criacao
                 qrySelectP.Dispose();
                 con2.Close();
 
-
                 // Inserir Despesas
 
-                con2.Open();
+                //con2.Open();
 
-                string SelD = "select pd_despesa,pd_valor_previsto from tb_projeto_despesas where pd_projeto=@projeto";
-                MySqlCommand qrySelectD = new MySqlCommand(SelD, con2);
-                qrySelectD.Parameters.Add("@projeto", MySqlDbType.Int32).Value = id;
-                MySqlDataReader readerD = qrySelectD.ExecuteReader();
+                //string SelD = "select pd_despesa,pd_valor_previsto from tb_projeto_despesas where pd_projeto=@projeto";
+                //MySqlCommand qrySelectD = new MySqlCommand(SelD, con2);
+                //qrySelectD.Parameters.Add("@projeto", MySqlDbType.Int32).Value = id;
+                //MySqlDataReader readerD = qrySelectD.ExecuteReader();
 
-                while (readerD.Read())
-                {
-                    con1.Open();
+                //while (readerD.Read())
+                //{
+                //    con1.Open();
 
-                    string InsD = "insert INTO tb_projeto_despesas(pd_projeto,pd_despesa,pd_valor_previsto) values(@projeto,@despesa,@valor_previsto)";
-                    MySqlCommand qryInsertD = new MySqlCommand(InsD, con1);
-                    qryInsertD.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Id_Novo;
-                    qryInsertD.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(readerD["pd_despesa"].ToString());
-                    qryInsertD.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(readerD["pd_valor_previsto"].ToString());
+                //    string InsD = "insert INTO tb_projeto_despesas(pd_projeto,pd_despesa,pd_valor_previsto) values(@projeto,@despesa,@valor_previsto)";
+                //    MySqlCommand qryInsertD = new MySqlCommand(InsD, con1);
+                //    qryInsertD.Parameters.Add("@projeto", MySqlDbType.Int32).Value = Id_Novo;
+                //    qryInsertD.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(readerD["pd_despesa"].ToString());
+                //    qryInsertD.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(readerD["pd_valor_previsto"].ToString());
 
-                    try
-                    {
-                        qryInsertD.ExecuteNonQuery();
-                    }
-                    catch
-                    {
-                    }
-                    finally
-                    {
-                        qryInsertD.Dispose();
+                //    try
+                //    {
+                //        qryInsertD.ExecuteNonQuery();
+                //    }
+                //    catch
+                //    {
+                //    }
+                //    finally
+                //    {
+                //        qryInsertD.Dispose();
 
-                        con1.Close();
-                    }
-                }
+                //        con1.Close();
+                //    }
+                //}
 
-                qrySelectD.Dispose();
-                con2.Close();
+                //qrySelectD.Dispose();
+                //con2.Close();
 
                 // Inserir Custos
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Ajax.Utilities;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.Ajax.Utilities;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
 using System;
@@ -25,186 +26,179 @@ namespace Orcamento.Escritorio.Despesas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Request.QueryString["Cliente"] != null)
-            //{
-            if (!Page.IsPostBack)
+            if (Session["IdUser"] != null)
             {
-                //lblCliente.Text = Request.QueryString["Cliente"].ToString();
-                lblCliente.Text = "1";
-
-                con.Open();
-
-                string SelecO = "select da_codigo,da_descricao from tb_despesas where Length(da_codigo)=2 order by da_codigo";
-                MySqlCommand qrySelectO = new MySqlCommand(SelecO, con);
-                MySqlDataReader readerO = qrySelectO.ExecuteReader();
-
-                while (readerO.Read())
+                if (!Page.IsPostBack)
                 {
-                    if (readerO["da_codigo"].ToString() == "01")
-                        lblDespesa1.Text = readerO["da_descricao"].ToString();
-                    else
-                        if (readerO["da_codigo"].ToString() == "02")
-                            lblDespesa2.Text = readerO["da_descricao"].ToString();
+                    con.Open();
+
+                    string SelC = "select da_codigo as codigo,da_descricao as descricao from tb_despesas where substring(da_codigo,1,2)='01' and Length(da_codigo)>2 and da_formula is null order by da_codigo";
+                    MySqlCommand qrySelectC = new MySqlCommand(SelC, con);
+                    MySqlDataReader readerC = qrySelectC.ExecuteReader();
+
+                    ddlDespesas.DataSource = readerC;
+                    ddlDespesas.DataTextField = "descricao";
+                    ddlDespesas.DataValueField = "codigo";
+                    ddlDespesas.DataBind();
+                    ddlDespesas.Items.Insert(0, new System.Web.UI.WebControls.ListItem("Selecione o Despesas.", ""));
+
+                    qrySelectC.Dispose();
+
+                    con.Close();
+
+                    lblCliente.Text = Session["IdUser"].ToString();
+                    con.Open();
+
+                    string SelecO = "select da_codigo,da_descricao from tb_despesas where Length(da_codigo)=2 order by da_codigo";
+                    MySqlCommand qrySelectO = new MySqlCommand(SelecO, con);
+                    MySqlDataReader readerO = qrySelectO.ExecuteReader();
+
+                    while (readerO.Read())
+                    {
+                        if (readerO["da_codigo"].ToString() == "01")
+                            lblDespesa1.Text = readerO["da_descricao"].ToString();
                         else
-                            if (readerO["da_codigo"].ToString() == "03")
-                                lblDespesa3.Text = readerO["da_descricao"].ToString();
+                            if (readerO["da_codigo"].ToString() == "02")
+                                lblDespesa2.Text = readerO["da_descricao"].ToString();
                             else
-                                if (readerO["da_codigo"].ToString() == "04")
-                                    lblDespesa4.Text = readerO["da_descricao"].ToString();
+                                if (readerO["da_codigo"].ToString() == "03")
+                                    lblDespesa3.Text = readerO["da_descricao"].ToString();
                                 else
-                                    if (readerO["da_codigo"].ToString() == "05")
-                                        lblDespesa5.Text = readerO["da_descricao"].ToString();
+                                    if (readerO["da_codigo"].ToString() == "04")
+                                        lblDespesa4.Text = readerO["da_descricao"].ToString();
                                     else
-                                        lblDespesa6.Text = readerO["da_descricao"].ToString();
-                }
+                                        if (readerO["da_codigo"].ToString() == "05")
+                                            lblDespesa5.Text = readerO["da_descricao"].ToString();
+                                        else
+                                            lblDespesa6.Text = readerO["da_descricao"].ToString();
+                    }
 
-                qrySelectO.Dispose();
-                con.Close();
+                    qrySelectO.Dispose();
+                    con.Close();
 
-                con.Open();
+                    double total = 0;
 
-                string SelT = "select COALESCE(sum(pd_valor_previsto),0) as total from tb_despesas left join tb_cliente_despesas on da_id=pd_despesa where pd_cliente=@cliente and substring(da_codigo,1,2)='01' and  Length(da_codigo)>2";
-                MySqlCommand qrySelectT = new MySqlCommand(SelT, con);
-                qrySelectT.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
-                MySqlDataReader readerT = qrySelectT.ExecuteReader();
+                    dtb = new DataTable();
 
-                while (readerT.Read())
-                {
-                    lblTotal.Text = readerT["total"].ToString();
-                }
-                double total = 0;
-                qrySelectT.Dispose();
-                con.Close();
+                    dtb = CriaDataTable();
 
-                dtb = new DataTable();
+                    con.Open();
 
-                dtb = CriaDataTable();
+                    string Sel = "select * from (select pd_id,da_descricao,COALESCE(pd_valor_previsto,0) as pd_valor_previsto,da_id,da_codigo,da_formula from tb_despesas left join tb_cliente_despesas on da_id=pd_despesa where pd_cliente=@cliente or pd_id is null order by da_codigo) as b where substring(da_codigo,1,2)='01' and  Length(da_codigo)>2";
+                    MySqlCommand qrySelect = new MySqlCommand(Sel, con);
+                    qrySelect.Parameters.Add("@cliente", MySqlDbType.VarChar,255).Value = lblCliente.Text;
+                    MySqlDataReader reader = qrySelect.ExecuteReader();
 
-                con.Open();
+                    int indice = 0;
 
-                string Sel = "select * from (select pd_id,da_descricao,COALESCE(pd_valor_previsto,0) as pd_valor_previsto,da_id,da_codigo,da_formula from tb_despesas left join tb_cliente_despesas on da_id=pd_despesa where pd_cliente=@cliente or pd_id is null order by da_codigo) as b where substring(da_codigo,1,2)='01' and  Length(da_codigo)>2";
-                MySqlCommand qrySelect = new MySqlCommand(Sel, con);
-                qrySelect.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
-                MySqlDataReader reader = qrySelect.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        indice++;
+                        DataRow linha;
 
-                total = Convert.ToDouble(lblTotal.Text);
-                int indice = 0;
+                        linha = dtb.NewRow();
 
-                while (reader.Read())
-                {
-                    indice++;
-                    DataRow linha;
-
-                    linha = dtb.NewRow();
-
-                    linha["id"] = indice;
-                    linha["pd_id"] = reader["pd_id"].ToString();
-                    linha["da_id"] = reader["da_id"].ToString();
-                    linha["da_descricao"] = reader["da_descricao"].ToString();
-                    linha["pd_valor_previsto"] = Convert.ToDouble(reader["pd_valor_previsto"].ToString());
-                    linha["da_codigo"] = reader["da_codigo"].ToString();
-                    linha["da_formula"] = reader["da_formula"].ToString();
-
-                    string teste = linha["pd_valor_previsto"].ToString();
-                    if (total > 0)
-                        linha["percentual"] = ((double)linha["pd_valor_previsto"] / total);
-                    else
+                        linha["id"] = indice;
+                        linha["pd_id"] = reader["pd_id"].ToString();
+                        linha["da_id"] = reader["da_id"].ToString();
+                        linha["da_descricao"] = reader["da_descricao"].ToString();
+                        linha["pd_valor_previsto"] = Convert.ToDouble(reader["pd_valor_previsto"].ToString());
+                        linha["da_codigo"] = reader["da_codigo"].ToString();
+                        linha["da_formula"] = reader["da_formula"].ToString();
                         linha["percentual"] = 0;
 
-                    dtb.Rows.Add(linha);
-                }
+                        dtb.Rows.Add(linha);
+                    }
 
-                qrySelect.Dispose();
-                con.Close();
+                    qrySelect.Dispose();
+                    con.Close();
 
-                con.Open();
-                string SelF = "select da_codigo,da_formula from tb_despesas where da_formula is not null and substring(da_codigo,1,2)='01' order by da_codigo";
-                MySqlCommand qrySelectF = new MySqlCommand(SelF, con);
-                qrySelectF.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
-                MySqlDataReader readerF = qrySelectF.ExecuteReader();
+                    con.Open();
+                    string SelF = "select da_codigo,da_formula from tb_despesas where da_formula is not null and substring(da_codigo,1,2)='01' order by da_codigo";
+                    MySqlCommand qrySelectF = new MySqlCommand(SelF, con);
+                    qrySelectF.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = lblCliente.Text;
+                    MySqlDataReader readerF = qrySelectF.ExecuteReader();
 
-                string Campo = "";
+                    string Campo = "";
 
-                while (readerF.Read())
-                {
-                    string Valor = "0";
-                    string formula = readerF["da_formula"].ToString();
-
-                    int c = 0;
-                    while (c <= formula.Length)
+                    while (readerF.Read())
                     {
-                        if (readerF["da_formula"].ToString().IndexOf("#", c) != -1)
+                        string Valor = "0";
+                        string formula = readerF["da_formula"].ToString();
+
+                        int c = 0;
+                        while (c <= formula.Length)
                         {
-                            Campo = readerF["da_formula"].ToString().Substring(readerF["da_formula"].ToString().IndexOf("#", c), 5);
-
-                            c = readerF["da_formula"].ToString().IndexOf("#", c) + 1;
-
-                            for (int i = dtb.Rows.Count - 1; i >= 0; i--)
+                            if (readerF["da_formula"].ToString().IndexOf("#", c) != -1)
                             {
-                                DataRow dr = dtb.Rows[i];
+                                Campo = readerF["da_formula"].ToString().Substring(readerF["da_formula"].ToString().IndexOf("#", c), 5);
 
-                                if (dr["da_codigo"].ToString() == Campo.Substring(1, 4))
+                                c = readerF["da_formula"].ToString().IndexOf("#", c) + 1;
+
+                                for (int i = dtb.Rows.Count - 1; i >= 0; i--)
                                 {
-                                    Valor = dr["pd_valor_previsto"].ToString();
-                                    break;
+                                    DataRow dr = dtb.Rows[i];
+
+                                    if (dr["da_codigo"].ToString() == Campo.Substring(1, 4))
+                                    {
+                                        if (dr["pd_valor_previsto"].ToString().Length > 0)
+                                            Valor = dr["pd_valor_previsto"].ToString();
+                                        else
+                                            Valor = "0";
+                                    }
                                 }
-                                else
-                                    Valor = "0";
+                                formula = formula.Replace(Campo, Valor);
                             }
-                            formula = formula.Replace(Campo, Valor);
-                        }
-                        else
-                            c = formula.Length + 1;
-                    }
-
-                    if (formula.IndexOf("%") != -1)
-                    {
-                        int ano = DateTime.Now.Year;
-                        int aliquota = Convert.ToInt16(formula.Substring(formula.IndexOf("%") + 1, 1));
-
-                        Campo = "%" + aliquota.ToString();
-
-                        Boolean busca = false;
-                        string percentual = "";
-
-                        while (busca==false)
-                        {
-                            con1.Open();
-
-                            string SelA = "select al_percentual from tb_aliquota where al_indice=@aliquota and al_ano=@ano";
-                            MySqlCommand qrySelectA = new MySqlCommand(SelA, con1);
-                            qrySelectA.Parameters.Add("@aliquota", MySqlDbType.Int16).Value = aliquota;
-                            qrySelectA.Parameters.Add("@ano", MySqlDbType.Int16).Value = ano;
-                            MySqlDataReader readerA = qrySelectA.ExecuteReader();
-
-                            while (readerA.Read())
-                            {
-                                percentual = "(" + readerA["al_percentual"].ToString() + "/100)";
-                            }
-
-                            qrySelectA.Dispose();
-                            con1.Close();
-
-                            if (percentual != "")
-                                busca = true;
                             else
-                                ano = ano - 1;
+                                c = formula.Length + 1;
                         }
 
-                        formula = formula.Replace(Campo, percentual);
-                    }
+                        if (formula.IndexOf("%") != -1)
+                        {
+                            int ano = DateTime.Now.Year;
+                            int aliquota = Convert.ToInt16(formula.Substring(formula.IndexOf("%") + 1, 1));
 
-                    if (formula.IndexOf("se") != -1)
-                    {
-                        formula = formula.Replace("se", "");
+                            Campo = "%" + aliquota.ToString();
 
-                        Campo = formula.Substring(0, formula.IndexOf("("));
+                            Boolean busca = false;
+                            string percentual = "";
 
-                        formula = formula.Replace(Campo, "");
-                    }
+                            while (busca==false)
+                            {
+                                con1.Open();
 
-                    //if (Valor.Length > 0 && Convert.ToDecimal(Valor) > 0)
-                    //{
+                                string SelA = "select al_percentual from tb_aliquota where al_indice=@aliquota and al_ano=@ano";
+                                MySqlCommand qrySelectA = new MySqlCommand(SelA, con1);
+                                qrySelectA.Parameters.Add("@aliquota", MySqlDbType.Int16).Value = aliquota;
+                                qrySelectA.Parameters.Add("@ano", MySqlDbType.Int16).Value = ano;
+                                MySqlDataReader readerA = qrySelectA.ExecuteReader();
+
+                                while (readerA.Read())
+                                {
+                                    percentual = "(" + readerA["al_percentual"].ToString() + "/100)";
+                                }
+
+                                qrySelectA.Dispose();
+                                con1.Close();
+
+                                if (percentual != "")
+                                    busca = true;
+                                else
+                                    ano = ano - 1;
+                            }
+
+                            formula = formula.Replace(Campo, percentual);
+                        }
+
+                        if (formula.IndexOf("se") != -1)
+                        {
+                            formula = formula.Replace("se", "");
+
+                            Campo = formula.Substring(0, formula.IndexOf("("));
+
+                            formula = formula.Replace(Campo, "");
+                        }
+
                         var norberto = Calcular(formula.Replace(",", "."));
 
                         for (int i = dtb.Rows.Count - 1; i >= 0; i--)
@@ -216,40 +210,55 @@ namespace Orcamento.Escritorio.Despesas
                                 dr["pd_valor_previsto"] = norberto;
                             }
                         }
-                    //}
+                    }
+
+                    for (int i = dtb.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dtb.Rows[i];
+
+                        if ((double)dr["pd_valor_previsto"] > 0)
+                            total = total + (double)dr["pd_valor_previsto"];
+                    }
+
+                    for (int i = dtb.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dtb.Rows[i];
+
+                        if ((double)dr["pd_valor_previsto"] == 0)
+                            dr["percentual"] = 0;
+                        else
+                            dr["percentual"] = ((double)dr["pd_valor_previsto"] / total);
+                    }
+
+                    lblTotal.Text = total.ToString();
+
+                    qrySelectF.Dispose();
+                    con.Close();
+
+                    var query = from r in dtb.AsEnumerable() select r;
+
+                    DataTable dtLink = new DataTable();
+                    dtLink = query.CopyToDataTable();
+                    Session["DataTable"] = dtLink;
+
+                    ShowData();
                 }
-
-                for (int i = dtb.Rows.Count - 1; i >= 0; i--)
-                {
-                    DataRow dr = dtb.Rows[i];
-
-                    if ((double)dr["pd_valor_previsto"] == 0)
-                        dr["percentual"] = 0;
-                    else
-                        dr["percentual"] = ((double)dr["pd_valor_previsto"] / total);
-                }
-
-                lblTotal.Text = total.ToString();
-
-                qrySelectF.Dispose();
-                con.Close();
-
-                var query = from r in dtb.AsEnumerable()
-                                //                                where ((r.Field<string>("da_codigo").Substring(0,2) == "01" && r.Field<double>("pd_valor_previsto") >0)|| r.Field<string>("da_codigo").Substring(0, 2) != "01")
-                            select r;
-                DataTable dtLink = new DataTable();
-                dtLink = query.CopyToDataTable();
-                Session["DataTable"] = dtLink;
-
-                ShowData();
             }
-            //}
         }
         protected void ShowData()
         {
             DataTable DataTable = new DataTable();
             DataTable = (DataTable)Session["DataTable"];
-            GrdDespesas.DataSource = DataTable;
+
+            if (ddlDespesas.SelectedValue != "")
+            {
+                GrdDespesas.DataSource = DataTable.Select("Substring(da_codigo,1,4) = '" + ddlDespesas.SelectedValue + "'");
+            }
+            else
+            {
+                GrdDespesas.DataSource = DataTable;
+            }
+
             GrdDespesas.DataBind();
 
             if (DataTable.Rows.Count > 0)
@@ -272,48 +281,47 @@ namespace Orcamento.Escritorio.Despesas
             DataColumn DataColumn;
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.Int16");
+            DataColumn.DataType = System.Type.GetType("System.Int16");
             DataColumn.ColumnName = "id";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "pd_id";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "da_id";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "da_descricao";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.Double");
+            DataColumn.DataType = System.Type.GetType("System.Double");
             DataColumn.ColumnName = "pd_valor_previsto";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "da_codigo";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "da_formula";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.Decimal");
+            DataColumn.DataType = System.Type.GetType("System.Decimal");
             DataColumn.ColumnName = "percentual";
             DataTable.Columns.Add(DataColumn);
 
             return DataTable;
         }
-
         protected void GrdDespesas_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GrdDespesas.EditIndex = e.NewEditIndex;
@@ -364,7 +372,7 @@ namespace Orcamento.Escritorio.Despesas
             con.Open();
             string SelF = "select da_codigo,da_formula from tb_despesas where da_formula is not null and substring(da_codigo,1,2)='01' order by da_codigo";
             MySqlCommand qrySelectF = new MySqlCommand(SelF, con);
-            qrySelectF.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
+            qrySelectF.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = lblCliente.Text;
             MySqlDataReader readerF = qrySelectF.ExecuteReader();
 
             string Campo = "";
@@ -389,12 +397,12 @@ namespace Orcamento.Escritorio.Despesas
 
                             if (dr["da_codigo"].ToString() == Campo.Substring(1, 4))
                             {
-                                Valor = dr["pd_valor_previsto"].ToString();
+                                if (dr["pd_valor_previsto"].ToString().Length > 0)
+                                    Valor = dr["pd_valor_previsto"].ToString();
+                                else
+                                    Valor = "0";
                                 break;
                             }
-                            else
-                                Valor = "0";
-
                         }
                         formula = formula.Replace(Campo, Valor);
                     }
@@ -402,7 +410,7 @@ namespace Orcamento.Escritorio.Despesas
                         c = formula.Length + 1;
                 }
 
-                if (formula.IndexOf("%") != -1 && (Valor.Length > 0 && Convert.ToDecimal(Valor) >= 0))
+                if (formula.IndexOf("%") != -1)
                 {
                     int ano = DateTime.Now.Year;
                     int aliquota = Convert.ToInt16(formula.Substring(formula.IndexOf("%") + 1, 1));
@@ -448,19 +456,15 @@ namespace Orcamento.Escritorio.Despesas
                     formula = formula.Replace(Campo, "");
                 }
 
-                if (Valor.Length > 0 && Convert.ToDecimal(Valor)>= 0)
+                var norberto = Calcular(formula.Replace(",", "."));
+
+                for (int i = DataTable.Rows.Count - 1; i >= 0; i--)
                 {
-                    var norberto = Calcular(formula.Replace(",", "."));
+                    DataRow dr = DataTable.Rows[i];
 
-                    for (int i = DataTable.Rows.Count - 1; i >= 0; i--)
+                    if (dr["da_codigo"].ToString() == readerF["da_codigo"].ToString())
                     {
-                        DataRow dr = DataTable.Rows[i];
-
-                        if (dr["da_codigo"].ToString() == readerF["da_codigo"].ToString())
-                        {
-                            dr["pd_valor_previsto"] = norberto;
-                            total = total + norberto;
-                        }
+                        dr["pd_valor_previsto"] = norberto;
                     }
                 }
             }
@@ -498,7 +502,7 @@ namespace Orcamento.Escritorio.Despesas
 
                     string Ins = "insert INTO tb_cliente_despesas(pd_cliente,pd_despesa,pd_valor_previsto) values(@cliente,@despesa,@valor_previsto)";
                     MySqlCommand qryInsert = new MySqlCommand(Ins, con);
-                    qryInsert.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
+                    qryInsert.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = lblCliente.Text;
                     qryInsert.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(dr["da_id"].ToString());
                     qryInsert.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(dr["pd_valor_previsto"].ToString());
 
@@ -546,10 +550,10 @@ namespace Orcamento.Escritorio.Despesas
                         {
                             con.Open();
 
-                            string Upd = "update tb_projeto_despesas set pd_cliente=@cliente,pd_despesa=@despesa,pd_valor_previsto=@valor_previsto where pd_id=@id";
+                            string Upd = "update tb_cliente_despesas set pd_cliente=@cliente,pd_despesa=@despesa,pd_valor_previsto=@valor_previsto where pd_id=@id";
                             MySqlCommand qryUpdate = new MySqlCommand(Upd, con);
                             qryUpdate.Parameters.Add("@id", MySqlDbType.Int32).Value = Convert.ToInt32(dr["pd_id"].ToString());
-                            qryUpdate.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
+                            qryUpdate.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = lblCliente.Text;
                             qryUpdate.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(dr["da_id"].ToString());
                             qryUpdate.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(dr["pd_valor_previsto"].ToString());
 
@@ -571,7 +575,7 @@ namespace Orcamento.Escritorio.Despesas
                 }
             }
 
-            Response.Redirect("~/Escritorio/Despesas/Despesas02.aspx?Cliente=" + lblCliente.Text);
+            Response.Redirect("~/Escritorio/Despesas/Despesas02.aspx");
         }
         public static double Calcular(string expression)
         {
@@ -606,6 +610,11 @@ namespace Orcamento.Escritorio.Despesas
                     }
                 }
             }
+        }
+
+        protected void ddlDespesas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowData();
         }
     }
 }

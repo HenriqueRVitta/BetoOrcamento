@@ -105,6 +105,15 @@ namespace Orcamento.Projeto.Fases
         protected global::System.Web.UI.WebControls.Label lblCapProdutivaE;
 
         /// <summary>
+        /// Controle lblTempo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTempo;
+
+        /// <summary>
         /// Controle lblTempoTotal.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace Orcamento.Projeto.Fases
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTempoTotal;
+
+        /// <summary>
+        /// Controle lblSubTI.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSubTI;
 
         /// <summary>
         /// Controle grdProfisionais.
@@ -177,13 +195,13 @@ namespace Orcamento.Projeto.Fases
         protected global::System.Web.UI.WebControls.Label lblPercSubTotal1;
 
         /// <summary>
-        /// Controle lblPercMargemLucro.
+        /// Controle txtPercMargemLucro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPercMargemLucro;
+        protected global::System.Web.UI.WebControls.TextBox txtPercMargemLucro;
 
         /// <summary>
         /// Controle lblMargemLucro.
@@ -195,13 +213,13 @@ namespace Orcamento.Projeto.Fases
         protected global::System.Web.UI.WebControls.Label lblMargemLucro;
 
         /// <summary>
-        /// Controle lblPercMargemDificuldade.
+        /// Controle txtPercMargemDificuldade.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPercMargemDificuldade;
+        protected global::System.Web.UI.WebControls.TextBox txtPercMargemDificuldade;
 
         /// <summary>
         /// Controle lblMargemDificuldade.
@@ -213,13 +231,13 @@ namespace Orcamento.Projeto.Fases
         protected global::System.Web.UI.WebControls.Label lblMargemDificuldade;
 
         /// <summary>
-        /// Controle lblPercMargemCriativo.
+        /// Controle txtPercMargemCriativo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPercMargemCriativo;
+        protected global::System.Web.UI.WebControls.TextBox txtPercMargemCriativo;
 
         /// <summary>
         /// Controle lblMargemCriativo.
@@ -256,6 +274,24 @@ namespace Orcamento.Projeto.Fases
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotal;
+
+        /// <summary>
+        /// Controle txtPercDesconto.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPercDesconto;
+
+        /// <summary>
+        /// Controle lblDesconto.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDesconto;
 
         /// <summary>
         /// Controle lblTaxaImposto.
@@ -301,5 +337,14 @@ namespace Orcamento.Projeto.Fases
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
+
+        /// <summary>
+        /// Controle BtnCalcula.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCalcula;
     }
 }

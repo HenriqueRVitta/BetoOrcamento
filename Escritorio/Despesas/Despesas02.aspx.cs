@@ -22,14 +22,14 @@ namespace Orcamento.Escritorio.Despesas
 
         internal DataTable dtb = null;
         int id = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["Cliente"] != null)
+            if (Session["IdUser"] != null)
             {
                 if (!Page.IsPostBack)
                 {
-                    lblCliente.Text = Request.QueryString["Cliente"].ToString();
-
+                    lblCliente.Text = Session["IdUser"].ToString();
                     con.Open();
 
                     string SelecO = "select da_codigo,da_descricao from tb_despesas where Length(da_codigo)=2 order by da_codigo";
@@ -59,20 +59,7 @@ namespace Orcamento.Escritorio.Despesas
                     qrySelectO.Dispose();
                     con.Close();
 
-                    con.Open();
-
-                    string SelT = "select COALESCE(sum(pd_valor_previsto),0) as total from tb_despesas left join tb_cliente_despesas on da_id=pd_despesa where pd_cliente=@cliente and substring(da_codigo,1,2)='02' and  Length(da_codigo)>2";
-                    MySqlCommand qrySelectT = new MySqlCommand(SelT, con);
-                    qrySelectT.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
-                    MySqlDataReader readerT = qrySelectT.ExecuteReader();
-
-                    while (readerT.Read())
-                    {
-                        lblTotal.Text = readerT["total"].ToString();
-                    }
                     double total = 0;
-                    qrySelectT.Dispose();
-                    con.Close();
 
                     dtb = new DataTable();
 
@@ -82,10 +69,9 @@ namespace Orcamento.Escritorio.Despesas
 
                     string Sel = "select * from (select pd_id,da_descricao,COALESCE(pd_valor_previsto,0) as pd_valor_previsto,da_id,da_codigo,da_formula from tb_despesas left join tb_cliente_despesas on da_id=pd_despesa where pd_cliente=@cliente or pd_id is null order by da_codigo) as b where substring(da_codigo,1,2)='02' and  Length(da_codigo)>2";
                     MySqlCommand qrySelect = new MySqlCommand(Sel, con);
-                    qrySelect.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
+                    qrySelect.Parameters.Add("@cliente", MySqlDbType.VarChar, 255).Value = lblCliente.Text;
                     MySqlDataReader reader = qrySelect.ExecuteReader();
 
-                    total = Convert.ToDouble(lblTotal.Text);
                     int indice = 0;
 
                     while (reader.Read())
@@ -102,12 +88,7 @@ namespace Orcamento.Escritorio.Despesas
                         linha["pd_valor_previsto"] = Convert.ToDouble(reader["pd_valor_previsto"].ToString());
                         linha["da_codigo"] = reader["da_codigo"].ToString();
                         linha["da_formula"] = reader["da_formula"].ToString();
-
-                        string teste = linha["pd_valor_previsto"].ToString();
-                        if (total > 0)
-                            linha["percentual"] = ((double)linha["pd_valor_previsto"] / total);
-                        else
-                            linha["percentual"] = 0;
+                        linha["percentual"] = 0;
 
                         dtb.Rows.Add(linha);
                     }
@@ -118,7 +99,7 @@ namespace Orcamento.Escritorio.Despesas
                     con.Open();
                     string SelF = "select da_codigo,da_formula from tb_despesas where da_formula is not null and substring(da_codigo,1,2)='02' order by da_codigo";
                     MySqlCommand qrySelectF = new MySqlCommand(SelF, con);
-                    qrySelectF.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
+                    qrySelectF.Parameters.Add("@cliente", MySqlDbType.VarChar,255).Value = lblCliente.Text;
                     MySqlDataReader readerF = qrySelectF.ExecuteReader();
 
                     string Campo = "";
@@ -143,8 +124,10 @@ namespace Orcamento.Escritorio.Despesas
 
                                     if (dr["da_codigo"].ToString() == Campo.Substring(1, 4))
                                     {
-                                        Valor = dr["pd_valor_previsto"].ToString();
-                                        break;
+                                        if (dr["pd_valor_previsto"].ToString().Length > 0)
+                                            Valor = dr["pd_valor_previsto"].ToString();
+                                        else
+                                            Valor = "0";
                                     }
                                 }
                                 formula = formula.Replace(Campo, Valor);
@@ -199,20 +182,25 @@ namespace Orcamento.Escritorio.Despesas
                             formula = formula.Replace(Campo, "");
                         }
 
-                        if (Valor.Length > 0 && Convert.ToDecimal(Valor) > 0)
+                        var norberto = Calcular(formula.Replace(",", "."));
+
+                        for (int i = dtb.Rows.Count - 1; i >= 0; i--)
                         {
-                            var norberto = Calcular(formula.Replace(",", "."));
+                            DataRow dr = dtb.Rows[i];
 
-                            for (int i = dtb.Rows.Count - 1; i >= 0; i--)
+                            if (dr["da_codigo"].ToString() == readerF["da_codigo"].ToString())
                             {
-                                DataRow dr = dtb.Rows[i];
-
-                                if (dr["da_codigo"].ToString() == readerF["da_codigo"].ToString())
-                                {
-                                    dr["pd_valor_previsto"] = norberto;
-                                }
+                                dr["pd_valor_previsto"] = norberto;
                             }
                         }
+                    }
+
+                    for (int i = dtb.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dtb.Rows[i];
+
+                        if ((double)dr["pd_valor_previsto"] > 0)
+                            total = total + (double)dr["pd_valor_previsto"];
                     }
 
                     for (int i = dtb.Rows.Count - 1; i >= 0; i--)
@@ -267,48 +255,47 @@ namespace Orcamento.Escritorio.Despesas
             DataColumn DataColumn;
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.Int16");
+            DataColumn.DataType = System.Type.GetType("System.Int16");
             DataColumn.ColumnName = "id";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "pd_id";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "da_id";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "da_descricao";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.Double");
+            DataColumn.DataType = System.Type.GetType("System.Double");
             DataColumn.ColumnName = "pd_valor_previsto";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "da_codigo";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.String");
+            DataColumn.DataType = System.Type.GetType("System.String");
             DataColumn.ColumnName = "da_formula";
             DataTable.Columns.Add(DataColumn);
 
             DataColumn = new DataColumn();
-            DataColumn.DataType = Type.GetType("System.Decimal");
+            DataColumn.DataType = System.Type.GetType("System.Decimal");
             DataColumn.ColumnName = "percentual";
             DataTable.Columns.Add(DataColumn);
 
             return DataTable;
         }
-
         protected void GrdDespesas_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GrdDespesas.EditIndex = e.NewEditIndex;
@@ -359,13 +346,14 @@ namespace Orcamento.Escritorio.Despesas
             con.Open();
             string SelF = "select da_codigo,da_formula from tb_despesas where da_formula is not null and substring(da_codigo,1,2)='02' order by da_codigo";
             MySqlCommand qrySelectF = new MySqlCommand(SelF, con);
-            qrySelectF.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
+            qrySelectF.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = lblCliente.Text;
             MySqlDataReader readerF = qrySelectF.ExecuteReader();
-            string Valor = "";
+
             string Campo = "";
 
             while (readerF.Read())
             {
+                string Valor = "0";
                 string formula = readerF["da_formula"].ToString();
 
                 int c = 0;
@@ -383,7 +371,10 @@ namespace Orcamento.Escritorio.Despesas
 
                             if (dr["da_codigo"].ToString() == Campo.Substring(1, 4))
                             {
-                                Valor = dr["pd_valor_previsto"].ToString();
+                                if (dr["pd_valor_previsto"].ToString().Length > 0)
+                                    Valor = dr["pd_valor_previsto"].ToString();
+                                else
+                                    Valor = "0";
                                 break;
                             }
                         }
@@ -439,19 +430,15 @@ namespace Orcamento.Escritorio.Despesas
                     formula = formula.Replace(Campo, "");
                 }
 
-                if (Valor.Length > 0 && Convert.ToDecimal(Valor) > 0)
+                var norberto = Calcular(formula.Replace(",", "."));
+
+                for (int i = DataTable.Rows.Count - 1; i >= 0; i--)
                 {
-                    var norberto = Calcular(formula.Replace(",", "."));
+                    DataRow dr = DataTable.Rows[i];
 
-                    for (int i = DataTable.Rows.Count - 1; i >= 0; i--)
+                    if (dr["da_codigo"].ToString() == readerF["da_codigo"].ToString())
                     {
-                        DataRow dr = DataTable.Rows[i];
-
-                        if (dr["da_codigo"].ToString() == readerF["da_codigo"].ToString())
-                        {
-                            dr["pd_valor_previsto"] = norberto;
-                            total = total + norberto;
-                        }
+                        dr["pd_valor_previsto"] = norberto;
                     }
                 }
             }
@@ -489,7 +476,7 @@ namespace Orcamento.Escritorio.Despesas
 
                     string Ins = "insert INTO tb_cliente_despesas(pd_cliente,pd_despesa,pd_valor_previsto) values(@cliente,@despesa,@valor_previsto)";
                     MySqlCommand qryInsert = new MySqlCommand(Ins, con);
-                    qryInsert.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
+                    qryInsert.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = lblCliente.Text;
                     qryInsert.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(dr["da_id"].ToString());
                     qryInsert.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(dr["pd_valor_previsto"].ToString());
 
@@ -537,10 +524,10 @@ namespace Orcamento.Escritorio.Despesas
                         {
                             con.Open();
 
-                            string Upd = "update tb_projeto_despesas set pd_cliente=@cliente,pd_despesa=@despesa,pd_valor_previsto=@valor_previsto where pd_id=@id";
+                            string Upd = "update tb_cliente_despesas set pd_cliente=@cliente,pd_despesa=@despesa,pd_valor_previsto=@valor_previsto where pd_id=@id";
                             MySqlCommand qryUpdate = new MySqlCommand(Upd, con);
                             qryUpdate.Parameters.Add("@id", MySqlDbType.Int32).Value = Convert.ToInt32(dr["pd_id"].ToString());
-                            qryUpdate.Parameters.Add("@cliente", MySqlDbType.Int32).Value = Convert.ToInt32(lblCliente.Text);
+                            qryUpdate.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = lblCliente.Text;
                             qryUpdate.Parameters.Add("@despesa", MySqlDbType.Int32).Value = Convert.ToInt32(dr["da_id"].ToString());
                             qryUpdate.Parameters.Add("@valor_previsto", MySqlDbType.Decimal).Value = Convert.ToDecimal(dr["pd_valor_previsto"].ToString());
 
@@ -562,7 +549,7 @@ namespace Orcamento.Escritorio.Despesas
                 }
             }
 
-            Response.Redirect("~/Escritorio/Despesas/Despesas03.aspx?Cliente=" + lblCliente.Text);
+            Response.Redirect("~/Escritorio/Despesas/Despesas03.aspx");
         }
         public static double Calcular(string expression)
         {
@@ -599,9 +586,9 @@ namespace Orcamento.Escritorio.Despesas
             }
         }
 
-        protected void BtnVolta_Click(object sender, EventArgs e)
+protected void BtnVolta_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Escritorio/Despesas/Despesas01.aspx?Cliente=" + lblCliente.Text);
+            Response.Redirect("~/Escritorio/Despesas/Despesas01.aspx");
         }
     }
 }

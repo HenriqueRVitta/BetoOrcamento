@@ -70,10 +70,6 @@
                             <div class="col-sm" style="color:white">
                                 <asp:Label ID="lblDespesa6" runat="server" Text=""></asp:Label>
                             </div>
-                            <div class="col-sm">
-                            </div>
-                            <div class="col-sm">
-                            </div>
                             </div>
                         </div>
                     </div>

@@ -526,6 +526,8 @@ D:\Projetos\Beto\Orcamento\BetoOrcamento\obj\Debug\Orcamento.csproj.CoreCompileI
 D:\Projetos\Beto\Orcamento\BetoOrcamento\obj\Debug\Orcamento.csproj.Up2Date
 D:\Projetos\Beto\Orcamento\BetoOrcamento\obj\Debug\Orcamento.dll
 D:\Projetos\Beto\Orcamento\BetoOrcamento\obj\Debug\Orcamento.pdb
+D:\temp\Orcamento\obj\Debug\Orcamento.csproj.AssemblyReference.cache
+D:\temp\Orcamento\obj\Debug\Orcamento.csproj.CoreCompileInputs.cache
 D:\temp\Orcamento\bin\Orcamento.dll.config
 D:\temp\Orcamento\bin\Orcamento.dll
 D:\temp\Orcamento\bin\Orcamento.pdb
@@ -654,8 +656,6 @@ D:\temp\Orcamento\bin\pt-br\Microsoft.AspNet.FriendlyUrls.resources.dll
 D:\temp\Orcamento\bin\pt-br\Microsoft.AspNet.Identity.Core.resources.dll
 D:\temp\Orcamento\bin\pt-br\Microsoft.AspNet.Identity.Owin.resources.dll
 D:\temp\Orcamento\bin\pt-br\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-D:\temp\Orcamento\obj\Debug\Orcamento.csproj.AssemblyReference.cache
-D:\temp\Orcamento\obj\Debug\Orcamento.csproj.CoreCompileInputs.cache
 D:\temp\Orcamento\obj\Debug\Orcamento.csproj.CopyComplete
 D:\temp\Orcamento\obj\Debug\Orcamento.dll
 D:\temp\Orcamento\obj\Debug\Orcamento.pdb

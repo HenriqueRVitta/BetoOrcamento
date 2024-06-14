@@ -88,7 +88,7 @@ namespace Orcamento.Movimentacao.Criacao
 
                 string Ins = "insert INTO tb_projetos(pr_cliente,pr_tipologia,pr_metragem,pr_endereco,pr_conteudo,pr_proprietario,pr_data,pr_responsavel,pr_margem_lucro,pr_margem_dificuldade,pr_margem_criativo,pr_impostos,pr_desconto,pr_nome,pr_data_cadastro) values(@cliente,@tipologia,@metragem,@endereco,@conteudo,@proprietario,@data,@responsavel,@margem_lucro,@margem_dificuldade,@margem_criativo,@impostos,@desconto,@nome)";
                 MySqlCommand qryInsert = new MySqlCommand(Ins, con);
-                qryInsert.Parameters.Add("@cliente", MySqlDbType.Int32).Value = 1;
+                qryInsert.Parameters.Add("@cliente", MySqlDbType.VarChar,255).Value = Session["IdUser"].ToString();
                 qryInsert.Parameters.Add("@tipologia", MySqlDbType.Int16).Value = Convert.ToInt16(pr_tipologia.SelectedValue.ToString());
                 qryInsert.Parameters.Add("@metragem", MySqlDbType.Int32).Value = Convert.ToInt32(pr_metragem.Text);
                 qryInsert.Parameters.Add("@endereco", MySqlDbType.VarChar,45).Value = pr_endereco.Text.ToUpper();
@@ -126,10 +126,9 @@ namespace Orcamento.Movimentacao.Criacao
             {
                 con.Open();
 
-                string Upd = "update tb_projetos set pr_cliente=@cliente,pr_tipologia=@tipologia,pr_metragem=@metragem,pr_endereco=@endereco,pr_conteudo=@conteudo,pr_proprietario=@proprietario,pr_data=@data,pr_responsavel=@responsavel,pr_margem_lucro=@margem_lucro,pr_margem_dificuldade=@margem_dificuldade,pr_margem_criativo=@margem_criativo,pr_impostos=@impostos,pr_desconto=@desconto,pr_nome=@nome where pr_id=@id";
+                string Upd = "update tb_projetos set pr_tipologia=@tipologia,pr_metragem=@metragem,pr_endereco=@endereco,pr_conteudo=@conteudo,pr_proprietario=@proprietario,pr_data=@data,pr_responsavel=@responsavel,pr_margem_lucro=@margem_lucro,pr_margem_dificuldade=@margem_dificuldade,pr_margem_criativo=@margem_criativo,pr_impostos=@impostos,pr_desconto=@desconto,pr_nome=@nome where pr_id=@id";
                 MySqlCommand qryUpdate = new MySqlCommand(Upd, con);
                 qryUpdate.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-                qryUpdate.Parameters.Add("@cliente", MySqlDbType.Int32).Value = 1;
                 qryUpdate.Parameters.Add("@tipologia", MySqlDbType.Int16).Value = Convert.ToInt16(pr_tipologia.SelectedValue.ToString());
                 qryUpdate.Parameters.Add("@metragem", MySqlDbType.Int32).Value = Convert.ToInt32(pr_metragem.Text);
                 qryUpdate.Parameters.Add("@endereco", MySqlDbType.VarChar, 45).Value = pr_endereco.Text.ToUpper();

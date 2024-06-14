@@ -66,10 +66,6 @@
                             </div>
                             <div class="col-sm">
                             </div>
-                            <div class="col-sm">
-                            </div>
-                            <div class="col-sm">
-                            </div>
                             </div>
                         </div>
                     </div>

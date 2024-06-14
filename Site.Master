@@ -125,7 +125,7 @@
                         </div>
                       </li>
 
-<%--                      <li><a href="/Projeto/Criacao/Lista" class="nav-link"><i class="icon-product-hunt"></i> Projetos</a></li>--%>
+                      <!-- <li><a href="/Projeto/Criacao/Lista" class="nav-link"><i class="icon-product-hunt"></i> Projetos</a></li> -->
                       <li><a href="#" class="nav-link"><i class="icon-info2"></i> Manual</a></li>
                       <li><a href="#" class="nav-link"><i class="icon-contacts"></i> Contato</a></li>
                   </ul>

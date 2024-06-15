@@ -1,5 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.FriendlyUrls;
+using Microsoft.AspNet.Identity;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
 using System;
@@ -243,6 +245,10 @@ namespace Orcamento.Escritorio.Despesas
 
                     ShowData();
                 }
+            } else
+            {
+                // Redireciona para Login caso não esteja logado
+                Response.Redirect("/Account/Login.aspx");
             }
         }
         protected void ShowData()
@@ -252,9 +258,12 @@ namespace Orcamento.Escritorio.Despesas
 
             if (ddlDespesas.SelectedValue != "")
             {
-                //GrdDespesas.DataSource = DataTable.Select("Substring(da_codigo,1,4) = '" + ddlDespesas.SelectedValue + "'").CopyToDataTable(); ;
+                //GrdDespesas.DataSource = DataTable.Select("Substring(da_codigo,1,4) = '" + ddlDespesas.SelectedValue + "'");
                 string _sqlWhere = "Substring(da_codigo,1,4) = '" + ddlDespesas.SelectedValue + "'";
-                GrdDespesas.DataSource = DataTable.Select(_sqlWhere).CopyToDataTable();
+
+                if (DataTable.Select(_sqlWhere).Any()) // Só carrega DataTable se existir linhas na consulta
+                    GrdDespesas.DataSource = DataTable.Select(_sqlWhere).CopyToDataTable();
+
 
             }
             else

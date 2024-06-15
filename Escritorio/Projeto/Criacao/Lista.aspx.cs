@@ -17,10 +17,20 @@ namespace Orcamento.Movimentacao.Criacao
         public virtual System.Web.UI.WebControls.ButtonType ButtonType { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (Session["IdUser"] != null)
             {
-                Carrega();
+
+                if (!Page.IsPostBack)
+                {
+                    Carrega();
+                }
+            } else
+            {
+                // Redireciona para Login caso não esteja logado
+                Response.Redirect("/Account/Login.aspx");
+
             }
+
         }
 
         public void Carrega()

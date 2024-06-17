@@ -6,7 +6,7 @@
             <div class="row">
                  <div class="card text-left" style="background-color:#000438">
                         <div class="card-header text-center">
-                        <h3>Cadastro - Despesas Administrativas - Excluir</h3>
+                        <h3>Cadastro - Despesas</h3>
                         </div>
                     </div>
                     <div class="card-body">
@@ -26,6 +26,16 @@
                                             <asp:Label ID="lblda_descricao" runat="server" Text="Descrição" />
                                             <asp:TextBox ID="da_descricao" runat="server" CssClass="form-control" required="true"/>
                                         </div>
+                                        <asp:Panel ID="pnlFormula_Hora" runat="server" Visible="false">
+                                            <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3">
+                                                <asp:Label ID="lblda_formula" runat="server" Text="Formula" />
+                                                <asp:TextBox ID="da_formula" runat="server" CssClass="form-control"/>
+                                            </div>
+                                            <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3">
+                                                <asp:Label ID="lblHoras" runat="server" Text="Horas Trabalhadas Mês" />
+                                                <asp:TextBox ID="da_hora_trabalhada" runat="server" CssClass="form-control"/>
+                                            </div>
+                                        </asp:Panel>
                                         <div class="form-group col-md-8 offset-md-2 col-xl-6 offset-xl-3" style="margin-top: 10px;">
                                             <asp:Button ID="btExcluir" runat="server" Text="Excluir" class="btn btn-primary btnPrimary" OnClick="btExcluir_Click" />
                                             <asp:HyperLink NavigateUrl="/Cadastros/Despesa/Lista" runat="server" asp-route-id="@da_id" title="Voltar para o pesquisa" class="btn btn-secondary btnSecundary">Voltar</asp:HyperLink>

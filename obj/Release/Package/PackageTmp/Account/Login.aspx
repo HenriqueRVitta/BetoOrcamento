@@ -23,6 +23,7 @@
                             <div class="row">
                                 <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 col-form-label">E-mail</asp:Label>
                                 <div class="col-md-10">
+
                                     <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
                                         CssClass="text-danger" ErrorMessage="O campo e-mail é exigido." />

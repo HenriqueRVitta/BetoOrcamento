@@ -6,7 +6,7 @@
             <div class="row" style="width:100%">
                  <div class="card text-left" style="background-color:#000438">
                     <div class="card-header text-center">
-                    <h3>Cadastro - Lista Despesas Administrativas</h3>
+                    <h3>Cadastro - Despesas</h3>
                     </div>
                  </div>
                     <div class="col-12 text-left" style="margin-top:5px">
@@ -21,6 +21,7 @@
                                         <asp:BoundField DataField="da_codigo" HeaderText="Código" SortExpression="da_codigo"/>
                                         <asp:BoundField DataField="da_descricao" HeaderText="Descrição" SortExpression="da_descricao"/>  
                                         <asp:BoundField DataField="da_formula" HeaderText="Formula"/>  
+                                        <asp:BoundField DataField="da_hora_trabalhada" HeaderText="Horas Tab.Mês"/>  
                                         <asp:ButtonField ButtonType="Image" CommandName="Editar" ItemStyle-Width="60px" ImageUrl="~/Content/images/lapis.png"></asp:ButtonField>
                                         <asp:ButtonField ButtonType="Image" CommandName="Excluir" ItemStyle-Width="60px" ImageUrl="~/Content/images/lixeira.png"></asp:ButtonField>
                                     </Columns>

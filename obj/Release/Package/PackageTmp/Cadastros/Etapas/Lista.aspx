@@ -6,7 +6,7 @@
             <div class="row" style="width:100%">
                  <div class="card text-left" style="background-color:#000438">
                         <div class="card-header text-center">
-                        <h3>Cadastro - Lista Etapas</h3>
+                        <h3>Cadastro - Etapas</h3>
                         </div>
                      </div>
                     <div class="col-12 text-left" style="margin-top:5px">

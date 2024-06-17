@@ -1,8 +1,7 @@
-﻿<%@ Page Title="Gerenciar senha" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ManagePassword.aspx.cs" Inherits="Orcamento.Account.ManagePassword" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ManagePassword.aspx.cs" Inherits="Orcamento.Account.ManagePassword" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
-        <h2 id="title"><%: Title %>.</h2>
         <div class="row">
             <section id="passwordForm">
                 <asp:PlaceHolder runat="server" ID="setPassword" Visible="false">
@@ -49,7 +48,13 @@
 
                 <asp:PlaceHolder runat="server" ID="changePasswordHolder" Visible="false">
                     <div>
-                        <h4>Formulário de Alteração de Senha</h4>
+
+                        <div class="card text-left" style="background-color:#000438">
+                            <div class="card-header text-center">
+                            <h3>Alteração de Senha</h3>
+                            </div>
+                        </div>
+
                         <hr />
                         <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
                         <div class="row">
@@ -82,9 +87,12 @@
                                     ValidationGroup="ChangePassword" />
                             </div>
                         </div>
-                        <div class="row">
+
+                        <div class="form-group">
                             <div class="offset-md-2 col-md-10">
-                                <asp:Button runat="server" Text="Alterar senha" ValidationGroup="ChangePassword" OnClick="ChangePassword_Click" CssClass="btn btn-outline-dark" />
+                                <br />
+                                <asp:Button runat="server" Text="Alterar senha" ValidationGroup="ChangePassword" OnClick="ChangePassword_Click" class="btn btn-primary btnPrimary" />
+                                <asp:HyperLink NavigateUrl="/Account/Manage" runat="server" title="Voltar" class="btn btn-secondary btnSecundary">Voltar</asp:HyperLink>
                             </div>
                         </div>
                     </div>
